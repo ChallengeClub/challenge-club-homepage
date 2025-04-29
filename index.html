@@ -6,23 +6,22 @@
   <title>技術チャレンジ部</title>
   <style>
     .menu {
-      position: fixed;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      background-color: var(--bg-color);
+      flex-direction: column;
+      position: absolute;
       top: 60px;
       right: 0;
-      background-color: white;
-      width: 250px;
-      height: 100%;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
+      width: 100%;
       z-index: 2000;
+      display: flex;
     }
 
     .menu.active {
-      transform: translateX(0);
+      opacity: 1;
     }
 
     .menu a {
@@ -207,10 +206,11 @@
     }
 
     @media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .navbar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
 
   .navbar .menu {
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
