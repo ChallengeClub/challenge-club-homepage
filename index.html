@@ -133,13 +133,21 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
 
     .card img {
       width: 100%;
-      height: auto;
+      height: 200px;
+      object-fit: cover;
     }
-
     .card-content {
       padding: 1rem;
     }
@@ -400,15 +408,79 @@
 <section id="activities">
   <h2>活動内容</h2>
   <div class="card-container">
-    <div class="card"><img src="images/vr.jpg"><div class="card-content"><h3>VR活動</h3><p>定例会や体験会で、VRやメタバースに触れる活動を展開。</p></div></div>
-    <div class="card"><img src="images/programming.jpg"><div class="card-content"><h3>挑戦！プログラミングコンテスト</h3><p>ISUCONなどへの挑戦を通じてスキルアップ。</p></div></div>
-    <div class="card"><img src="images/ai.jpg"><div class="card-content"><h3>自動運転AIチャレンジ</h3><p>実車や仮想環境でのAI開発を体験。</p></div></div>
-    <div class="card"><img src="images/ux.jpg"><div class="card-content"><h3>自動運転UX創造チャンレジ</h3><p>UX視点で自動運転の未来像を提案。</p></div></div>
-    <div class="card"><img src="images/mft2024.jpg"><div class="card-content"><h3>MakerFaireTokyo2024出展</h3><p>最新のものづくりを発信する場に出展。</p></div></div>
-    <div class="card"><img src="images/isucon.jpg"><div class="card-content"><h3>ISUCON参加</h3><p>限界に挑む高速化バトルに参戦。</p></div></div>
-    <div class="card"><img src="images/bukkowathon.jpg"><div class="card-content"><h3>5h Bukkowathon</h3><p>“壊す”ことに挑むハッカソン形式の社内イベント。</p></div></div>
-    <div class="card"><img src="images/ctf.jpg"><div class="card-content"><h3>CTFコンテスト</h3><p>セキュリティの力試し！CTF大会に参加。</p></div></div>
-    <div class="card"><img src="images/lt.jpg"><div class="card-content"><h3>connpassのLT会</h3><p>社外公開型の勉強会をconnpassで開催。</p></div></div>
+
+    <a href="https://github.com/ChallengeClub/vr-meetups" target="_blank" class="card">
+      <img src="images/vr.png" alt="VR活動">
+      <div class="card-content">
+        <h3>VR活動</h3>
+        <p>定例会や体験会で、VRやメタバースに触れる活動を展開</p>
+      </div>
+    </a>
+
+    <a href="https://isucon.net/" target="_blank" class="card">
+      <img src="images/programming.png" alt="プログラミングコンテスト">
+      <div class="card-content">
+        <h3>挑戦！プログラミングコンテスト</h3>
+        <p>コンテスト挑戦を通じてスキルアップ</p>
+      </div>
+    </a>
+
+    <a href="https://github.com/ChallengeClub/autonomous-ai-challenge" target="_blank" class="card">
+      <img src="images/ai.png" alt="自動運転AIチャレンジ">
+      <div class="card-content">
+        <h3>自動運転AIチャレンジ</h3>
+        <p>実車や仮想環境での自動運転開発に挑戦</p>
+      </div>
+    </a>
+
+    <a href="https://qiita.com/kiwsdiv/items/763b4a73ee90ff0b3c0c" target="_blank" class="card">
+      <img src="images/ux.png" alt="自動運転UX創造チャレンジ">
+      <div class="card-content">
+        <h3>自動運転UX創造チャレンジ</h3>
+        <p>UX視点で自動運転の未来像を提案</p>
+      </div>
+    </a>
+
+    <a href="https://makezine.jp/event/mft2024/" target="_blank" class="card">
+      <img src="images/mft2024.png" alt="MakerFaireTokyo2024出展">
+      <div class="card-content">
+        <h3>MakerFaireTokyo2024出展</h3>
+        <p>日本最大のメイカーイベントに出展</p>
+      </div>
+    </a>
+
+    <a href="https://isucon.net/" target="_blank" class="card">
+      <img src="images/isucon.png" alt="ISUCON参加">
+      <div class="card-content">
+        <h3>ISUCON参加</h3>
+        <p>限界に挑むWEB高速化バトルに参戦</p>
+      </div>
+    </a>
+
+    <a href="https://bukkowathon.challenge-club.org/" target="_blank" class="card">
+      <img src="images/bukkowathon.png" alt="5h Bukkowathon">
+      <div class="card-content">
+        <h3>5h Bukkowathon</h3>
+        <p>５時間で「ぶっ壊す」「ハッカソン」を開催</p>
+      </div>
+    </a>
+
+    <a href="https://github.com/ChallengeClub/ctf-challenge" target="_blank" class="card">
+      <img src="images/ctf.png" alt="CTFコンテスト">
+      <div class="card-content">
+        <h3>CTFコンテスト</h3>
+        <p>セキュリティの力試し！CTF大会に参加</p>
+      </div>
+    </a>
+
+    <a href="https://challenge-club.connpass.com/" target="_blank" class="card">
+      <img src="images/lt.png" alt="connpassのLT会">
+      <div class="card-content">
+        <h3>connpassのLT会</h3>
+        <p>社外公開型の勉強会をconnpassで開催</p>
+      </div>
+    </a>
+
   </div>
 </section>
 
