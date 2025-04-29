@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技術チャレンジ部</title>
+  <style>
+    :root {
+      --main-color: #009688;
+      --accent-color: #ffc107;
+      --bg-color: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-color);
+      color: #333;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .navbar img.logo {
+      height: 40px;
+    }
+
+    .navbar .menu a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    header {
+      position: relative;
+      background: url('./images/challenge-club-backpanel.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 6rem 1rem 3rem;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    header h1,
+    header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.5rem;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    section h2 {
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .card {
+      width: 300px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: var(--main-color);
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .contact-form {
+      background: #f9f9f9;
+      padding: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .contact-form a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--main-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    footer {
+      position: relative;
+      background: url('/mnt/data/e5999445-ee6b-463e-9c1f-6c00808db00a.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    footer p,
+    footer a {
+      position: relative;
+      z-index: 1;
+    }
+    }
+
+    footer a {
+      display: inline-block;
+      margin: 0.3rem;
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+  }
+
+  .navbar .menu a {
+    margin: 0.5rem 0;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .qr-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+    }
+      .footer-contact {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 2rem;
+    }
+
+    .qr-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .qr-block {
+      text-align: center;
+    }
+
+    .qr-block img {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge {
+      background-color: #4caf50;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 1rem;
+      display: inline-block;
+    }
+
+    .footer-links a {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-links {
+      margin-top: 2rem;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="#top"><img class="logo" src="./images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="menu">
+    <a href="#about">技術チャレンジ部とは</a>
+    <a href="#activities">活動内容</a>
+    <a href="#contact">お問い合わせ</a>
+  </div>
+</div>
+
+<header id="top">
+  <h1>技術チャレンジ部</h1>
+  <p>探究とつながりで、未来をつくる。</p>
+</header>
+
+<section id="about">
+  <h2>技術チャレンジ部とは？</h2>
+  <p>「技術的なチャレンジをしたい！」という想いから生まれた、有志による自主コミュニティです。メーカー社員がマイコンで遊び始めた小さなきっかけが、今では社内外を巻き込んだ大きなうねりとなり、300名を超える仲間が集う場へと成長しました。新しいことに挑戦したい。技術をもっと極めたい。仲間とともに高め合いたい。一人ではくじけそうでも、ここなら走り続けられる──そんな想いを持ったメンバーが集まり、共に学び、共に遊ぶ、“本気の遊び場”です。</p>
+  <ul>
+    <li>コンセプト：<strong>成長の場の相互提供</strong></li>
+  </ul>
+</section>
+
+<section id="activities">
+  <h2>活動内容</h2>
+  <div class="card-container">
+    <div class="card"><img src="images/vr.jpg"><div class="card-content"><h3>VR活動</h3><p>定例会や体験会で、VRやメタバースに触れる活動を展開。</p></div></div>
+    <div class="card"><img src="images/programming.jpg"><div class="card-content"><h3>挑戦！プログラミングコンテスト</h3><p>ISUCONなどへの挑戦を通じてスキルアップ。</p></div></div>
+    <div class="card"><img src="images/ai.jpg"><div class="card-content"><h3>自動運転AIチャレンジ</h3><p>実車や仮想環境でのAI開発を体験。</p></div></div>
+    <div class="card"><img src="images/ux.jpg"><div class="card-content"><h3>自動運転UX創造チャンレジ</h3><p>UX視点で自動運転の未来像を提案。</p></div></div>
+    <div class="card"><img src="images/mft2024.jpg"><div class="card-content"><h3>MakerFaireTokyo2024出展</h3><p>最新のものづくりを発信する場に出展。</p></div></div>
+    <div class="card"><img src="images/isucon.jpg"><div class="card-content"><h3>ISUCON参加</h3><p>限界に挑む高速化バトルに参戦。</p></div></div>
+    <div class="card"><img src="images/bukkowathon.jpg"><div class="card-content"><h3>5h Bukkowathon</h3><p>“壊す”ことに挑むハッカソン形式の社内イベント。</p></div></div>
+    <div class="card"><img src="images/ctf.jpg"><div class="card-content"><h3>CTFコンテスト</h3><p>セキュリティの力試し！CTF大会に参加。</p></div></div>
+    <div class="card"><img src="images/lt.jpg"><div class="card-content"><h3>connpassのLT会</h3><p>社外公開型の勉強会をconnpassで開催。</p></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>お問い合わせ</h2>
+  <p style="text-align: center;">
+    <a href="https://example.com/contact-form" target="_blank" rel="noopener" style="display:inline-block;padding:0.5rem 1rem;background:var(--main-color);color:white;text-decoration:none;border-radius:4px;">お問い合わせはこちら</a>
+  </p>
+  <div class="footer-links">
+    <p style="text-align: center;">Follow us:</p>
+    <div class="qr-container">
+      <div class="qr-block">
+        <a href="https://challenge-club.connpass.com/" target="_blank">
+          <img src="images/line-qr.png" alt="Connpass QR">
+          <p><strong>Connpass</strong></p>
+        </a>
+      </div>
+      <div class="qr-block">
+        <a href="https://github.com/ChallengeClub" target="_blank">
+          <img src="images/github-icon.png" alt="GitHub Icon">
+          <p><strong>GitHub</strong></p>
+        </a>
+      </div>
+      <div class="qr-block">
+        <a href="https://www.youtube.com/@challenge_club4898" target="_blank">
+          <img src="images/youtube-icon.png" alt="YouTube Icon">
+          <p><strong>YouTube</strong></p>
+        </a>
+      </div>
+      <div class="qr-block">
+        <a href="mailto:challenge@club.jp">
+          <img src="images/email-icon.png" alt="Email Icon">
+          <p><strong>メール</strong></p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background: url('./images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-size: 1.5rem; font-weight: bold;">
+  <p style="margin: 0;">気軽なチャレンジが、世界を豊かにする。</p>
+</footer>
+
+</body>
+</html>

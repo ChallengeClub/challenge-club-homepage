@@ -1,0 +1,22 @@
+# OSごとの一時ファイル
+.DS_Store
+Thumbs.db
+
+# ローカル環境のエディタ設定ファイル
+.vscode/
+.idea/
+
+# バックアップやキャッシュ
+*.log
+*.bak
+*.tmp
+
+# Node系を導入した場合（現状未使用だが念のため）
+node_modules/
+
+# macOS QuickLook キャッシュ
+._*
+
+# GitHub Pages 出力フォルダを別ブランチで管理する場合
+dist/
+out/
