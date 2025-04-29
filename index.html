@@ -5,6 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>技術チャレンジ部</title>
   <style>
+    .menu {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background-color: white;
+      width: 250px;
+      height: 100%;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+      z-index: 2000;
+    }
+
+    .menu.active {
+      transform: translateX(0);
+    }
+
+    .menu a {
+      margin: 1rem 0;
+      color: var(--main-color);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
     :root {
       --main-color: #009688;
       --accent-color: #ffc107;
@@ -187,12 +213,15 @@
   }
 
   .navbar .menu {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.5rem 0;
-  }
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--bg-color);
+}
 
   .navbar .menu a {
     margin: 0.5rem 0;
@@ -264,12 +293,37 @@
       margin-top: 2rem;
     }
 
+  .hamburger {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--main-color);
+  }
+
+  @media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: var(--bg-color);
+    }
+
+    .menu.active {
+  max-height: 500px;
+  opacity: 1;
+}
+  }
 </style>
 </head>
 <body>
 
 <div class="navbar">
   <a href="#top"><img class="logo" src="./images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
   <div class="menu">
     <a href="#about">技術チャレンジ部とは</a>
     <a href="#activities">活動内容</a>
@@ -345,5 +399,24 @@
   <p style="margin: 0;">気軽なチャレンジが、世界を豊かにする。</p>
 </footer>
 
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    } else {
+      menu.classList.add('active');
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = menu.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInside) {
+      menu.classList.remove('active');
+    }
+  });
+</script>
 </body>
 </html>
