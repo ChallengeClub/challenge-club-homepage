@@ -33,16 +33,14 @@ cd challenge-club-homepage
 # index.html をブラウザで開くだけ
 ```
 
-## 自動デプロイ運用について（GitHub Actions）
+## デプロイ運用について（Deploy from a branch）
 
-本リポジトリでは、以下の運用方針で GitHub Pages による自動公開を行っています：
+本リポジトリでは、GitHub Pages の「Deploy from a branch」機能を使って静的HTMLサイトを公開しています。
 
-- 開発は develop ブランチ上で実施
-- 機能追加・修正は Pull Request を通じて main にマージ
-- main への push をトリガーに、GitHub Actions によって GitHub Pages に自動デプロイ
+- メインブランチ `main` に `index.html` を配置
+- ルートディレクトリから直接デプロイされます
+- GitHub Actions は現在使用していません（必要に応じて今後再導入予定）
 
-使用しているワークフロー
-`.github/workflows/deploy.yml` にて定義：
 
 ## お問い合わせ
 詳細は「お問い合わせ」セクションをご確認ください。
