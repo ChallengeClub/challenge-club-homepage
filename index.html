@@ -6,23 +6,22 @@
   <title>技術チャレンジ部</title>
   <style>
     .menu {
-      position: fixed;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      background-color: var(--bg-color);
+      flex-direction: column;
+      position: absolute;
       top: 60px;
       right: 0;
-      background-color: white;
-      width: 250px;
-      height: 100%;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
+      width: 100%;
       z-index: 2000;
+      display: flex;
     }
 
     .menu.active {
-      transform: translateX(0);
+      opacity: 1;
     }
 
     .menu a {
@@ -172,6 +171,17 @@
       border-radius: 4px;
     }
 
+    .contact-form a,
+    section#contact a {
+      transition: all 0.3s ease;
+    }
+
+    .contact-form a:hover,
+    section#contact a:hover {
+      background-color: #00796b; 
+      transform: scale(1.05);
+    }
+
     footer {
       position: relative;
       background: url('/mnt/data/e5999445-ee6b-463e-9c1f-6c00808db00a.png') center/cover no-repeat;
@@ -197,8 +207,7 @@
       position: relative;
       z-index: 1;
     }
-    }
-
+    
     footer a {
       display: inline-block;
       margin: 0.3rem;
@@ -207,50 +216,51 @@
     }
 
     @media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+      .navbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-  .navbar .menu {
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--bg-color);
-}
+      .navbar .menu {
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--bg-color);
+      }
 
-  .navbar .menu a {
-    margin: 0.5rem 0;
-  }
+      .navbar .menu a {
+        margin: 0.5rem 0;
+      }
 
-  header h1 {
-    font-size: 2rem;
-  }
+      header h1 {
+        font-size: 2rem;
+      }
 
-  header p {
-    font-size: 1rem;
-  }
+      header p {
+        font-size: 1rem;
+      }
 
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
 
-  .card {
-    width: 90%;
-  }
+      .card {
+        width: 90%;
+      }
 
-  .qr-container {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
+      .qr-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
-      .footer-contact {
+    
+    .footer-contact {
       position: relative;
       z-index: 1;
       margin-bottom: 2rem;
@@ -268,11 +278,47 @@
       text-align: center;
     }
 
+    .qr-block p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.2;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .qr-block img {
       width: 120px;
       height: 120px;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .qr-block img:hover {
+      transform: scale(1.1);
+    }
+
+    .qr-block p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.2;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-container img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+ 
+    @media (max-width: 600px) {
+      .qr-container img {
+        width: 90px;
+        height: 90px;
+      }
     }
 
     .badge {
@@ -293,17 +339,17 @@
       margin-top: 2rem;
     }
 
-  .hamburger {
-    display: block;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--main-color);
-  }
+    .hamburger {
+      display: block;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--main-color);
+    }
 
-  @media (max-width: 600px) {
-  .hamburger {
-    display: block;
-  }
+    @media (max-width: 600px) {
+    .hamburger {
+      display: block;
+    }
 
     .menu {
       display: none;
@@ -313,9 +359,9 @@
     }
 
     .menu.active {
-  max-height: 500px;
-  opacity: 1;
-}
+      max-height: 500px;
+      opacity: 1;
+    }
   }
 </style>
 </head>
@@ -362,14 +408,14 @@
 <section id="contact">
   <h2>お問い合わせ</h2>
   <p style="text-align: center;">
-    <a href="https://example.com/contact-form" target="_blank" rel="noopener" style="display:inline-block;padding:0.5rem 1rem;background:var(--main-color);color:white;text-decoration:none;border-radius:4px;">お問い合わせはこちら</a>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=1vVjSGBHiUW-nEL4LgdXOZjcR3aRbtpEqTgZNLVVwCBUM1VIUTVaUFBMSlJCMElNTjhESk82N0YwWC4u" target="_blank" rel="noopener" style="display:inline-block;padding:0.5rem 1rem;background:var(--main-color);color:white;text-decoration:none;border-radius:4px;">お問い合わせはこちら</a>
   </p>
   <div class="footer-links">
     <p style="text-align: center;">Follow us:</p>
     <div class="qr-container">
       <div class="qr-block">
         <a href="https://challenge-club.connpass.com/" target="_blank">
-          <img src="images/line-qr.png" alt="Connpass QR">
+          <img src="images/connpass-qr.png" alt="Connpass QR">
           <p><strong>Connpass</strong></p>
         </a>
       </div>
