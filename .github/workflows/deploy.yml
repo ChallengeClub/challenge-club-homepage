@@ -3,27 +3,28 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # mainにpushされたときにデプロイ
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
 
     steps:
-      - name: チェックアウト
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: GitHub Pages のセットアップ
+      - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: アーティファクトのアップロード
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: '.'  # index.htmlがルートにあるので「.」
+          path: '.'
 
-      - name: GitHub Pages にデプロイ
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
