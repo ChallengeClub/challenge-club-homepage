@@ -58,13 +58,23 @@ $ npm run build      # ビルド成果物は docs/ に出力されます
 $ npm run start
 ```
 
-## 公開・運用・SEO対策
+## 本番ビルド（GitHub Pages 公開用）
+
+GitHub Actions により、`main`ブランチへの push または PR 時に自動で以下を実行し、`docs/`を更新・公開しています。
+そのため、通常はローカルで以下を実行する必要はありません。
+```bash
+$ ELEVENTY_ENV=production npm run build      # ビルド成果物は docs/ に出力されます
+```
+
+## 公開・運用
 
 ### デプロイ運用について（Deploy from a branch）
 
 - メインブランチ `main` から GitHub Pages に直接公開  
-- ルートディレクトリを指定  
-- GitHub Actions は現在使用していません（必要に応じて今後導入可能）
+- `docs/` フォルダを公開対象として指定  
+- **GitHub Actions により、mainブランチへのpushまたはPRに応じて自動ビルド＆docs/を更新するCI/CDを構築済み**
+
+## SEO対策
 
 ### OGP画像を設定するには
 
