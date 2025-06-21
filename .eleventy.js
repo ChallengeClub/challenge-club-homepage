@@ -1,3 +1,5 @@
+const isProduction = process.env.ELEVENTY_ENV === "production";
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
 
@@ -9,6 +11,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
 
   return {
+    pathPrefix: isProduction ? "/challenge-club-homepage" : "",
+    // pathPrefix: "/challenge-club-homepage", // ← GitHub Pages のサブパスに合わせて
     dir: {
       input: ".", // プロジェクトルートを入力ディレクトリとする
       includes: "_includes", // includeファイルは_includesディレクトリに置く
