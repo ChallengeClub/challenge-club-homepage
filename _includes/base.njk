@@ -23,7 +23,7 @@
 
   {% include "header.njk" %}
   {% if image %}
-  <section class="activity-header" style="background: url('{{ image }}') center/cover no-repeat;">
+  <section class="activity-header" style="background: url('{{ image | url }}') center/cover no-repeat;">
     <h1>{{ title }}</h1>
   </section>
   {% endif %}
