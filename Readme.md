@@ -4,29 +4,35 @@
 
 ## 公開URL
 
-GitHub Pagesで公開。  
-[https://challengeclub.github.io/challenge-club-homepage/](https://challengeclub.github.io/challenge-club-homepage/)
+GitHub Pagesで公開: https://challengeclub.github.io/challenge-club-homepage/
 
 ## ディレクトリ構成
 
 ```text
 challenge-club-homepage/
-├── index.html
-├── README.md
-├── images/
-│   ├── challenge-club-pc.png
-│   ├── challenge-club-backpanel.png
-│   └── ...
-├── styles/
-│   └── style.css
-├── activities/
-│   └── ...
-├── _includes/
-│   └── base.njk, header.njk, footer.njk
 ├── .eleventy.js
 ├── .gitignore
+├── activities/
+│   ├── automotive_ai_challenge.md
+│   ├── automotive_uxchallenge.md
+│   ├── ctf.md
+│   ├── isucon.md
+│   ├── makerfaire.md
+│   ├── programming_contest.md
+│   ├── ux.md
+│   └── vr.md
+├── docs/            ← Eleventy 出力フォルダ
+├── images/
+│   └── ...
+├── _includes/
+│   ├── base.njk
+│   ├── header.njk
+│   └── footer.njk
+├── styles/
+│   └── style.css
 ├── package.json
-└── tests/
+├── package-lock.json
+└── README.md
 ```
 
 ## 使用技術
@@ -48,7 +54,7 @@ $ npx @11ty/eleventy --serve
 
 ## ローカルで実行・編集
 ```bash
-$ npm run build
+$ npm run build      # ビルド成果物は docs/ に出力されます
 $ npm run start
 ```
 
@@ -65,8 +71,8 @@ $ npm run start
 - `images/ogp.png` に OGP 用画像を設置（推奨サイズ：1200×630）  
 - `<head>` 内に以下を追加:  
   ```html
-  <meta property="og:image" content="https://challengeclub.github.io/challenge-club-homepage/images/ogp.png">
-  <meta property="og:url" content="https://challengeclub.github.io/challenge-club-homepage/">
+  <meta property="og:image" content="{{ '/images/ogp.png' | url }}">
+  <meta property="og:url" content="{{ '/' | url }}">
   ```  
 - SNSシェアプレビュー確認:  
   - Facebook Debugger: https://developers.facebook.com/tools/debug/  
