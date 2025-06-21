@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="技術チャレンジ部は、成長の場の相互提供をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
+  <meta name="keywords" content="技術チャレンジ部, 技術コミュニティ, エンジニア, ハッカソン, CTF, ISUCON, VR, 自動運転, connpass">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="技術チャレンジ部 | 成長と挑戦のコミュニティ">
+  <meta property="og:description" content="社内外300名以上が参加する、成長と挑戦の技術コミュニティ">
+  <meta property="og:image" content="./images/ogp.png">
+  <meta property="og:url" content="https://challenge-club.org">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="技術チャレンジ部">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="技術チャレンジ部">
+  <meta name="twitter:description" content="エンジニアによる本気の遊び場、技術チャレンジ部の公式サイト">
+  <meta name="twitter:image" content=".images/ogp.png">
+  <title>ISUCON参加</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+  <a href="/#top"><img class="logo" src="/images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="menu">
+    <a href="/#about">技術チャレンジ部とは</a>
+    <a href="/#activities">活動内容</a>
+    <a href="/#contact">お問い合わせ</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    } else {
+      menu.classList.add('active');
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = menu.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInside) {
+      menu.classList.remove('active');
+    }
+  });
+</script>
+  
+  <section class="activity-header" style="background: url('/images/isucon.png') center/cover no-repeat;">
+    <h1>ISUCON参加</h1>
+  </section>
+  
+  <main>
+    <section>
+      <h2>💡 活動概要</h2>
+<p>ISUCON は Web アプリケーションの性能改善を競うオンライングローバルコンテストです。チームでアプリケーションのボトルネックを特定し、最適化を行います。</p>
+<h2>🚀 過去の実績</h2>
+<ul>
+<li>2024年12月: 社内チーム参加（上位20%）</li>
+<li>2025年4月: 外部チーム参加（TOP50入り）</li>
+</ul>
+<h2>🗓 次回</h2>
+<ul>
+<li><strong>日時</strong>: 2025年10月</li>
+<li><strong>場所</strong>: オンライン</li>
+</ul>
+<h2>🛠 技術スタック</h2>
+<ul>
+<li>Go, Ruby, Python</li>
+<li>MySQL, Redis, Nginx</li>
+</ul>
+<h2>👥 参加方法</h2>
+<ol>
+<li>GitHub リポジトリをフォーク</li>
+<li>課題テンプレートをクローン</li>
+<li>参加登録フォームに入力</li>
+<li>期間中に PR を提出</li>
+</ol>
+
+    </section>
+  </main>
+
+  <footer style="background: url('/images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;">
+  <p style="margin: 0; font-size: 1.5rem; line-height: 2;">気軽なチャレンジが、<br>世界を豊かにする。</p>
+  <p style="font-size: 0.75rem; margin-top: 2rem; font-weight: normal;">Copyright © 2025 技術チャレンジ部. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

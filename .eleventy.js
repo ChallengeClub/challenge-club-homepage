@@ -11,7 +11,7 @@ module.exports = function(eleventyConfig) {
       input: ".", // プロジェクトルートを入力ディレクトリとする
       includes: "_includes", // includeファイルは_includesディレクトリに置く
       data: "_data", // dataファイルは_dataディレクトリに置く (今回は使用しないが慣例として設定)
-      output: "_site" // ビルド成果物は_siteディレクトリに出力する
+      output: "docs" // ビルド成果物はoutディレクトリに出力する // _site
     },
     markdownTemplateEngine: "njk", // MarkdownファイルでNunjucksテンプレートエンジンを使用
     htmlTemplateEngine: "njk", // HTMLファイルでNunjucksテンプレートエンジンを使用
