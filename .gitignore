@@ -17,7 +17,7 @@ _site/
 dist/
 out/
 # ドキュメント・テスト・仮想環境
-docs/
+# docs/
 tests/
 .venv/
 

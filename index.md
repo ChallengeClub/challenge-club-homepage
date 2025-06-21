@@ -1,7 +1,7 @@
 ---
 title: トップページ
 layout: base.njk
-permalink: /home/
+permalink: /
 ---
 
 <header style="background: url('./images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;" id="top">

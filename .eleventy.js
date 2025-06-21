@@ -1,4 +1,6 @@
 module.exports = function(eleventyConfig) {
+  eleventyConfig.ignores.add("README.md");
+
   // 入力ディレクトリと出力ディレクトリを設定
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("styles");
