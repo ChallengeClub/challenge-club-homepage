@@ -25,8 +25,8 @@ permalink: /
 <section id="activities">
   <h2>活動内容</h2>
   <div class="card-container">
-    <a href="https://github.com/ChallengeClub/vr-meetups" target="_blank" class="card">
-      <img src="images/vr.png" alt="VR活動">
+    <a href="{{ '/activities/vr/' | url }}" class="card">
+      <img src="{{ '/images/vr.png' | url }}" alt="VR活動">
       <div class="card-content">
         <h3>VR活動</h3>
         <p>定例会や体験会で、VRやメタバースに触れる活動を展開</p>
