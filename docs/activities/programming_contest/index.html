@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="技術チャレンジ部は、成長の場の相互提供をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
+  <meta name="keywords" content="技術チャレンジ部, 技術コミュニティ, エンジニア, ハッカソン, CTF, ISUCON, VR, 自動運転, connpass">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="技術チャレンジ部 | 成長と挑戦のコミュニティ">
+  <meta property="og:description" content="社内外300名以上が参加する、成長と挑戦の技術コミュニティ">
+  <meta property="og:image" content="./images/ogp.png">
+  <meta property="og:url" content="https://challenge-club.org">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="技術チャレンジ部">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="技術チャレンジ部">
+  <meta name="twitter:description" content="エンジニアによる本気の遊び場、技術チャレンジ部の公式サイト">
+  <meta name="twitter:image" content=".images/ogp.png">
+  <title>挑戦！プログラミングコンテスト</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+  <a href="/#top"><img class="logo" src="/images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="menu">
+    <a href="/#about">技術チャレンジ部とは</a>
+    <a href="/#activities">活動内容</a>
+    <a href="/#contact">お問い合わせ</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    } else {
+      menu.classList.add('active');
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = menu.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInside) {
+      menu.classList.remove('active');
+    }
+  });
+</script>
+  
+  <section class="activity-header" style="background: url('/images/programming.png') center/cover no-repeat;">
+    <h1>挑戦！プログラミングコンテスト</h1>
+  </section>
+  
+  <main>
+    <section>
+      <h2>💡 どんな活動？</h2>
+<p>プログラミングコンテストに挑戦しながら、アルゴリズムや実装力を高める活動です。初心者も経験者も歓迎。社内外のコンテストに参加して、腕試しやスキルアップを目指します。</p>
+<ul>
+<li>社内ハッカソン</li>
+<li>AtCoder / paiza / LeetCode などの外部コンテスト</li>
+<li>コードレビュー・勉強会の実施</li>
+</ul>
+<h2>🚀 目的・背景</h2>
+<p>「技術力を上げたい」「仲間と成長したい」という声からこの活動がスタートしました。ただ解くだけでなく、<strong>チームで戦略を立てる面白さ</strong>や<strong>限られた時間での集中力</strong>が鍛えられます。</p>
+<h2>🛠 活動内容</h2>
+<ul>
+<li>月1回のオンラインコンテスト参加</li>
+<li>問題解説会・リトライ会</li>
+<li>参加記録の共有（社内Wiki・GitHub）</li>
+</ul>
+<h2>📸 活動風景</h2>
+<p><img src="/images/programming-contest-team.jpg" alt="コンテストの様子"></p>
+<h2>🧑‍💻 こんな人におすすめ</h2>
+<ul>
+<li>アルゴリズムを学びたい人</li>
+<li>問題解決力・設計力を鍛えたい人</li>
+<li>チームでの開発を楽しみたい人</li>
+</ul>
+<h2>🔗 関連リンク</h2>
+<ul>
+<li><a href="https://github.com/ChallengeClub/atcoder-training">GitHub: challenge-club/atcoder-training</a></li>
+<li><a href="https://atcoder.jp/">AtCoder公式サイト</a></li>
+</ul>
+
+    </section>
+  </main>
+
+  <footer style="background: url('/images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;">
+  <p style="margin: 0; font-size: 1.5rem; line-height: 2;">気軽なチャレンジが、<br>世界を豊かにする。</p>
+  <p style="font-size: 0.75rem; margin-top: 2rem; font-weight: normal;">Copyright © 2025 技術チャレンジ部. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
