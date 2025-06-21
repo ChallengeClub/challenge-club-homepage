@@ -1,0 +1,29 @@
+<div class="navbar">
+  <a href="/#top"><img class="logo" src="/images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="menu">
+    <a href="/#about">技術チャレンジ部とは</a>
+    <a href="/#activities">活動内容</a>
+    <a href="/#contact">お問い合わせ</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    } else {
+      menu.classList.add('active');
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = menu.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInside) {
+      menu.classList.remove('active');
+    }
+  });
+</script>
