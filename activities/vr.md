@@ -21,3 +21,9 @@ image: "/images/vr.png"
 ### 参加方法
 
 参加申請フォームからお申し込みください。
+
+## 活動紹介動画はこちら
+
+<div>
+<iframe width="600" height="400" src="https://www.youtube.com/embed/88OCrMBTqK4?si=VNXAom83NpADfaLj"></iframe>
+</div>
