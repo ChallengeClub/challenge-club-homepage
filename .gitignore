@@ -1,22 +1,27 @@
-# OSごとの一時ファイル
+# OS固有のファイル
 .DS_Store
 Thumbs.db
+._*
 
-# ローカル環境のエディタ設定ファイル
+# エディタ設定
 .vscode/
 .idea/
 
-# バックアップやキャッシュ
+# Node.js 関連
+node_modules/
+
+# Eleventy ビルド出力
+_site/
+
+# GitHub Pages 出力（別ブランチで管理する場合）
+dist/
+out/
+# ドキュメント・テスト・仮想環境
+docs/
+tests/
+.venv/
+
+# ログ・一時ファイル
 *.log
 *.bak
 *.tmp
-
-# Node系を導入した場合（現状未使用だが念のため）
-node_modules/
-
-# macOS QuickLook キャッシュ
-._*
-
-# GitHub Pages 出力フォルダを別ブランチで管理する場合
-dist/
-out/

@@ -1,0 +1,16 @@
+{
+  "name": "challenge-club-homepage-eleventy",
+  "version": "1.0.0",
+  "description": "Challenge Club Homepage built with Eleventy",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
