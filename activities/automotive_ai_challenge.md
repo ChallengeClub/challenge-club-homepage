@@ -2,6 +2,7 @@
 layout: base.njk
 title: 自動運転AIチャレンジ
 image: "/images/ai.png"
+tags: []
 ---
 
 ## 💡 活動概要

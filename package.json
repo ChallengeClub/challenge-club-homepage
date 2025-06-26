@@ -12,5 +12,9 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0"
+  },
+  "dependencies": {
+    "luxon": "^3.6.1",
+    "node-fetch": "^2.7.0"
   }
 }

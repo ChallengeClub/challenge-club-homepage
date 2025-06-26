@@ -2,6 +2,7 @@
 layout: base.njk
 title: CTF活動
 image: "/images/ctf.png"
+tags: []
 ---
 
 ## CTFとは？

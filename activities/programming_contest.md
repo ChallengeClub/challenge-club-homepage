@@ -2,6 +2,7 @@
 title: 挑戦！プログラミングコンテスト
 layout: base.njk
 image: "/images/programming.png"
+tags: []
 ---
 
 

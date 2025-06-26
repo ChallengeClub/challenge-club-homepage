@@ -9,6 +9,30 @@ module.exports = function(eleventyConfig) {
 
   // グローバルデータを追加
   eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
+  eleventyConfig.addCollection("posts", function(collection) {
+    return collection.getFilteredByGlob("./posts/*.md").reverse();
+  });
+  // 活動ページ用コレクションを追加
+  eleventyConfig.addCollection("activities", function(collection) {
+    return collection.getFilteredByGlob("./activities/*.md");
+  });
+  
+  // 日付フォーマット用フィルターをNunjucksに追加
+  eleventyConfig.addFilter("date", (dateObj, formatStr) => {
+    const dt = new Date(dateObj);
+    const map = {
+      yyyy: dt.getFullYear(),
+      MM: String(dt.getMonth() + 1).padStart(2, "0"),
+      dd: String(dt.getDate()).padStart(2, "0"),
+      HH: String(dt.getHours()).padStart(2, "0"),
+      mm: String(dt.getMinutes()).padStart(2, "0")
+    };
+    let result = formatStr;
+    for (const token in map) {
+      result = result.replace(token, map[token]);
+    }
+    return result;
+  });
 
   return {
     pathPrefix: isProduction ? "/challenge-club-homepage" : "",
