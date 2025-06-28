@@ -24,13 +24,20 @@ permalink: /
 
 <section id="news">
   <h2>ニュース&トピックス</h2>
+ 
   <ul>
-  {% for post in collections.posts.slice(0,2) %}
+  {% for post in collections.posts.slice(0, 5) %}
     <li>
-      <time>{{ post.date | date("yyyy-MM-dd") }}</time> - <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <time>{{ post.date | date("yyyy-MM-dd") }}</time>
+      - <a href="{{ post.url }}">{{ post.data.title }}</a>
     </li>
   {% endfor %}
   </ul>
+
+  <p style="margin-top: 1em; text-align: center;">
+    <a href="/posts/" class="more-button">もっと見る →</a>
+  </p>
+
 </section>
 
 <section id="activities">

@@ -2,6 +2,7 @@
 title: 投稿一覧
 layout: base.njk
 permalink: /posts/
+eleventyExcludeFromCollections: true
 ---
 
 <h1>投稿一覧</h1>
