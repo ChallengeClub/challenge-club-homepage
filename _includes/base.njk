@@ -30,6 +30,15 @@
   <main>
     <section>
       {{ content | safe }}
+      {# タグ表示（タグがあるページのみ） #}
+      {% if tags and tags.length %}
+      <p class="tags">
+        タグ:
+        {% for tag in tags %}
+          <a href="/tags/{{ tag | slug }}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+      {% endif %}
     </section>
   </main>
 
