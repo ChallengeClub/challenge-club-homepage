@@ -2,6 +2,7 @@
 layout: base.njk
 title: UXデザイン活動
 image: "/images/ux.png"
+tags: []
 ---
 
 # UXデザイン活動

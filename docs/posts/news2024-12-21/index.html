@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="技術チャレンジ部は、成長の場の相互提供をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
+  <meta name="keywords" content="技術チャレンジ部, 技術コミュニティ, エンジニア, ハッカソン, CTF, ISUCON, VR, 自動運転, connpass">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="技術チャレンジ部 | 成長と挑戦のコミュニティ">
+  <meta property="og:description" content="社内外300名以上が参加する、成長と挑戦の技術コミュニティ">
+  <meta property="og:image" content="/images/ogp.png">
+  <meta property="og:url" content="https://challenge-club.org">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="技術チャレンジ部">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="技術チャレンジ部">
+  <meta name="twitter:description" content="エンジニアによる本気の遊び場、技術チャレンジ部の公式サイト">
+  <meta name="twitter:image" content="/images/ogp.png">
+  <title>ISUCON14に参加しました！</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+  <a href="/#top"><img class="logo" src="/images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="menu">
+      <a href="/#about">技術チャレンジ部とは</a>
+      <a href="/#activities">活動内容</a>
+      <a href="/posts/">ニュース・投稿一覧</a>
+      <a href="/#contact">お問い合わせ</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    } else {
+      menu.classList.add('active');
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = menu.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInside) {
+      menu.classList.remove('active');
+    }
+  });
+</script>
+  
+  <main>
+    <section>
+      <h1>SUCON14に参加しました！</h1>
+<p>高速Webアプリ競技会「ISUCON14」に、技術チャレンジ部からチームが参加しました！<br>
+CC3チームは奮闘の末、最終スコア1万超えを達成！</p>
+<p>技術的にも熱量的にも非常に濃い1日となり、来年への再挑戦を決意しました🔥<br>
+レポートも近日中に公開予定です。</p>
+
+      
+      
+      <p class="tags">
+        タグ:
+        
+          <a href="/tags/news/">ニュース</a>, 
+        
+          <a href="/tags/isucon/">ISUCON</a>
+        
+      </p>
+      
+    </section>
+  </main>
+
+  <footer style="background: url('/images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;">
+  <p style="margin: 0; font-size: 1.5rem; line-height: 2;">気軽なチャレンジが、<br>世界を豊かにする。</p>
+  <p style="font-size: 0.75rem; margin-top: 2rem; font-weight: normal;">Copyright © 2025 技術チャレンジ部. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

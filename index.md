@@ -6,7 +6,7 @@ permalink: /
 
 <header style="background: url('./images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;" id="top">
   <h1>技術チャレンジ部</h1>
-  <p>探究とつながりで、未来をつくる。</p>
+  <p>気軽なチャレンジが、世界を豊かにする。</p>
 </header>
 <section id="about">
   <h2>技術チャレンジ部とは？</h2>
@@ -20,6 +20,24 @@ permalink: /
     <li>一人ではくじけそうでも、仲間となら走り続けられる</li>
   </ul>
   <p>そんな想いを持つメンバーが集まり、<strong>学び合い、刺激し合い、共に楽しむ──本気で遊ぶ技術者たちの「挑戦の場」</strong>です。</p>
+</section>
+
+<section id="news">
+  <h2>ニュース&トピックス</h2>
+ 
+  <ul>
+  {% for post in collections.posts.slice(0, 5) %}
+    <li>
+      <time>{{ post.date | date("yyyy-MM-dd") }}</time>
+      - <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+
+  <p style="margin-top: 1em; text-align: center;">
+    <a href="/posts/" class="more-button">もっと見る →</a>
+  </p>
+
 </section>
 
 <section id="activities">

@@ -2,6 +2,7 @@
 layout: base.njk
 title: MakerFaireTokyo2024出展
 image: "/images/mft2024.png"
+tags: [活動報告, メイカー]
 ---
 
 ## 💡 活動概要

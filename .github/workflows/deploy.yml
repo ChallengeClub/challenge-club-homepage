@@ -13,6 +13,8 @@ on:
     paths-ignore:
       - 'docs/**'
       - 'Readme.md'
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build:

@@ -2,6 +2,7 @@
 title: 自動運転UX創造チャレンジ
 layout: base.njk
 image: "/images/ux.png"
+tags: [活動報告, 自動運転, コンテスト]
 ---
 
 # 自動運転UX創造チャレンジ 参加レポート

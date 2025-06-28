@@ -112,6 +112,26 @@ section h2 {
   margin-bottom: 1rem;
 }
 
+.more-button {
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  background-color:#009688;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.more-button:hover {
+  background-color: #009688;
+}
+
+.more-button:focus {
+  outline: 2px solid #009688;
+  outline-offset: 2px;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
