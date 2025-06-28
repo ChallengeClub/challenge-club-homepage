@@ -4,7 +4,7 @@ pagination:
   size: 1
   alias: tag
   addAllPagesToCollections: true
-permalink: "/tags/{{ tagNames[tag] or (tag | safeSlug) }}/"
+permalink: "{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}"
 layout: base.njk
 title: タグページ
 ---
@@ -17,10 +17,10 @@ title: タグページ
     {% if post.data.tags and post.data.tags.includes(tag) %}
       <li>
         <time>{{ post.date | date("yyyy-MM-dd") }}</time> -
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <a href="{{ post.url | url }}">{{ post.data.title }}</a>
       </li>
     {% endif %}
   {% endfor %}
 </ul>
 
-<p><a href="/tags/">← タグ一覧に戻る</a></p>
+<p><a href="{{ '/tags/' | url }}">← タグ一覧に戻る</a></p>
