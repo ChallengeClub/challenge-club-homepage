@@ -2,7 +2,7 @@
 title: サンプルニュース
 layout: base.njk
 date: 2025-06-26
-tags: [news]
+tags: [ニュース]
 permalink: /posts/sample/
 ---
 

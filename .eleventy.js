@@ -34,6 +34,35 @@ module.exports = function(eleventyConfig) {
     return result;
   });
 
+  const slugify = require("slugify");
+
+  // タグ別ページ生成のためのコレクション
+  eleventyConfig.addCollection("tagList", function(collection) {
+    const tagsSet = new Set();
+    collection.getAll().forEach((item) => {
+      const tags = item.data.tags;
+      if (Array.isArray(tags)) {
+        tags.forEach(tag => {
+          if (tag && tag.trim()) {
+            tagsSet.add(tag);
+          }
+        });
+      }
+    });
+    return [...tagsSet];
+  });
+
+  // タグ名でフィルターするカスタムフィルター
+  eleventyConfig.addFilter("safeSlug", function(input) {
+    if (!input) return "no-tag";
+    return slugify(input, {
+      replacement: "-",     // スペースなどを - に変換
+      lower: true,          // 小文字に変換
+      strict: true,         // 記号除去
+      locale: "ja"          // 日本語対応（ただし基本はローマ字化されない）
+    }) || "no-tag";
+  });
+  
   return {
     pathPrefix: isProduction ? "/challenge-club-homepage" : "",
     // pathPrefix: "/challenge-club-homepage", // ← GitHub Pages のサブパスに合わせて

@@ -1,0 +1,26 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+  addAllPagesToCollections: true
+permalink: "/tags/{{ tagNames[tag] or (tag | safeSlug) }}/"
+layout: base.njk
+title: タグページ
+---
+
+{% set tagSlugs = tagNames %}
+<h1>タグ: {{ tag }}</h1>
+
+<ul>
+  {% for post in collections.all %}
+    {% if post.data.tags and post.data.tags.includes(tag) %}
+      <li>
+        <time>{{ post.date | date("yyyy-MM-dd") }}</time> -
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<p><a href="/tags/">← タグ一覧に戻る</a></p>
