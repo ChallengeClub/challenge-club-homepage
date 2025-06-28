@@ -29,13 +29,13 @@ permalink: /
   {% for post in collections.posts.slice(0, 5) %}
     <li>
       <time>{{ post.date | date("yyyy-MM-dd") }}</time>
-      - <a href="{{ post.url }}">{{ post.data.title }}</a>
+      - <a href="{{ post.url | url }}">{{ post.data.title }}</a>
     </li>
   {% endfor %}
   </ul>
 
   <p style="margin-top: 1em; text-align: center;">
-    <a href="/posts/" class="more-button">もっと見る →</a>
+    <a href="{{ '/posts/' | url }}" class="more-button">もっと見る →</a>
   </p>
 
 </section>

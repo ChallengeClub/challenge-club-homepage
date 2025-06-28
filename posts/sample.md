@@ -3,7 +3,7 @@ title: サンプルニュース
 layout: base.njk
 date: 2025-06-26
 tags: [ニュース]
-permalink: /posts/sample/
+permalink: "/posts/sample/"
 ---
 
 # サンプルページ
@@ -21,7 +21,7 @@ permalink: /posts/sample/
 title: ニュースタイトル（例：「○○イベントに参加しました」）
 layout: base.njk
 date: 2025-06-26
-permalink: /posts/news2025-06-26/
+permalink: "/posts/news2025-06-26/"
 ```
 
 - `title`: ページタイトル（一覧にも表示されます）
@@ -40,7 +40,7 @@ Markdown形式で自由に記述可能です：
 title: 〇〇イベントに参加しました
 layout: base.njk
 date: 2025-06-20
-permalink: /posts/event2025-06-20/
+permalink: "/posts/event2025-06-20/"
 ---
 ```
 
