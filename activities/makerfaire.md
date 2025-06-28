@@ -6,21 +6,26 @@ image: "/images/mft2024.png"
 
 ## 💡 活動概要
 
-Maker Faire Tokyo 2024 に出展し、手作りロボットやセンサー作品を展示します。来場者との交流を通じて、メイカー文化を広めます。
+Maker Faire に出展し、手作りロボットやセンサー作品を展示しました。
+
+出展とは別に、バスツアー、モノづくり体験イベントを実施し、メイカー文化に触れてモノづくりの楽しさを共有しました。
 
 ## 🚀 実績
 
-- 2024年5月: Maker Faire Tokyo 2024 出展（展示作品5点）
-- 2023年10月: 地元メイカーイベント参加
+- 2023年10月: Maker Faire Tokyo 2023 出展、バスツアーイベント＠関東
+- 2024年3月: Micro Maker Faire 刈谷 出展
+- 2024年4月: Maker Faire Kyoto 2024 出展、バスツアーイベント＠関西
+  - [Qiita:MakerFaireKyoto2024出展記録](https://qiita.com/kiwsdiv/items/4262be9cfa8b1ace101f)
 
-## 🗓 次回
+- 2024年4月: M5stack Japan Tour 2024 Spring Osaka
+- 2024年9月: Maker Faire Tokyo 2024 出展[]
 
-- **日時**: 2025年5月  
-- **場所**: 東京ビッグサイト  
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DrWmxOWmHrE?si=foQVBVRdKZ0uQi9L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## 🔧 技術スタック
 
-- Arduino  
-- Raspberry Pi  
+- Arduino
+- Raspberry Pi
+- ROS/ROS2
 - 3Dプリンタ  
 - 各種センサー
