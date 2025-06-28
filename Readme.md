@@ -53,9 +53,16 @@ challenge-club-homepage/
 $ git clone https://github.com/ChallengeClub/challenge-club-homepage.git
 $ cd challenge-club-homepage
 ```
+### Eleventy 開発サーバーを起動
 
+以下のコマンドでビルドして、ローカルサーバーが起動します。
+ビルド成果物は docs/ に出力されます。
 ```bash
-$ ELEVENTY_ENV=production npm run build      # ビルド成果物は docs/ に出力されます
+# 開発用（/posts/ などのリンクが / から始まる場合はこちら）
+$ npx @11ty/eleventy --serve
+
+# 本番と同じパス（GitHub Pages の /challenge-club-homepage/ を再現）
+$ npx @11ty/eleventy --pathprefix=challenge-club-homepage
 ```
 
 ## 公開・運用
@@ -98,13 +105,3 @@ GitHub Actions により、`main`ブランチへの push または PR 時に自�
 
 詳細はトップページの「お問い合わせ」セクションをご確認ください。
 ---
-
-## タグ付けルール
-
-- `tags: [タグ1, タグ2, ...]` の形式で1〜3個のタグをつけてください。タグの上限はありません。
-- 以下の推奨タグリストを参考にしつつ、内容に応じて柔軟に判断してください
-
-### 推奨タグ一覧
-- 活動の分類：ニュース, お知らせ, 活動報告
-- テーマ：自動運転, ISUCON, CTF, メイカー, プログラミングコンテスト, VR
-- 種別：LT会, 読書会, ハッカソン, 勉強会, プロジェクト, コンテスト
