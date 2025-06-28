@@ -1,7 +1,7 @@
 ---
 title: タグ一覧
 layout: base.njk
-permalink: /tags/
+permalink: "tags/"
 ---
 
 {% set tagSlugs = tagNames %}

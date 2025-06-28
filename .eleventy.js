@@ -12,6 +12,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("posts", function(collection) {
     return collection.getFilteredByGlob("./posts/*.md").reverse();
   });
+  // pathPrefixをテンプレートから使えるようにする
+  eleventyConfig.addGlobalData("pathPrefix", "/challenge-club-homepage");
+
   // 活動ページ用コレクションを追加
   eleventyConfig.addCollection("activities", function(collection) {
     return collection.getFilteredByGlob("./activities/*.md");
@@ -64,8 +67,7 @@ module.exports = function(eleventyConfig) {
   });
   
   return {
-    pathPrefix: isProduction ? "/challenge-club-homepage" : "",
-    // pathPrefix: "/challenge-club-homepage", // ← GitHub Pages のサブパスに合わせて
+    pathPrefix: "/challenge-club-homepage",
     dir: {
       input: ".", // プロジェクトルートを入力ディレクトリとする
       includes: "_includes", // includeファイルは_includesディレクトリに置く

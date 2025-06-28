@@ -4,7 +4,7 @@ pagination:
   size: 1
   alias: tag
   addAllPagesToCollections: true
-permalink: "{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}"
+permalink: "/tags/{{ tagNames[tag] or (tag | safeSlug) }}/"
 layout: base.njk
 title: タグページ
 ---

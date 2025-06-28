@@ -2,7 +2,7 @@
 title: プログラミングコンテスト・セキュリティコンテストに挑戦中です
 layout: base.njk
 date: 2024-12-25
-permalink: /posts/news2025-12-25/
+permalink: "/posts/news2025-12-25/"
 tags: [ニュース, コンテスト]
 ---
 

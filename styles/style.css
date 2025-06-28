@@ -115,16 +115,18 @@ section h2 {
 .more-button {
   display: inline-block;
   padding: 0.6em 1.2em;
-  background-color:#009688;
+  background-color: #009688;
   color: white;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .more-button:hover {
   background-color: #009688;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .more-button:focus {
@@ -176,32 +178,26 @@ section h2 {
   color: #555;
 }
 
-.contact-form {
-  background: #f9f9f9;
-  padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.contact-form a {
+.contact-button {
   display: inline-block;
-  margin-top: 1rem;
   padding: 0.5rem 1rem;
   background: var(--main-color);
   color: white;
   text-decoration: none;
   border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.contact-form a,
-section#contact a {
-  transition: all 0.3s ease;
+.contact-button:hover {
+  background-color: var(--main-color); /* 同じ色だが動きを加える */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-.contact-form a:hover,
-section#contact a:hover {
-  background-color: #00796b; 
-  transform: scale(1.05);
+.contact-button:focus {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
 }
 
 footer {
