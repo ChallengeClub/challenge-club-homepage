@@ -112,6 +112,28 @@ section h2 {
   margin-bottom: 1rem;
 }
 
+/* Markdownコードブロックのスタイル調整 */
+pre, code {
+  background-color: #f4f4f4;  /* 明るいグレー */
+  color: #000000;             /* 黒文字 */
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.95em;
+}
+
+/* 複数行コードブロック */
+pre {
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+/* インラインコード（`...`） */
+code {
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
 .more-button {
   display: inline-block;
   padding: 0.6em 1.2em;
