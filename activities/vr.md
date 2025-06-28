@@ -2,7 +2,7 @@
 layout: base.njk
 title: VR活動
 image: "/images/vr.png"
-tags: []
+tags: [VR]
 ---
 
 ## VR活動とは？

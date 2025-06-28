@@ -21,6 +21,10 @@ challenge-club-homepage/
 │   ├── programming_contest.md
 │   ├── ux.md
 │   └── vr.md
+├── posts/
+│   ├── index.md
+│   ├── news-YYYY-MM-DD.md
+│   └── ...
 ├── docs/            ← Eleventy 出力フォルダ
 ├── images/
 │   └── ...
@@ -48,20 +52,8 @@ challenge-club-homepage/
 ```bash
 $ git clone https://github.com/ChallengeClub/challenge-club-homepage.git
 $ cd challenge-club-homepage
-$ npm install
-$ npx @11ty/eleventy --serve
 ```
 
-## ローカルで実行・編集
-```bash
-$ npm run build      # ビルド成果物は docs/ に出力されます
-$ npm run start
-```
-
-## 本番ビルド（GitHub Pages 公開用）
-
-GitHub Actions により、`main`ブランチへの push または PR 時に自動で以下を実行し、`docs/`を更新・公開しています。
-そのため、通常はローカルで以下を実行する必要はありません。
 ```bash
 $ ELEVENTY_ENV=production npm run build      # ビルド成果物は docs/ に出力されます
 ```
@@ -73,6 +65,20 @@ $ ELEVENTY_ENV=production npm run build      # ビルド成果物は docs/ に�
 - メインブランチ `main` から GitHub Pages に直接公開  
 - `docs/` フォルダを公開対象として指定  
 - **GitHub Actions により、mainブランチへのpushまたはPRに応じて自動ビルド＆docs/を更新するCI/CDを構築済み**
+
+GitHub Actions により、`main`ブランチへの push または PR 時に自動で以下を実行し、`docs/`を更新・公開しています。
+そのため、通常はローカルで以下を実行する必要はありません。
+
+### タグ付けルール
+
+- `tags: [タグ1, タグ2, ...]` の形式で1〜3個のタグをつけてください。タグの上限はありません。
+- 以下の推奨タグリストを参考にしつつ、内容に応じて柔軟に判断してください。
+
+#### 推奨タグ一覧
+
+- 活動の分類：ニュース, お知らせ, 活動報告
+- テーマ：自動運転, ISUCON, CTF, メイカー, プログラミングコンテスト, VR
+- 種別：LT会, 読書会, ハッカソン, 勉強会, プロジェクト, コンテスト
 
 ## SEO対策
 
@@ -91,3 +97,14 @@ $ ELEVENTY_ENV=production npm run build      # ビルド成果物は docs/ に�
 ## お問い合わせ
 
 詳細はトップページの「お問い合わせ」セクションをご確認ください。
+---
+
+## タグ付けルール
+
+- `tags: [タグ1, タグ2, ...]` の形式で1〜3個のタグをつけてください。タグの上限はありません。
+- 以下の推奨タグリストを参考にしつつ、内容に応じて柔軟に判断してください
+
+### 推奨タグ一覧
+- 活動の分類：ニュース, お知らせ, 活動報告
+- テーマ：自動運転, ISUCON, CTF, メイカー, プログラミングコンテスト, VR
+- 種別：LT会, 読書会, ハッカソン, 勉強会, プロジェクト, コンテスト

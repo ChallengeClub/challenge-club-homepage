@@ -2,7 +2,7 @@
 layout: base.njk
 title: ISUCON参加
 image: "/images/isucon.png"
-tags: []
+tags: [ISUCON, コンテスト]
 ---
 
 ## 💡 活動概要
