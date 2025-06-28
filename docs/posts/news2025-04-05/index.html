@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="技術チャレンジ部は、成長の場の相互提供をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
+  <meta name="keywords" content="技術チャレンジ部, 技術コミュニティ, エンジニア, ハッカソン, CTF, ISUCON, VR, 自動運転, connpass">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="技術チャレンジ部 | 成長と挑戦のコミュニティ">
+  <meta property="og:description" content="社内外300名以上が参加する、成長と挑戦の技術コミュニティ">
+  <meta property="og:image" content="/images/ogp.png">
+  <meta property="og:url" content="https://challenge-club.org">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="技術チャレンジ部">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="技術チャレンジ部">
+  <meta name="twitter:description" content="エンジニアによる本気の遊び場、技術チャレンジ部の公式サイト">
+  <meta name="twitter:image" content="/images/ogp.png">
+  <title>「もくもく読書会」始めました</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+  <a href="/#top"><img class="logo" src="/images/challenge-club-pc.png" alt="ロゴ"></a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="menu">
+      <a href="/#about">技術チャレンジ部とは</a>
+      <a href="/#activities">活動内容</a>
+      <a href="/posts/">ニュース・投稿一覧</a>
+      <a href="/#contact">お問い合わせ</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    } else {
+      menu.classList.add('active');
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const hamburger = document.querySelector('.hamburger');
+    const isClickInside = menu.contains(event.target) || hamburger.contains(event.target);
+    if (!isClickInside) {
+      menu.classList.remove('active');
+    }
+  });
+</script>
+  
+  <main>
+    <section>
+      <h1>「もくもく読書会」始めました</h1>
+<p><img src="images/2025-04-05-%E8%AA%AD%E6%9B%B8%E4%BC%9A.png" alt="alt text"></p>
+<p>新しい定例イベント「もくもく読書会」をスタートしました📚<br>
+「ゆるーい読書会です。何を読んでもOK、話さなくてもOK、自分のペースでOK！</p>
+<p>毎週土曜の朝、Discordで開催しています。
+興味があればぜひご参加ください。</p>
+<h2>イベントの説明</h2>
+<p><a href="https://challenge-club.connpass.com/">connpass challenge_club</a>でも公開しています。</p>
+<hr>
+<h3>開催概要</h3>
+<ul>
+<li>会場: オンライン(Discord)</li>
+<li>参加申込いただいた方にURLを公開します。</li>
+<li>読書会の所要時間は 1時間です。</li>
+<li>途中参加・途中退出OK！自分のペースでお気軽にどうぞ。</li>
+</ul>
+<h3>グランドルール</h3>
+<ul>
+<li>参加している人をリスペクトしましょう！</li>
+<li>読む本・読み方・感じ方は人それぞれ。多様性を楽しむ場です。</li>
+<li>リアクション多め、大歓迎！絵文字やスタンプ、:clapping_hands:や:thumbs_up:のチャットなどでのリアクションはモチベUPに:sparkles:</li>
+<li>アウトプットには「いいね！」を伝えましょう。<br>
+例：「面白そう！」「読んでみたい」「なるほど～」など、<br>
+一言コメントが大きな励みになります！</li>
+<li>一方的な批判や否定はNGです。<br>
+あくまで「読書の時間を気軽に共有すること」が目的です。</li>
+</ul>
+<h3>読むものについて</h3>
+<ul>
+<li>読む本は自由！何でもOKです。<br>
+技術書／ビジネス書／自己啓発書／小説／マンガ などジャンル不問です。</li>
+<li>電子書籍でも紙の本でもOK！</li>
+</ul>
+<h3>読書の流れ</h3>
+<h4>開始前にチャットで共有</h4>
+<p>「読む本のタイトル or 内容」を軽く投稿してください。<br>
+例：「○○の設計思想（3章から）読みます」</p>
+<h4>読書スタート！</h4>
+<p>読書中はボイスチャットに入室してください（聞き専OK）<br>
+マイク・カメラはOFF、音楽や雑談もOFFで集中タイムです。</p>
+<h4>終了5分前～アウトプットタイム</h4>
+<p>読んだ内容や感想・学びを1人最大1分で共有（短くてもOK）<br>
+声が出せない方はチャットでの共有も歓迎です。</p>
+<h3>その他のメモ</h3>
+<ul>
+<li>話すのが苦手でも大丈夫。アウトプットは一言でOK！</li>
+<li>回によってはテーマ縛り会（例：技術書会）も検討中です。</li>
+</ul>
+<h3>ゆるく、楽しく、続けることを大切に！</h3>
+<p>「読む時間を誰かと共有するだけ」で、新しい刺激や出会いが生まれるかもしれません。<br>
+普段読まないジャンルや、考え方に出会えるチャンスです。<br>
+一緒に “ゆるく学ぶ時間” を楽しみましょう！</p>
+
+    </section>
+  </main>
+
+  <footer style="background: url('/images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;">
+  <p style="margin: 0; font-size: 1.5rem; line-height: 2;">気軽なチャレンジが、<br>世界を豊かにする。</p>
+  <p style="font-size: 0.75rem; margin-top: 2rem; font-weight: normal;">Copyright © 2025 技術チャレンジ部. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
