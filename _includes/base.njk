@@ -35,7 +35,7 @@
       <p class="tags">
         タグ:
         {% for tag in tags %}
-          <a href="/tags/{{ tagNames[tag] or (tag | safeSlug) }}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+          <a href="{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
         {% endfor %}
       </p>
       {% endif %}
