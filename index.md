@@ -1,5 +1,5 @@
 ---
-title: トップページ
+title: 技術チャレンジ部ホームページ
 layout: base.njk
 permalink: /
 ---
