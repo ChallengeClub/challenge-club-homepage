@@ -255,6 +255,25 @@ footer a {
   text-decoration: none;
 }
 
+.tag-pill {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  margin: 0 0.3em 0.3em 0;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  background-color: #f8f8f8;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tag-pill:hover {
+  background-color: #009688;
+  color: #fff;
+  border-color: #009688;
+}
+
 @media (max-width: 600px) {
   .navbar {
     flex-direction: row;
