@@ -18,6 +18,8 @@
   <meta name="twitter:image" content="/challenge-club-homepage/images/ogp.png">
   <title>サンプルニュース</title>
   <link rel="stylesheet" href="/challenge-club-homepage/styles/style.css">
+  <!-- ファビコン設定 -->
+  <link rel="icon" type="image/png" href="/challenge-club-homepage/images/favicon.png">
 </head>
 <body>
 
@@ -92,6 +94,7 @@ title: 〇〇イベントに参加しました
 layout: base.njk
 date: 2025-06-20
 permalink: &quot;/posts/event2025-06-20/&quot;
+thumbnail: /images/posts/2025-06-26-sample.png
 ---
 
 
@@ -106,6 +109,17 @@ permalink: &quot;/posts/event2025-06-20/&quot;
 ├── event-2025-07-01.md
 ├── sample.md  ← このガイドページ
 </code></pre>
+<h2>サムネイル画像の指定方法</h2>
+<p>ニュース記事の一覧ページなどで表示される <strong>サムネイル画像</strong>は、ページ冒頭の frontmatter に以下のように記述することで明示的に指定できます。</p>
+<pre><code class="language-yaml">thumbnail: /images/posts/2025-06-26-sample.png
+</code></pre>
+<p>サムネイル画像は以下の優先順位で表示されます：</p>
+<ol>
+<li>thumbnail: に明示的に指定された画像（推奨）</li>
+<li>記事本文内の最初の画像</li>
+<li>デフォルト画像 /images/default-thumbnail.png</li>
+</ol>
+<p>備考： thumbnail: を記載しない場合でも、記事内に画像があれば自動で使用されます。ただし、意図しない画像が選ばれることもあるため、明示指定を推奨します。</p>
 <h2>注意点</h2>
 <ul>
 <li>
@@ -122,7 +136,7 @@ permalink: &quot;/posts/event2025-06-20/&quot;
       <p class="tags">
         タグ:
         
-          <a href="/challenge-club-homepage/tags/news/">ニュース</a>
+          <a href="/challenge-club-homepage/tags/news/" class="tag-pill">ニュース</a>
         
       </p>
       

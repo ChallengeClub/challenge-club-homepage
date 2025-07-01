@@ -1,0 +1,47 @@
+---
+title: 投稿一覧
+layout: base.njk
+permalink: /posts/
+eleventyExcludeFromCollections: true
+---
+
+<h1>投稿一覧</h1>
+
+<div class="news-list">
+  {% for post in collections.posts %}
+  <article class="news-item">
+    <div class="news-thumbnail">
+      <a href="{{ post.url | url }}">
+        {% set thumb = post.data.thumbnail %}
+        {% set autoThumb = post.templateContent | getFirstImageSrc %}
+        {% set imgSrc = '' %}
+        {% if thumb %}
+          {% set imgSrc = thumb | url %}
+        {% elseif autoThumb %}
+          {% set imgSrc = autoThumb %}
+        {% else %}
+          {% set imgSrc = '/images/default-thumbnail.png' | url %}
+        {% endif %}
+        <img src="{{ imgSrc }}" alt="{{ post.data.title }}">
+      </a>
+    </div>
+    <div class="news-content">
+      <h3 class="news-title">
+        <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+      </h3>
+      <div class="news-meta">
+        <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
+          {{ post.date | date('yyyy/MM/dd') }}
+        </time>
+      </div>
+      {% if post.data.tags %}
+      <div class="news-tags">
+        {% for tag in post.data.tags %}
+          <a href="{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}" class="tag-pill">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</div>

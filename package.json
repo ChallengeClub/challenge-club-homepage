@@ -14,6 +14,7 @@
     "@11ty/eleventy": "^2.0.0"
   },
   "dependencies": {
+    "jsdom": "^26.1.0",
     "luxon": "^3.6.1",
     "node-fetch": "^2.7.0"
   }

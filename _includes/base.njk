@@ -18,6 +18,8 @@
   <meta name="twitter:image" content="{{ '/images/ogp.png' | url }}">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="{{ '/styles/style.css' | url }}">
+  <!-- ファビコン設定 -->
+  <link rel="icon" type="image/png" href="{{ '/images/favicon.png' | url }}">
 </head>
 <body>
 
@@ -35,7 +37,7 @@
       <p class="tags">
         タグ:
         {% for tag in tags %}
-          <a href="{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+          <a href="{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}" class="tag-pill">{{ tag }}</a>
         {% endfor %}
       </p>
       {% endif %}
