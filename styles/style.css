@@ -153,9 +153,11 @@ code {
 
 .news-thumbnail img {
   width: 120px;
-  height: auto;
+  height: 68px;
   object-fit: cover;
+  object-position: center;
   border-radius: 4px;
+  display: block;
 }
 
 .news-content {

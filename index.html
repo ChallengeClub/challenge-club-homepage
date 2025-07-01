@@ -29,7 +29,17 @@ permalink: /
     <article class="news-item">
       <div class="news-thumbnail">
         <a href="{{ post.url | url }}">
-          <img src="{{ post.data.thumbnail | default('/images/default-thumbnail.png') | url }}" alt="{{ post.data.title }}">
+          {% set thumb = post.data.thumbnail %}
+          {% set autoThumb = post.templateContent | getFirstImageSrc %}
+          {% set imgSrc = '' %}
+          {% if thumb %}
+            {% set imgSrc = thumb | url %}
+          {% elseif autoThumb %}
+            {% set imgSrc = autoThumb %}
+          {% else %}
+            {% set imgSrc = '/images/default-thumbnail.png' | url %}
+          {% endif %}
+          <img src="{{ imgSrc }}" alt="{{ post.data.title }}">
         </a>
       </div>
       <div class="news-content">

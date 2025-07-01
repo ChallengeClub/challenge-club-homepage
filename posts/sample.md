@@ -4,6 +4,7 @@ layout: base.njk
 date: 2025-06-26
 tags: [ニュース]
 permalink: "/posts/sample/"
+thumbnail: /images/posts/2025-06-26-sample.png
 ---
 
 # サンプルページ
@@ -54,6 +55,7 @@ title: 〇〇イベントに参加しました
 layout: base.njk
 date: 2025-06-20
 permalink: "/posts/event2025-06-20/"
+thumbnail: /images/posts/2025-06-26-sample.png
 ---
 
 
@@ -71,6 +73,20 @@ posts/
 ├── event-2025-07-01.md
 ├── sample.md  ← このガイドページ
 ```
+
+## サムネイル画像の指定方法
+
+ニュース記事の一覧ページなどで表示される **サムネイル画像**は、ページ冒頭の frontmatter に以下のように記述することで明示的に指定できます。
+
+```yaml
+thumbnail: /images/posts/2025-06-26-sample.png
+```
+サムネイル画像は以下の優先順位で表示されます：
+1. thumbnail: に明示的に指定された画像（推奨）
+1. 記事本文内の最初の画像
+1. デフォルト画像 /images/default-thumbnail.png
+
+備考： thumbnail: を記載しない場合でも、記事内に画像があれば自動で使用されます。ただし、意図しない画像が選ばれることもあるため、明示指定を推奨します。
 
 ## 注意点
 - index.md（投稿一覧ページ）も同じ posts/ にありますが、eleventyExcludeFromCollections: true を指定して投稿一覧には含まれていません。

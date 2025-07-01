@@ -1,4 +1,5 @@
 const isProduction = process.env.ELEVENTY_ENV === "production";
+const { JSDOM } = require("jsdom");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
@@ -35,6 +36,14 @@ module.exports = function(eleventyConfig) {
       result = result.replace(token, map[token]);
     }
     return result;
+  });
+
+  // フィルター追加
+  eleventyConfig.addFilter("getFirstImageSrc", (content) => {
+    if (!content) return null;
+    const dom = new JSDOM(content);
+    const img = dom.window.document.querySelector("img");
+    return img ? img.getAttribute("src") : null;
   });
 
   const slugify = require("slugify");
