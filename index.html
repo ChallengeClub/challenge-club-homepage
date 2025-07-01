@@ -24,20 +24,37 @@ permalink: /
 
 <section id="news">
   <h2>ニュース&トピックス</h2>
- 
-  <ul>
-  {% for post in collections.posts.slice(0, 5) %}
-    <li>
-      <time>{{ post.date | date("yyyy-MM-dd") }}</time>
-      - <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-    </li>
-  {% endfor %}
-  </ul>
-
+  <div class="news-list">
+    {% for post in collections.posts.slice(0, 5) %}
+    <article class="news-item">
+      <div class="news-thumbnail">
+        <a href="{{ post.url | url }}">
+          <img src="{{ post.data.thumbnail | default('/images/default-thumbnail.png') | url }}" alt="{{ post.data.title }}">
+        </a>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">
+          <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+        </h3>
+        <div class="news-meta">
+          <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
+            {{ post.date | date('yyyy/MM/dd') }}
+          </time>
+        </div>
+        {% if post.data.tags %}
+        <div class="news-tags">
+          {% for tag in post.data.tags %}
+            <a href="{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}" class="tag-pill">{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
   <p style="margin-top: 1em; text-align: center;">
     <a href="{{ '/posts/' | url }}" class="more-button">もっと見る →</a>
   </p>
-
 </section>
 
 <section id="activities">

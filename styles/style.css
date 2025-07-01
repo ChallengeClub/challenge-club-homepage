@@ -134,6 +134,66 @@ code {
   border-radius: 4px;
 }
 
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em; /* ←ここを1em → 0 に変更 */
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8em;
+  padding: 0.4em 0; /* 上下余白を減らす */
+  border-bottom: 1px solid #ccc;
+  margin: 0; /* 念のためマージンもゼロ */
+}
+
+.news-thumbnail img {
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.news-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-title {
+  margin: 0 0 0.3em;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.news-title a {
+  text-decoration: none;
+  color: #222;
+}
+
+.news-title a:hover {
+  text-decoration: underline;
+}
+
+.news-meta {
+  font-size: 0.9em;
+  color: #777;
+  margin: 0.1em 0 0; /* ほぼ詰める */
+}
+
+.news-tags {
+  margin: 0.3em 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+
 .more-button {
   display: inline-block;
   padding: 0.6em 1.2em;
@@ -258,7 +318,7 @@ footer a {
 .tag-pill {
   display: inline-block;
   padding: 0.2em 0.6em;
-  margin: 0 0.3em 0.3em 0;
+  margin: 0; /* タグ自体に余白がないように */
   font-size: 0.9em;
   border: 1px solid #ccc;
   border-radius: 16px;
