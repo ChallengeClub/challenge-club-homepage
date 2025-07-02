@@ -1,6 +1,6 @@
 <div class="navbar">
   <a href="{{ '/#top' | url }}"><img class="logo" src="{{ '/images/challenge-club-pc.png' | url }}" alt="ロゴ"></a>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="hamburger" onclick="toggleMenu(event)">☰</div>
   <div class="menu">
       <a href="{{ '/#about' | url }}">技術チャレンジ部とは</a>
       <a href="{{ '/#activities' | url }}">活動内容</a>
@@ -10,7 +10,8 @@
 </div>
 
 <script>
-  function toggleMenu() {
+  function toggleMenu(event) {
+    event.stopPropagation();
     const menu = document.querySelector('.menu');
     if (menu.classList.contains('active')) {
       menu.classList.remove('active');
