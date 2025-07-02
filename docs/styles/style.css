@@ -52,7 +52,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--bg-color);
+  background-color: rgba(255, 255, 255, 1.0); /* 半透明にする場合 */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,12 +72,18 @@ body {
   font-weight: bold;
 }
 
-header {
+.hero-header {
   position: relative;
-  background: url('./images/challenge-club-backpanel.png') center/cover no-repeat;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: url('/challenge-club-homepage/images/challenge-club-backpanel.png') center/cover no-repeat;
   color: white;
   text-align: center;
-  padding: 6rem 1rem 3rem;
+  padding: 6rem 1rem 3rem;  /* ← padding-topを60px追加しない */
+  font-weight: bold;
+  overflow: hidden;
+  margin-top: 0;
+  z-index: 0;
 }
 
 header::before {
@@ -526,7 +532,7 @@ footer a {
 }
 /* Offset content for fixed navbar */
 main {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 /* Activity pages styling */
 .activity-visual {
