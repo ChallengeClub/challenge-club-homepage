@@ -11,6 +11,9 @@
   width: 100%;
   z-index: 2000;
   display: flex;
+
+  align-items: flex-end; /* メニュー全体を右端に寄せる */
+  padding: 1rem;
 }
 
 .menu.active {
@@ -23,7 +26,10 @@
   color: var(--main-color);
   text-decoration: none;
   font-size: 1.2rem;
+  width: min(80%, 250px); /* 固定幅（必要に応じて調整） */
+  text-align: left;       /* 左寄せ表示 */
 }
+
 :root {
   --main-color: #009688;
   --accent-color: #ffc107;
