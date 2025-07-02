@@ -473,6 +473,40 @@ footer a {
   color: var(--main-color);
 }
 
+/* 丸アイコン横並び用 */
+.icon-row {
+  display: none; /* 初期は非表示（PC用） */
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.icon-row a img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 0rem;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.icon-row a img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* モバイル専用表示切り替え */
+@media (max-width: 600px) {
+  .qr-desktop {
+    display: none; /* QRは非表示 */
+  }
+
+  .qr-mobile {
+    display: flex; /* 丸アイコンを表示 */
+  }
+}
+
 @media (max-width: 600px) {
 .hamburger {
   display: block;
