@@ -48,7 +48,7 @@ section h2 {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255,255,255,0.9);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,6 +66,8 @@ section h2 {
   font-size: 2rem;
   cursor: pointer;
   color: var(--main-color);
+  z-index: 1001; /* メニューより上に */
+  position: relative;
 }
 
 /* Menu (mobile dropdown) */
@@ -73,13 +75,13 @@ section h2 {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 60px;
+  top: 100%;
   right: 0;
   width: 100%;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  background-color: var(--bg-color);
+  background-color: rgba(255,255,255,0.9);
   padding: 1rem;
   align-items: flex-end;
   transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -118,11 +120,19 @@ section h2 {
   background: url('/challenge-club-homepage/images/challenge-club-backpanel.png') center/cover no-repeat;
   color: #fff;
   text-align: center;
-  padding: 6rem 1rem 3rem;
   font-weight: bold;
   overflow: hidden;
   margin-top: 0;
   z-index: 0;
+
+  /* 中央揃え用のFlexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 40vh; /* 画面の40%の高さを確保 */
+  min-height: 200px; /* モバイルでもある程度の高さ確保 */
 }
 
 .hero-header::before,
@@ -508,6 +518,12 @@ footer a {
     opacity: 0;
   }
 
+  .menu.active,
+  .navbar .menu.active {
+    max-height: 500px;
+    opacity: 1;
+  }
+
   .menu a {
     margin: 0.5rem 0;
   }
@@ -520,6 +536,12 @@ footer a {
   header p,
   .hero-header p {
     font-size: 1rem;
+  }
+
+  /* 追加：画像領域を小さくする */
+  .hero-header {
+    height: 20vh;
+    min-height: 150px;
   }
 
   .card-container {

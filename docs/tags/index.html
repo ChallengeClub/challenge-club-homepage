@@ -25,7 +25,7 @@
 
   <div class="navbar">
   <a href="/challenge-club-homepage/#top"><img class="logo" src="/challenge-club-homepage/images/challenge-club-pc.png" alt="ロゴ"></a>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="hamburger" onclick="toggleMenu(event)">☰</div>
   <div class="menu">
       <a href="/challenge-club-homepage/#about">技術チャレンジ部とは</a>
       <a href="/challenge-club-homepage/#activities">活動内容</a>
@@ -35,7 +35,8 @@
 </div>
 
 <script>
-  function toggleMenu() {
+  function toggleMenu(event) {
+    event.stopPropagation();
     const menu = document.querySelector('.menu');
     if (menu.classList.contains('active')) {
       menu.classList.remove('active');
@@ -59,15 +60,15 @@
       <h1>タグ一覧</h1>
 <ul>
   <li><a href="/challenge-club-homepage/tags/news/">ニュース</a></li>
-  <li><a href="/challenge-club-homepage/tags/automotive/">自動運転</a></li>
-  <li><a href="/challenge-club-homepage/tags/contest/">コンテスト</a></li>
   <li><a href="/challenge-club-homepage/tags/isucon/">ISUCON</a></li>
+  <li><a href="/challenge-club-homepage/tags/contest/">コンテスト</a></li>
+  <li><a href="/challenge-club-homepage/tags/automotive/">自動運転</a></li>
   <li><a href="/challenge-club-homepage/tags/report/">活動報告</a></li>
   <li><a href="/challenge-club-homepage/tags/lt/">LT会</a></li>
   <li><a href="/challenge-club-homepage/tags/reading/">読書会</a></li>
   <li><a href="/challenge-club-homepage/tags/ctf/">CTF</a></li>
-  <li><a href="/challenge-club-homepage/tags/programming/">プログラミングコンテスト</a></li>
   <li><a href="/challenge-club-homepage/tags/maker/">メイカー</a></li>
+  <li><a href="/challenge-club-homepage/tags/programming/">プログラミングコンテスト</a></li>
   <li><a href="/challenge-club-homepage/tags/vr/">VR</a></li>
 </ul>
 

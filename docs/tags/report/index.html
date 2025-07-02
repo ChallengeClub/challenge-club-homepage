@@ -25,7 +25,7 @@
 
   <div class="navbar">
   <a href="/challenge-club-homepage/#top"><img class="logo" src="/challenge-club-homepage/images/challenge-club-pc.png" alt="ロゴ"></a>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="hamburger" onclick="toggleMenu(event)">☰</div>
   <div class="menu">
       <a href="/challenge-club-homepage/#about">技術チャレンジ部とは</a>
       <a href="/challenge-club-homepage/#activities">活動内容</a>
@@ -35,7 +35,8 @@
 </div>
 
 <script>
-  function toggleMenu() {
+  function toggleMenu(event) {
+    event.stopPropagation();
     const menu = document.querySelector('.menu');
     if (menu.classList.contains('active')) {
       menu.classList.remove('active');
@@ -112,6 +113,8 @@
     
   
     
+  
+    
     <article class="news-item">
       <div class="news-thumbnail">
         <a href="/challenge-club-homepage/activities/automotive_ai_challenge/">
@@ -129,8 +132,8 @@
           <a href="/challenge-club-homepage/activities/automotive_ai_challenge/">自動運転AIチャレンジ</a>
         </h3>
         <div class="news-meta">
-          <time datetime="2025-07-02">
-            2025/07/02
+          <time datetime="2025-07-03">
+            2025/07/03
           </time>
         </div>
         
@@ -166,8 +169,8 @@
           <a href="/challenge-club-homepage/activities/automotive_uxchallenge/">自動運転UX創造チャレンジ</a>
         </h3>
         <div class="news-meta">
-          <time datetime="2025-07-02">
-            2025/07/02
+          <time datetime="2025-07-03">
+            2025/07/03
           </time>
         </div>
         
@@ -207,8 +210,8 @@
           <a href="/challenge-club-homepage/activities/makerfaire/">MakerFaireTokyo2024出展</a>
         </h3>
         <div class="news-meta">
-          <time datetime="2025-07-02">
-            2025/07/02
+          <time datetime="2025-07-03">
+            2025/07/03
           </time>
         </div>
         
@@ -222,8 +225,6 @@
         
       </div>
     </article>
-    
-  
     
   
     
