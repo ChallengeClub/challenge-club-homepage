@@ -57,10 +57,11 @@
   <main>
     <section>
       
-<header style="background: url('./images/challenge-club-backpanel.png') center/cover no-repeat; color: white; text-align: center; padding: 4rem 1rem; font-weight: bold; position: relative;" id="top">
+<header class="hero-header" id="top">
   <h1>技術チャレンジ部</h1>
   <p>気軽なチャレンジが、世界を豊かにする。</p>
 </header>
+
 <section id="about">
   <h2>技術チャレンジ部とは？</h2>
   <p><strong>成長の場の相互提供</strong>をコンセプトとした、有志による技術コミュニティです。</p>
@@ -334,7 +335,8 @@
 
   <div class="footer-links">
     <p style="text-align: center;">Follow us:</p>
-    <div class="qr-container">
+    <!-- 通常：QRコード表示 -->
+    <div class="qr-container qr-desktop">
       <div class="qr-block">
         <a href="https://challenge-club.connpass.com/" target="_blank">
           <img src="images/connpass-qr.png" alt="Connpass QR">
@@ -360,8 +362,23 @@
         </a>
       </div>
     </div>
-  </section>
-</div>
+    <!-- モバイル用：アイコンだけ表示 -->
+    <div class="icon-row qr-mobile">
+      <a href="https://challenge-club.connpass.com/" target="_blank">
+        <img src="images/mobile_icon_connpass.png" alt="Connpass">
+      </a>
+      <a href="https://github.com/ChallengeClub" target="_blank">
+        <img src="images/mobile_icon_github.png" alt="GitHub">
+      </a>
+      <a href="https://www.youtube.com/@challenge_club4898" target="_blank">
+        <img src="images/mobile_icon_Youtube.png" alt="YouTube">
+      </a>
+      <a href="mailto:contact@challenge-club.org" target="_blank">
+        <img src="images/mobile_icon_mail.png" alt="メール">
+      </a>
+    </div>
+  </div>
+</section>
 
       
       
