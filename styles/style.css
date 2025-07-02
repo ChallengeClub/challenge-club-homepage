@@ -1,41 +1,15 @@
-.menu {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  background-color: var(--bg-color);
-  flex-direction: column;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  width: 100%;
-  z-index: 2000;
-  display: flex;
-
-  align-items: flex-end; /* メニュー全体を右端に寄せる */
-  padding: 1rem;
-}
-
-.menu.active {
-  max-height: 500px;
-  opacity: 1;
-}
-
-.menu a {
-  margin: 1rem 0;
-  color: var(--main-color);
-  text-decoration: none;
-  font-size: 1.2rem;
-  width: min(80%, 250px); /* 固定幅（必要に応じて調整） */
-  text-align: left;       /* 左寄せ表示 */
-}
-
+/*──────────────────────────────────────────────────────────────*/
+/* 1. Variables */
+/*──────────────────────────────────────────────────────────────*/
 :root {
   --main-color: #009688;
   --accent-color: #ffc107;
   --bg-color: #ffffff;
 }
 
+/*──────────────────────────────────────────────────────────────*/
+/* 2. Reset & Base */
+/*──────────────────────────────────────────────────────────────*/
 * {
   box-sizing: border-box;
 }
@@ -47,69 +21,11 @@ body {
   color: #333;
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 1.0); /* 半透明にする場合は0.9 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
-
-.navbar img.logo {
-  height: 40px;
-}
-
-.navbar .menu a {
-  margin-left: 1rem;
-  text-decoration: none;
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-.hero-header {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  background: url('/challenge-club-homepage/images/challenge-club-backpanel.png') center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 6rem 1rem 3rem;  /* ← padding-topを60px追加しない */
-  font-weight: bold;
-  overflow: hidden;
-  margin-top: 0;
-  z-index: 0;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 0;
-}
-
-header h1,
-header p {
-  position: relative;
-  z-index: 1;
-}
-
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-header p {
-  font-size: 1.5rem;
+/*──────────────────────────────────────────────────────────────*/
+/* 3. Layout Containers */
+/*──────────────────────────────────────────────────────────────*/
+main {
+  padding-top: 0; /* Offset for fixed navbar */
 }
 
 section {
@@ -124,15 +40,130 @@ section h2 {
   margin-bottom: 1rem;
 }
 
-/* Markdownコードブロックのスタイル調整 */
-pre, code {
-  background-color: #f4f4f4;  /* 明るいグレー */
-  color: #000000;             /* 黒文字 */
-  font-family: Consolas, 'Courier New', monospace;
+/*──────────────────────────────────────────────────────────────*/
+/* 4. Navbar & Menu */
+/*──────────────────────────────────────────────────────────────*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.navbar img.logo {
+  height: 40px;
+}
+
+.hamburger {
+  display: block;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--main-color);
+}
+
+/* Menu (mobile dropdown) */
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  background-color: var(--bg-color);
+  padding: 1rem;
+  align-items: flex-end;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.menu.active {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.menu a {
+  margin: 1rem 0;
+  color: var(--main-color);
+  text-decoration: none;
+  font-size: 1.2rem;
+  width: min(80%,250px);
+  text-align: left;
+}
+
+/* Navbar links (desktop) */
+.navbar .menu a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/*──────────────────────────────────────────────────────────────*/
+/* 5. Hero Header */
+/*──────────────────────────────────────────────────────────────*/
+.hero-header {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: url('/challenge-club-homepage/images/challenge-club-backpanel.png') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1rem 3rem;
+  font-weight: bold;
+  overflow: hidden;
+  margin-top: 0;
+  z-index: 0;
+}
+
+.hero-header::before,
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 0;
+}
+
+header h1,
+header p,
+.hero-header h1,
+.hero-header p {
+  position: relative;
+  z-index: 1;
+}
+
+header h1,
+.hero-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+header p,
+.hero-header p {
+  font-size: 1.5rem;
+}
+
+/*──────────────────────────────────────────────────────────────*/
+/* 6. Code Blocks */
+/*──────────────────────────────────────────────────────────────*/
+pre,
+code {
+  background-color: #f4f4f4;
+  color: #000;
+  font-family: Consolas,'Courier New',monospace;
   font-size: 0.95em;
 }
 
-/* 複数行コードブロック */
 pre {
   padding: 1em;
   border-radius: 8px;
@@ -140,16 +171,18 @@ pre {
   line-height: 1.5;
 }
 
-/* インラインコード（`...`） */
 code {
   padding: 0.2em 0.4em;
   border-radius: 4px;
 }
 
+/*──────────────────────────────────────────────────────────────*/
+/* 7. News List */
+/*──────────────────────────────────────────────────────────────*/
 .news-list {
   display: flex;
   flex-direction: column;
-  gap: 1em; /* ←ここを1em → 0 に変更 */
+  gap: 0;
   margin: 0 auto;
   max-width: 800px;
 }
@@ -158,16 +191,15 @@ code {
   display: flex;
   align-items: flex-start;
   gap: 0.8em;
-  padding: 0.4em 0; /* 上下余白を減らす */
+  padding: 0.4em 0;
   border-bottom: 1px solid #ccc;
-  margin: 0; /* 念のためマージンもゼロ */
+  margin: 0;
 }
 
 .news-thumbnail img {
   width: 120px;
   height: 68px;
   object-fit: cover;
-  object-position: center;
   border-radius: 4px;
   display: block;
 }
@@ -186,8 +218,8 @@ code {
 }
 
 .news-title a {
-  text-decoration: none;
   color: #222;
+  text-decoration: none;
 }
 
 .news-title a:hover {
@@ -197,7 +229,7 @@ code {
 .news-meta {
   font-size: 0.9em;
   color: #777;
-  margin: 0.1em 0 0; /* ほぼ詰める */
+  margin: 0.1em 0 0;
 }
 
 .news-tags {
@@ -207,32 +239,39 @@ code {
   gap: 0.4em;
 }
 
-
-.more-button {
+/*──────────────────────────────────────────────────────────────*/
+/* 8. Buttons */
+/*──────────────────────────────────────────────────────────────*/
+.more-button,
+.contact-button {
   display: inline-block;
   padding: 0.6em 1.2em;
-  background-color: #009688;
-  color: white;
+  background-color: var(--main-color);
+  color: #fff;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.more-button:hover {
-  background-color: #009688;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.more-button:hover,
+.contact-button:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transform: translateY(-2px);
 }
 
-.more-button:focus {
-  outline: 2px solid #009688;
+.more-button:focus,
+.contact-button:focus {
+  outline: 2px solid var(--main-color);
   outline-offset: 2px;
 }
 
+/*──────────────────────────────────────────────────────────────*/
+/* 9. Cards */
+/*──────────────────────────────────────────────────────────────*/
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 1.5rem;
   justify-items: center;
 }
@@ -251,7 +290,7 @@ code {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .card img {
@@ -259,6 +298,7 @@ code {
   height: 200px;
   object-fit: cover;
 }
+
 .card-content {
   padding: 1rem;
 }
@@ -274,45 +314,64 @@ code {
   color: #555;
 }
 
-.contact-button {
+/*──────────────────────────────────────────────────────────────*/
+/* 10. Tags & Badges */
+/*──────────────────────────────────────────────────────────────*/
+.tag-pill {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--main-color);
-  color: white;
+  padding: 0.2em 0.6em;
+  margin: 0;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  background-color: #f8f8f8;
+  color: #333;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: background-color .2s,color .2s;
 }
 
-.contact-button:hover {
-  background-color: var(--main-color); /* 同じ色だが動きを加える */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+.tag-pill:hover {
+  background-color: var(--main-color);
+  color: #fff;
+  border-color: var(--main-color);
 }
 
-.contact-button:focus {
-  outline: 2px solid var(--main-color);
-  outline-offset: 2px;
+.badge {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  display: inline-block;
 }
 
+/*──────────────────────────────────────────────────────────────*/
+/* 11. Footer */
+/*──────────────────────────────────────────────────────────────*/
 footer {
   position: relative;
   background: url('/mnt/data/e5999445-ee6b-463e-9c1f-6c00808db00a.png') center/cover no-repeat;
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 4rem 1rem;
   font-size: 0.9rem;
 }
 
+.footer-contact {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.footer-links {
+  margin-top: 2rem;
+}
+
 footer::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  background-color: rgba(0,0,0,0.7);
   z-index: 0;
 }
 
@@ -329,76 +388,9 @@ footer a {
   text-decoration: none;
 }
 
-.tag-pill {
-  display: inline-block;
-  padding: 0.2em 0.6em;
-  margin: 0; /* タグ自体に余白がないように */
-  font-size: 0.9em;
-  border: 1px solid #ccc;
-  border-radius: 16px;
-  background-color: #f8f8f8;
-  color: #333;
-  text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.tag-pill:hover {
-  background-color: #009688;
-  color: #fff;
-  border-color: #009688;
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .navbar .menu {
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: var(--bg-color);
-  }
-
-  .navbar .menu a {
-    margin: 0.5rem 0;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-  }
-
-  .qr-container {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-
-.footer-contact {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 2rem;
-}
-
+/*──────────────────────────────────────────────────────────────*/
+/* 12. QR & Icons */
+/*──────────────────────────────────────────────────────────────*/
 .qr-container {
   display: flex;
   flex-wrap: wrap;
@@ -411,25 +403,16 @@ footer a {
   text-align: center;
 }
 
-.qr-block p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.2;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .qr-block img {
   width: 120px;
   height: 120px;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .qr-block img:hover {
   transform: scale(1.1);
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
 
 .qr-block p {
@@ -441,47 +424,9 @@ footer a {
   align-items: center;
   justify-content: center;
 }
-.qr-container img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-}
 
-@media (max-width: 600px) {
-  .qr-container img {
-    width: 90px;
-    height: 90px;
-  }
-}
-
-.badge {
-  background-color: #4caf50;
-  color: white;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1rem;
-  display: inline-block;
-}
-
-.footer-links a {
-  position: relative;
-  z-index: 1;
-}
-
-.footer-links {
-  margin-top: 2rem;
-}
-
-.hamburger {
-  display: block;
-  font-size: 2rem;
-  cursor: pointer;
-  color: var(--main-color);
-}
-
-/* 丸アイコン横並び用 */
 .icon-row {
-  display: none; /* 初期は非表示（PC用） */
+  display: none;
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
@@ -491,89 +436,110 @@ footer a {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: transparent;
-  padding: 0rem;
   object-fit: contain;
-  transition: transform 0.2s ease;
+  transition: transform .2s ease;
 }
 
 .icon-row a img:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
-/* モバイル専用表示切り替え */
-@media (max-width: 600px) {
-  .qr-desktop {
-    display: none; /* QRは非表示 */
-  }
-
-  .qr-mobile {
-    display: flex; /* 丸アイコンを表示 */
-  }
-}
-
-@media (max-width: 600px) {
-.hamburger {
-  display: block;
-}
-
-.menu {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--bg-color);
-}
-
-.menu.active {
-  max-height: 500px;
-  opacity: 1;
-}
-}
-/* Offset content for fixed navbar */
-main {
-  padding-top: 0px;
-}
-/* Activity pages styling */
+/*──────────────────────────────────────────────────────────────*/
+/* 13. Activity Pages */
+/*──────────────────────────────────────────────────────────────*/
 .activity-visual {
   text-align: center;
   margin: 2rem 0;
 }
+
 .activity-visual img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-/* Activity page header styling */
+
 .activity-header {
   position: relative;
   background-size: cover;
   background-position: center;
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 4rem 1rem;
 }
+
 .activity-header::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
   z-index: 0;
 }
+
 .activity-header h1,
 .activity-header p {
   position: relative;
   z-index: 1;
 }
+
 .activity-header h1 {
   margin: 0;
   font-size: 2.5rem;
 }
+
 .activity-header p {
   margin-top: 0.5rem;
   font-size: 1.2rem;
+}
+
+/*──────────────────────────────────────────────────────────────*/
+/* 14. Responsive: max-width 600px */
+/*──────────────────────────────────────────────────────────────*/
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu,
+  .navbar .menu {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .menu a {
+    margin: 0.5rem 0;
+  }
+
+  header h1,
+  .hero-header h1 {
+    font-size: 2rem;
+  }
+
+  header p,
+  .hero-header p {
+    font-size: 1rem;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .qr-desktop {
+    display: none;
+  }
+
+  .qr-mobile {
+    display: flex;
+  }
+
+  .qr-container img {
+    width: 90px;
+    height: 90px;
+  }
 }
