@@ -40,6 +40,29 @@ section h2 {
   margin-bottom: 1rem;
 }
 
+/*──────────────*/
+/* Markdown画像・動画のデフォルト整形 */
+/*──────────────*/
+
+section img,
+section video,
+section iframe {
+  display: block;
+  margin: 2rem auto;  /* 上下余白＋中央寄せ */
+  max-width: 100%;    /* セクション幅を超えない */
+  height: auto;
+  border-radius: 8px; /* お好みで角丸を追加 */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* お好みで影を追加 */
+}
+
+/* iframe で YouTube をスマホ対応に */
+section iframe {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
 /*──────────────────────────────────────────────────────────────*/
 /* 4. Navbar & Menu */
 /*──────────────────────────────────────────────────────────────*/
@@ -507,7 +530,7 @@ footer a {
 /* 14. Responsive: max-width 600px */
 /*──────────────────────────────────────────────────────────────*/
 @media (max-width: 600px) {
-/* スマホ：カードテキストサイズ調整 */
+    /* スマホ：カードテキストサイズ調整 */
     .card-content {
       padding: 0.8rem;
     }
