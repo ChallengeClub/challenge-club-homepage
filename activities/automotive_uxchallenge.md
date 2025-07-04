@@ -9,11 +9,13 @@ tags: [活動報告, 自動運転, コンテスト]
 
 自動運転UX創造チャレンジに、技術チャレンジ部から**TPACチーム**が参加し、決勝大会に進出しました。
 
-<img src="{{ '/images/activities/automotive_uxchallenge.png' | url }}" 
-     alt="決勝大会の様子" 
-     title="2025/2/15(土)に開催された決勝大会でのプレゼンの様子"
-     width="600">
-2025/2/15(土)に開催された決勝大会でのプレゼンの様子
+<figure>
+  <img src="{{ '/images/activities/automotive_uxchallenge.png' | url }}"
+       alt="決勝大会の様子"
+       title="2025/2/15(土)に開催された決勝大会でのプレゼンの様子"
+       width="600">
+  <figcaption>2025/2/15(土)に開催された決勝大会でのプレゼンの様子</figcaption>
+</figure>
 
 ---
 ## 大会概要
