@@ -53,6 +53,13 @@
       menu.classList.remove('active');
     }
   });
+
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      menu.classList.remove('active');
+    });
+  });
 </script>
   
   <main>
@@ -62,10 +69,6 @@
 <h1>タグ: VR</h1>
 
 <div class="news-list">
-  
-    
-  
-    
   
     
   
@@ -124,6 +127,10 @@
         
       </div>
     </article>
+    
+  
+    
+  
     
   
     

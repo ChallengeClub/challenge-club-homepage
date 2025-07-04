@@ -507,7 +507,7 @@ footer a {
 /* 14. Responsive: max-width 600px */
 /*──────────────────────────────────────────────────────────────*/
 @media (max-width: 600px) {
-/* スマホ：カードテキストサイズ調整 */
+    /* スマホ：カードテキストサイズ調整 */
     .card-content {
       padding: 0.8rem;
     }
@@ -575,17 +575,18 @@ footer a {
     object-fit: cover;
   }
 
-  .qr-desktop {
-    display: none;
-  }
-
-/* スマホ：カード画像をPCと同じ縦横比に */
+  /* スマホ：カード画像をPCと同じ縦横比に */
   .card img {
     width: 100%;
     height: auto;
     aspect-ratio: 3 / 2;
     object-fit: cover;
   }
+
+  .qr-desktop {
+    display: none;
+  }
+
   .qr-mobile {
     display: flex;
   }

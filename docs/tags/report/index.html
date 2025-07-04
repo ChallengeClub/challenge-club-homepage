@@ -53,6 +53,13 @@
       menu.classList.remove('active');
     }
   });
+
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      menu.classList.remove('active');
+    });
+  });
 </script>
   
   <main>
@@ -191,8 +198,6 @@
     
   
     
-  
-    
     <article class="news-item">
       <div class="news-thumbnail">
         <a href="/challenge-club-homepage/activities/makerfaire/">
@@ -225,6 +230,8 @@
         
       </div>
     </article>
+    
+  
     
   
     
