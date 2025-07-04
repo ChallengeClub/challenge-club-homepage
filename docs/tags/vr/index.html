@@ -53,6 +53,13 @@
       menu.classList.remove('active');
     }
   });
+
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      menu.classList.remove('active');
+    });
+  });
 </script>
   
   <main>
@@ -62,8 +69,6 @@
 <h1>タグ: VR</h1>
 
 <div class="news-list">
-  
-    
   
     
   
@@ -109,8 +114,8 @@
           <a href="/challenge-club-homepage/activities/vr/">VR活動</a>
         </h3>
         <div class="news-meta">
-          <time datetime="2025-07-02">
-            2025/07/02
+          <time datetime="2025-07-04">
+            2025/07/04
           </time>
         </div>
         
@@ -122,6 +127,8 @@
         
       </div>
     </article>
+    
+  
     
   
     

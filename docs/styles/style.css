@@ -287,7 +287,8 @@ code {
 }
 
 .card {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -315,12 +316,12 @@ code {
 
 .card-content h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--main-color);
 }
 
 .card-content p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #555;
 }
 
@@ -506,6 +507,16 @@ footer a {
 /* 14. Responsive: max-width 600px */
 /*──────────────────────────────────────────────────────────────*/
 @media (max-width: 600px) {
+/* スマホ：カードテキストサイズ調整 */
+    .card-content {
+      padding: 0.8rem;
+    }
+    .card-content h3 {
+      font-size: 1rem;
+    }
+    .card-content p {
+      font-size: 0.85rem;
+    }
   .navbar {
     flex-direction: row;
     align-items: center;
@@ -545,11 +556,31 @@ footer a {
   }
 
   .card-container {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .card {
-    width: 90%;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 1rem;
+  }
+
+  /* スマホ：カード画像をPCと同じ縦横比に */
+  .card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  /* スマホ：カード画像をPCと同じ縦横比に */
+  .card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
   }
 
   .qr-desktop {
@@ -563,5 +594,10 @@ footer a {
   .qr-container img {
     width: 90px;
     height: 90px;
+  }
+
+  /* スマホ: ページ左右の余白を縮小 */
+  section {
+    padding: 0 0.5rem;
   }
 }

@@ -53,6 +53,13 @@
       menu.classList.remove('active');
     }
   });
+
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      menu.classList.remove('active');
+    });
+  });
 </script>
   
   <section class="activity-header" style="background: url('/challenge-club-homepage/images/ctf.png') center/cover no-repeat;">
