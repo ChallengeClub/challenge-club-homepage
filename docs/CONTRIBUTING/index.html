@@ -1,0 +1,160 @@
+<h1>CONTRIBUTING.md</h1>
+<p>技術チャレンジ部 ホームページの編集ガイド</p>
+<p>このドキュメントでは、開発・運用ルール、投稿方法、画像管理、ローカル環境構築の手順などをまとめています。</p>
+<hr>
+<h2>1. ディレクトリ構成</h2>
+<pre><code>.
+├── activities/        活動紹介ページ（自動運転・CTFなど）
+├── posts/             記事（ニュース・お知らせなど）
+├── images/            画像ファイルの集約場所（投稿・活動紹介用など）
+│   ├── posts/
+│   ├── activities/
+│   └── common/
+├── docs/              ビルド成果物（GitHub Pages 用）
+├── _includes/         Eleventy テンプレート共通部品
+├── styles/            CSSなどスタイル関連
+├── .eleventy.js       Eleventy 設定ファイル
+└── その他設定ファイル等
+</code></pre>
+<ul>
+<li>画像は <code>images/</code> 以下に整理してください。</li>
+<li><code>docs/</code> はビルド成果物です。直接編集しないでください。</li>
+</ul>
+<hr>
+<h2>2. Git の作業フロー</h2>
+<h3>基本ルール</h3>
+<ul>
+<li><strong><code>main</code> ブランチを直接編集せず、必ずブランチを切って Pull Request（PR）を作成してください。</strong></li>
+<li>作成したブランチは、作業完了後に不要であれば削除してください（方法は後述）。</li>
+</ul>
+<hr>
+<h3>ブランチ命名ルール（例）</h3>
+<p>用途に応じて、以下のように接頭辞をつけてください：</p>
+<table>
+<thead>
+<tr>
+<th>作業内容</th>
+<th>ブランチ名の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>機能追加</td>
+<td><code>feature/add-activity-page</code></td>
+</tr>
+<tr>
+<td>バグ修正</td>
+<td><code>fix/incorrect-path</code></td>
+</tr>
+<tr>
+<td>ドキュメント</td>
+<td><code>doc/update-contributing</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>作業手順の例</h3>
+<pre><code class="language-bash"># ブランチを作成して移動
+git checkout -b feature/add-activity-ctf
+
+# 編集・追加・移動などの作業
+
+# 変更の確認とステージング
+git status
+git add -A
+
+# コミット
+git commit -m &quot;CTF活動紹介ページと画像を追加&quot;
+
+# GitHub にプッシュ
+git push origin feature/add-activity-ctf
+</code></pre>
+<hr>
+<h3>プルリクエスト作成</h3>
+<ul>
+<li>GitHub 上で PR を作成し、<strong>変更内容の要約・背景・目的</strong> を記載してください。</li>
+<li>レビュー後に <code>main</code> ブランチへマージされます。</li>
+<li>マージ後、関連するローカル・リモートの作業ブランチは削除してください。</li>
+</ul>
+<hr>
+<h3>ブランチの削除方法</h3>
+<h4>ローカルブランチの削除</h4>
+<pre><code class="language-bash">git branch -d feature/add-activity-ctf
+</code></pre>
+<p>※ 強制的に削除する場合は <code>-D</code> オプションを使用（未マージの変更があるとき）</p>
+<h4>リモートブランチの削除（GitHub 上）</h4>
+<pre><code class="language-bash">git push origin --delete feature/add-activity-ctf
+</code></pre>
+<p>もしくは、GitHub の PR 画面やブランチ一覧から手動で削除可能です。</p>
+<hr>
+<h2>3. ローカル開発環境の構築</h2>
+<h3>セットアップ</h3>
+<pre><code class="language-bash">git clone https://github.com/ChallengeClub/challenge-club-homepage.git
+cd challenge-club-homepage
+npm install
+</code></pre>
+<h3>開発サーバー起動</h3>
+<pre><code class="language-bash">npx @11ty/eleventy --serve
+</code></pre>
+<h3>GitHub Pages 相当のビルド確認</h3>
+<pre><code class="language-bash">npx @11ty/eleventy --pathprefix=challenge-club-homepage
+</code></pre>
+<hr>
+<h2>4. 投稿方法（<code>posts/</code> ディレクトリ）</h2>
+<h3>投稿ファイルの作成</h3>
+<ul>
+<li><code>posts/YYYY-MM-DD-title.md</code> のようなファイル名で作成します。</li>
+</ul>
+<h3>Frontmatter 記述例</h3>
+<pre><code class="language-markdown">---
+title: &quot;記事タイトル&quot;
+date: 2025-07-05
+tags: [ニュース, CTF]
+layout: base.njk
+---
+</code></pre>
+<h3>画像の追加方法</h3>
+<ul>
+<li><code>images/posts/</code> に画像ファイルを配置</li>
+<li>Markdown 内で以下のように参照</li>
+</ul>
+<pre><code class="language-markdown">![説明文](/images/posts/ファイル名.png)
+</code></pre>
+<hr>
+<h2>5. 活動紹介ページの追加（<code>activities/</code> ディレクトリ）</h2>
+<ul>
+<li>Markdown ファイルを追加し、同様に <code>title</code>, <code>date</code>, <code>tags</code>, <code>layout</code> を含めてください。</li>
+<li>画像は <code>images/activities/</code> に配置して使用します。</li>
+</ul>
+<hr>
+<h2>6. 画像ファイルの管理ルール</h2>
+<ul>
+<li><code>images/</code> 以下に全画像を集約します。</li>
+<li>サブフォルダ構成の例：</li>
+</ul>
+<pre><code>images/
+├── posts/
+├── activities/
+└── common/
+</code></pre>
+<ul>
+<li>命名規則の例：<code>2025-07-05-title-keyword.png</code></li>
+</ul>
+<hr>
+<h2>7. レビュー時のチェックポイント</h2>
+<ul>
+<li>Frontmatter の記述に不備がないか</li>
+<li>画像の配置と参照パスが正しいか</li>
+<li>Markdown の構文エラーがないか</li>
+<li>見た目が崩れていないか（開発サーバーで確認）</li>
+</ul>
+<hr>
+<h2>8. その他</h2>
+<ul>
+<li>サンプル記事は <code>posts/sample.md</code> に用意予定です。</li>
+<li>タグのルールや運用方針は README を参照してください。</li>
+</ul>
+<hr>
+<h2>9. お問い合わせ・Issue</h2>
+<p>疑問点や改善案があれば、GitHub の Issue にてご連絡ください。</p>
+<p>貢献いただきありがとうございます！</p>
