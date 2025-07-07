@@ -84,7 +84,7 @@ thumbnail: /images/posts/2025-06-26-sample.png
 サムネイル画像は以下の優先順位で表示されます：
 1. thumbnail: に明示的に指定された画像（推奨）
 1. 記事本文内の最初の画像
-1. デフォルト画像 /images/default-thumbnail.png
+1. デフォルト画像 /images/common/default-thumbnail.png
 
 備考： thumbnail: を記載しない場合でも、記事内に画像があれば自動で使用されます。ただし、意図しない画像が選ばれることもあるため、明示指定を推奨します。
 

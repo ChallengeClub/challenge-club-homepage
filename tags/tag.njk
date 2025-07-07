@@ -26,7 +26,7 @@ title: タグページ
           {% elseif autoThumb %}
             {% set imgSrc = autoThumb %}
           {% else %}
-            {% set imgSrc = '/images/default-thumbnail.png' | url %}
+            {% set imgSrc = '/images/common/default-thumbnail.png' | url %}
           {% endif %}
           <img src="{{ imgSrc }}" alt="{{ post.data.title }}">
         </a>

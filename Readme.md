@@ -91,10 +91,10 @@ GitHub Actions により、`main`ブランチへの push または PR 時に自�
 
 ### OGP画像を設定するには
 
-- `images/ogp.png` に OGP 用画像を設置（推奨サイズ：1200×630）  
+- `images/common/ogp.png` に OGP 用画像を設置（推奨サイズ：1200×630）  
 - `<head>` 内に以下を追加:  
   ```html
-  <meta property="og:image" content="{{ '/images/ogp.png' | url }}">
+  <meta property="og:image" content="{{ '/images/common/ogp.png' | url }}">
   <meta property="og:url" content="{{ '/' | url }}">
   ```  
 - SNSシェアプレビュー確認:  
