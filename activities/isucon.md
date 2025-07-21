@@ -6,13 +6,14 @@ tags: [ISUCON, コンテスト]
 ---
 
 ## 🚀 ISUCONとは
-ISUCON（Iikanjini Speed Up CONtest）は、LINEヤフー主催のWebサービスの性能改善を競うオンラインコンテストです。制限時間内に与えられたサーバをチューニングして、チームで協力してパフォーマンス向上を競うチーム競技です！
-![ISUCONとは](/images/posts/isucon-01.png)
+ISUCON（Iikanjini Speed Up CONtest）は、LINEヤフー主催のWebサービスの性能改善を競うオンラインコンテストです。制限時間内に与えられたサーバをチューニングして、チームで協力してパフォーマンス向上を競うチーム競技です！  
+
+![ISUCONとは]({{ '/images/activities/isucon-01.png' | url }})
 
 ## 💡 活動概要
 技術チャレンジ部のISUCON活動は、毎年のISUCON大会へ参加しています。チームでワイワイ楽しみながらサーバチューニングを実践的に学び"素振り会"という名の勉強会を開催。大会までの約２か月間、AWS環境で過去問を解いたり、Go/Rust,Ansible/pprotein,CI/CD,AI支援ツールなど新しい技術やツールを試したりしています！
 
-![活動外用](/images/posts/isucon-02.png)
+![活動概要]({{ '/images/activities/isucon-02.png' | url }})
 
 ## 🏆 実績と今後
 
