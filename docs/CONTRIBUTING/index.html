@@ -147,7 +147,18 @@ layout: base.njk
 <li><code>images/posts/</code> に画像ファイルを配置</li>
 <li>Markdown 内で以下のように参照</li>
 </ul>
-<pre><code class="language-markdown">![説明文](/images/posts/ファイル名.png)
+<pre><code class="language-markdown">![説明文](/challenge-club-homepage/images/[画像パス.png])
+</code></pre>
+<ul>
+<li>キャプションを表示する場合は以下のように記載してください。</li>
+</ul>
+<pre><code class="language-markdown">&lt;figure&gt;
+  &lt;img src=&quot;/challenge-club-homepage/images/activities/automotive_uxchallenge.png&quot;
+       alt=&quot;決勝大会の様子&quot;
+       title=&quot;2025/2/15(土)に開催された決勝大会でのプレゼンの様子&quot;
+       width=&quot;600&quot;&gt;
+  &lt;figcaption&gt;2025/2/15(土)に開催された決勝大会でのプレゼンの様子&lt;/figcaption&gt;
+&lt;/figure&gt;
 </code></pre>
 <p>サンプル記事は <a href="posts/sample.md"><code>posts/sample.md</code></a> を参考にしてください。</p>
 <hr>
@@ -163,12 +174,13 @@ layout: base.njk
 <li>サブフォルダ構成の例：</li>
 </ul>
 <pre><code>images/
-├── posts/
-├── activities/
-└── common/
+├── posts/       # post投稿の画像
+├── activities/  # 各活動報告に紐づく画像
+└── common/      # ホームページ全体共通の画像
 </code></pre>
 <ul>
-<li>命名規則の例：<code>2025-07-05-title-keyword.png</code></li>
+<li>命名規則の例：<code>2025-07-05-title-keyword.png</code>
+※ あくまで原則です。厳密に守らなくてOKです。</li>
 </ul>
 <hr>
 <h2>7. レビュー時のチェックポイント</h2>
