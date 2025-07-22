@@ -15,21 +15,11 @@ ISUCON（Iikanjini Speed Up CONtest）は、LINEヤフー主催のWebサービ�
 
 ![活動概要]({{ '/images/activities/isucon-02.png' | url }})
 
-## 🏆 実績と今後
-
 - **ISUCON13**（2023年11月）: 初参戦（２チーム）
 - **ISUCON14**（2024年12月）: メンバー募集し４チームで参加（１チームが40位入り）
 - **ISUCON15**（2026年はじめ）: 大会日程が決まり次第、希望者を募りチーム編成します。  
 
-#### 🔗 関連記事リンク
-- [ISUCON公式ブログ](https://isucon.net/)
-- [ISUCON攻略はじめの一歩](https://qiita.com/hide_take/items/b0c7aa4b854a1fa82fab)
-- [何もわからないけどISUCON13に挑戦してみた](https://qiita.com/kiwsdiv/items/597506988976702b97e2)
-- [ISUCON初参加してきた！](https://speakerdeck.com/hideakitakechi/isuconchu-can-jia-sitekita)
-- [ISUCONに初参加して40位だった話](https://speakerdeck.com/mo124121/isuconnichu-can-jia-site40wei-datutahua)
-- [技術チャレンジ部ISUCON攻略リポジトリ](https://github.com/ChallengeClub/isucon_tips)
-
-#### 🛠 技術スタック
+## 🛠 技術スタック
 
 - Go/Rust/Python, MySQL/Redis/Nginx, aws, github, Prometheus, Ansible/pprotein 他
 
@@ -41,4 +31,3 @@ ISUCON（Iikanjini Speed Up CONtest）は、LINEヤフー主催のWebサービ�
 2. 週１回の素振り会と週１回のもくもく会で勉強！（フル・リモート活動）
 3. ISUCONコンテストサイトで参加登録（毎年1000名前後。無料です。）  
 4. 大会開催日はチームでサーバチューニング（約8時間）
-
