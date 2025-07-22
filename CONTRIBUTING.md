@@ -157,7 +157,18 @@ layout: base.njk
 - Markdown 内で以下のように参照
 
 ```markdown
-![説明文](/images/posts/ファイル名.png)
+![説明文]({{ '/images/[画像パス.png]' | url }})
+```
+
+- キャプションを表示する場合は以下のように記載してください。
+```markdown
+<figure>
+  <img src="{{ '/images/activities/automotive_uxchallenge.png' | url }}"
+       alt="決勝大会の様子"
+       title="2025/2/15(土)に開催された決勝大会でのプレゼンの様子"
+       width="600">
+  <figcaption>2025/2/15(土)に開催された決勝大会でのプレゼンの様子</figcaption>
+</figure>
 ```
 
 サンプル記事は [`posts/sample.md`](posts/sample.md) を参考にしてください。
@@ -178,12 +189,13 @@ layout: base.njk
 
 ```
 images/
-├── posts/
-├── activities/
-└── common/
+├── posts/       # post投稿の画像
+├── activities/  # 各活動報告に紐づく画像
+└── common/      # ホームページ全体共通の画像
 ```
 
 - 命名規則の例：`2025-07-05-title-keyword.png`
+※ あくまで原則です。厳密に守らなくてOKです。
 
 ---
 
