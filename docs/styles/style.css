@@ -162,7 +162,8 @@ figure figcaption {
   position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  background: url('/challenge-club-homepage/images/common/challenge-club-backpanel.png') center/cover no-repeat;
+  /* background: url('/challenge-club-homepage/images/common/challenge-club-backpanel.png') center/cover no-repeat;*/
+  background: url('../images/common/challenge-club-backpanel.png') center/cover no-repeat;
   color: #fff;
   text-align: center;
   font-weight: bold;
