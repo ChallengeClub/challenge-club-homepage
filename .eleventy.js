@@ -76,7 +76,7 @@ module.exports = function(eleventyConfig) {
   });
   
   return {
-    pathPrefix: "/challenge-club-homepage",
+    pathPrefix: "",
     dir: {
       input: ".", // プロジェクトルートを入力ディレクトリとする
       includes: "_includes", // includeファイルは_includesディレクトリに置く
