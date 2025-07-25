@@ -38,13 +38,13 @@ tags: [VR]
 - 2025年3月: 技術チャレンジ部活動報告LT会: VRプレゼン+Web会議
     - 同時開催: VR体験会＠大阪
 - 2025年1月: 新年会＠VR空間
-- 2024年9月: [Maker Faire Tokyo 2024](https://makezine.jp/event/mft2024/): VR写真集展示
+- 2024年9月: [Maker Faire Tokyo 2024](https://makezine.jp/event/makers-mft2024/m0134/): VR写真集展示
 - 2024年8月: [REALxVIRTUAL VR PHOTOGRAPHY EXHIBITION Supported by FUJIFILM](https://wps-jp.fujifilm.com/20240809_vr_photographers/): VR PHOTO WALLにVR写真展示
 - 2024年7月: 社内ERGの集い: VR動画再生+VTuberライブ会話: VR空間〜Web会議〜現地会場
 - 2024年6月: 社内ERGの集い向け 技術チャレンジ部VR活動紹介VR動画制作
 - 2024年3月: 技術チャレンジ部活動報告会: VRプレゼン(ワールドがバグる!)+Web会議
 - 2024年1月: 新年会＠VR空間
-- 2023年10月: [Maker Faire Tokyo 2023](https://makezine.jp/event/mft2023/): VTuberライブ会話展示: VR空間〜Web会議〜現地会場
+- 2023年10月: [Maker Faire Tokyo 2023](https://makezine.jp/event/makers-mft2023/m0169/): VTuberライブ会話展示: VR空間〜Web会議〜現地会場
 - 2023年6月: 第2期活動開始
 - 2023年6月: 社内ERGの集い: VRライブ中継: VR空間〜Web会議〜現地会場
 - 2023年5月: 第2期活動説明会: VR空間〜Web会議
