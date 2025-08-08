@@ -14,7 +14,7 @@ on:
       - 'docs/**'
       - 'Readme.md'
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 15 * * 0' # 毎週日曜 24:00 JST（= 15:00 UTC）
 
 jobs:
   build:
@@ -40,6 +40,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      # ビルド前にconnpassデータ生成
+      - name: Fetch connpass events
+        env:
+          CONNPASS_API_KEY: ${{ secrets.CONNPASS_API_KEY }}
+          CONNPASS_SUBDOMAIN: ${{ secrets.CONNPASS_SUBDOMAIN || 'challenge-club' }}
+        run: |
+          node _data/fetch_connpass.js || echo "WARNING: connpass fetch failed; using last _data/connpass.json if exists."
 
       - name: Build with Eleventy
         run: |
