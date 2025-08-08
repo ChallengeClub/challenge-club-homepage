@@ -3,25 +3,28 @@
 require("dotenv").config();
 
 const fs = require("node:fs/promises");
-// Node 18+ は globalThis.fetch、古い場合は node-fetch を使用
-const fetch = globalThis.fetch || require("node-fetch");
+const fetch = globalThis.fetch || require("node-fetch"); // Node 18+ はグローバルfetch
 const { JSDOM } = require("jsdom");
 
 const API_KEY = process.env.CONNPASS_API_KEY;
 const SUBDOMAIN = process.env.CONNPASS_SUBDOMAIN || "challenge-club";
 const OUT = "_data/connpass.json";
-const COUNT = 50;
+const COUNT = Number(process.env.CONNPASS_COUNT || 50);
+
+// 取得ウィンドウ（デフォルト: 今〜+30日）
+// 過去も含めたい検証時は CONNPASS_RANGE_DAYS_BACK=1 などを指定
+const DAYS_BACK  = Number(process.env.CONNPASS_RANGE_DAYS_BACK  || 0);
+const DAYS_AHEAD = Number(process.env.CONNPASS_RANGE_DAYS_AHEAD || 30);
 
 if (!API_KEY) {
   console.error("ERROR: CONNPASS_API_KEY is not set.");
   process.exit(1);
 }
 
-// JSTの今日〜+30日
+// 現在ローカル時刻を基準（JSTでも+9hしない）
 const now = new Date();
-const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000);
-const jst30 = new Date(jstNow);
-jst30.setDate(jst30.getDate() + 30);
+const windowStart = new Date(now); windowStart.setDate(windowStart.getDate() - DAYS_BACK);
+const windowEnd   = new Date(now); windowEnd.setDate(windowEnd.getDate() + DAYS_AHEAD);
 
 async function fetchOgImage(pageUrl) {
   try {
@@ -38,8 +41,7 @@ async function fetchOgImage(pageUrl) {
     const html = await res.text();
     const dom = new JSDOM(html);
     const meta = dom.window.document.querySelector('meta[property="og:image"]');
-    const content = meta?.getAttribute("content") || null;
-    return content; // 例: https://media.connpass.com/thumbs/...png
+    return meta?.getAttribute("content") || null; // 例: https://media.connpass.com/thumbs/...png
   } catch (e) {
     console.warn(`[thumbnail] Failed for ${pageUrl}: ${e.message}`);
     return null;
@@ -50,7 +52,7 @@ async function main() {
   const url = new URL("https://connpass.com/api/v2/events/");
   url.searchParams.set("subdomain", SUBDOMAIN);
   url.searchParams.set("count", String(COUNT));
-  url.searchParams.set("order", "2"); // 開催日時順
+  url.searchParams.set("order", "2"); // 開催日時順（昇順）
 
   const headers = {
     "X-API-Key": API_KEY,
@@ -59,6 +61,8 @@ async function main() {
   };
 
   console.log(`[connpass] GET ${url.toString()}`);
+  console.log(`[connpass] window ${windowStart.toISOString()} ~ ${windowEnd.toISOString()}`);
+
   const res = await fetch(url, { headers });
   if (!res.ok) throw new Error(`connpass API error: ${res.status} ${res.statusText}`);
 
@@ -68,13 +72,13 @@ async function main() {
   // 期間絞り込み＆ソート
   const list = raw
     .filter((ev) => {
-      if (!ev.started_at) return false;
-      const start = new Date(ev.started_at);
-      return start >= jstNow && start <= jst30;
+      if (!ev?.started_at) return false;
+      const start = new Date(ev.started_at); // "....+09:00" を含むISOなのでそのまま比較OK
+      return start >= windowStart && start <= windowEnd;
     })
     .sort((a, b) => new Date(a.started_at) - new Date(b.started_at));
 
-  // サムネ取得（各イベントページの og:image を参照）
+  // サムネ取得（API側の候補→なければイベントページの og:image）
   const events = [];
   for (const ev of list) {
     const base = {
@@ -87,17 +91,12 @@ async function main() {
       limit: ev.limit ?? null,
       accepted: ev.accepted ?? null,
       waiting: ev.waiting ?? null,
-      thumbnail: null,
+      thumbnail: ev.image_url || ev.thumb || null,
     };
 
-    // 将来API側に画像が来たらまずそちらを優先
-    const apiThumb = ev.image_url || ev.thumb || null;
-    if (apiThumb) {
-      base.thumbnail = apiThumb;
-    } else if (base.url) {
+    if (!base.thumbnail && base.url) {
       base.thumbnail = await fetchOgImage(base.url);
     }
-
     events.push(base);
   }
 
