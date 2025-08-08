@@ -23,6 +23,29 @@ permalink: /
   <p>そんな想いを持つメンバーが集まり、<strong>学び合い、刺激し合い、共に楽しむ──本気で遊ぶ技術者たちの「挑戦の場」</strong>です。</p>
 </section>
 
+{% if connpass and connpass.events and connpass.events.length %}
+<section class="connpass">
+  <h2>今後1か月のイベント</h2>
+  <ul>
+  {% for ev in connpass.events %}
+    <li>
+      <time datetime="{{ ev.started_at }}">
+        {{ ev.started_at | date("yyyy-MM-dd HH:mm", "Asia/Tokyo") }}
+      </time>
+      — <a href="{{ ev.url }}" target="_blank" rel="noopener">{{ ev.title }}</a>
+      {% if ev.accepted %}<span>（{{ ev.accepted }}{% if ev.limit %}/{{ ev.limit }}{% endif %}）</span>{% endif %}
+      {% if ev.place %}<span> @ {{ ev.place }}</span>{% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+{% else %}
+<section class="connpass">
+  <h2>今後1か月のイベント</h2>
+  <p>現在、対象期間のイベントはありません。</p>
+</section>
+{% endif %}
+
 <section id="news">
   <h2>ニュース&トピックス</h2>
   <div class="news-list">

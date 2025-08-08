@@ -25,3 +25,6 @@ tests/
 *.log
 *.bak
 *.tmp
+
+# 
+.env
