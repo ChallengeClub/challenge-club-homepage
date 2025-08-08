@@ -23,29 +23,6 @@ permalink: /
   <p>そんな想いを持つメンバーが集まり、<strong>学び合い、刺激し合い、共に楽しむ──本気で遊ぶ技術者たちの「挑戦の場」</strong>です。</p>
 </section>
 
-{% if connpass and connpass.events and connpass.events.length %}
-<section class="connpass">
-  <h2>今後1か月のイベント</h2>
-  <ul>
-  {% for ev in connpass.events %}
-    <li>
-      <time datetime="{{ ev.started_at }}">
-        {{ ev.started_at | date("yyyy-MM-dd HH:mm", "Asia/Tokyo") }}
-      </time>
-      — <a href="{{ ev.url }}" target="_blank" rel="noopener">{{ ev.title }}</a>
-      {% if ev.accepted %}<span>（{{ ev.accepted }}{% if ev.limit %}/{{ ev.limit }}{% endif %}）</span>{% endif %}
-      {% if ev.place %}<span> @ {{ ev.place }}</span>{% endif %}
-    </li>
-  {% endfor %}
-  </ul>
-</section>
-{% else %}
-<section class="connpass">
-  <h2>今後1か月のイベント</h2>
-  <p>現在、対象期間のイベントはありません。</p>
-</section>
-{% endif %}
-
 <section id="news">
   <h2>ニュース&トピックス</h2>
   <div class="news-list">
@@ -89,6 +66,42 @@ permalink: /
   <p style="margin-top: 1em; text-align: center;">
     <a href="{{ '/posts/' | url }}" class="more-button">もっと見る →</a>
   </p>
+</section>
+
+<section class="connpass">
+  <h2>今後のconnpassイベント</h2>
+  {% if connpass and connpass.events and connpass.events.length %}
+  <div class="news-list">
+    {% for ev in connpass.events.slice(0, 3) %}
+    <article class="news-item">
+      <div class="news-thumbnail">
+        <a href="{{ ev.url or 'https://challenge-club.connpass.com/' }}" target="_blank" rel="noopener">
+          {% set thumb = ev.thumbnail or '/images/common/default-thumbnail.png' | url %}
+          <img src="{{ thumb }}" alt="{{ ev.title }}" width="108" height="72" loading="lazy">
+        </a>
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">
+          <a href="{{ ev.url or 'https://challenge-club.connpass.com/' }}" target="_blank" rel="noopener">{{ ev.title }}</a>
+        </h3>
+        <div class="news-meta">
+          <time datetime="{{ ev.started_at }}">
+            {{ ev.started_at | date('yyyy/MM/dd HH:mm', 'Asia/Tokyo') }}
+          </time>
+          {% if ev.place %}<span class="sep">｜</span><span>{{ ev.place }}</span>{% endif %}
+          {% if ev.accepted %}<span class="sep">｜</span><span>参加 {{ ev.accepted }}{% if ev.limit %}/{{ ev.limit }}{% endif %}</span>{% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <p style="margin-top: 1em; text-align: center;">
+    <a href="https://challenge-club.connpass.com/" class="more-button" target="_blank" rel="noopener">もっと見る →</a>
+  </p>
+  {% else %}
+  <p>現在、対象期間のイベントはありません。</p>
+  {% endif %}
 </section>
 
 <section id="activities">

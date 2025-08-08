@@ -25,6 +25,7 @@ tests/
 *.log
 *.bak
 *.tmp
+_data/connpass.json
 
 # 
 .env
