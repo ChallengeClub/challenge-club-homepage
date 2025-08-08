@@ -2,14 +2,12 @@ name: Build and Commit to docs
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
     paths-ignore:
       - 'docs/**'
       - 'Readme.md'
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
     paths-ignore:
       - 'docs/**'
       - 'Readme.md'
@@ -37,19 +35,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # ビルド前にconnpassデータ生成
       - name: Fetch connpass events
         env:
           CONNPASS_API_KEY: ${{ secrets.CONNPASS_API_KEY }}
-          CONNPASS_SUBDOMAIN: ${{ secrets.CONNPASS_SUBDOMAIN || 'challenge-club' }}
+          CONNPASS_SUBDOMAIN: ${{ secrets.CONNPASS_SUBDOMAIN }} # 無ければスクリプト側で 'challenge-club'
         run: |
-          node _data/fetch_connpass.js || echo "WARNING: connpass fetch failed; using last _data/connpass.json if exists."
+          node scripts/fetch_connpass.js || echo "WARNING: connpass fetch failed; using last _data/connpass.json if exists."
 
       - name: Build with Eleventy
+        env:
+          CONNPASS_API_KEY: ${{ secrets.CONNPASS_API_KEY }}
+          CONNPASS_SUBDOMAIN: ${{ secrets.CONNPASS_SUBDOMAIN }}
         run: |
           npm install -D cross-env
           npx cross-env ELEVENTY_ENV=production npm run build

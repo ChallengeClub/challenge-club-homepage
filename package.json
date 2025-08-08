@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
-    "fetch:connpass": "node _data/fetch_connpass.js",
+    "fetch:connpass": "node scripts/fetch_connpass.js",
     "dev": "npm run fetch:connpass && npx @11ty/eleventy --serve"
   },
   "keywords": [],
