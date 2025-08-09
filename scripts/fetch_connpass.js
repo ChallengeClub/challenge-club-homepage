@@ -81,10 +81,15 @@ async function main() {
   // サムネ取得（API側の候補→なければイベントページの og:image）
   const events = [];
   for (const ev of list) {
+    const id = ev.event_id;
+    const guessedUrl = id ? `https://connpass.com/event/${id}/` : null;
+    // v2 / v1 / その他の互換キーを順に試す
+    const url = ev.event_url || ev.public_url || ev.url || guessedUrl;
+    
     const base = {
       id: ev.event_id,
       title: ev.title,
-      url: ev.event_url,
+      url, // ← ここで必ず何か入る想定に
       started_at: ev.started_at,
       ended_at: ev.ended_at,
       place: ev.place || ev.address || "",
