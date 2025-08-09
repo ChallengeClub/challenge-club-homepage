@@ -90,7 +90,8 @@ permalink: /
           </time>
           {% if ev.place %}<span class="sep">｜</span><span>{{ ev.place }}</span>{% endif %}
           {% if ev.accepted %}<span class="sep">｜</span><span>参加 {{ ev.accepted }}{% if ev.limit %}/{{ ev.limit }}{% endif %}</span>{% endif %}
-        </div>
+          {% if ev.summary %}<br><span class="news-excerpt">{{ ev.summary }}</span>{% endif %}
+        </div>        
       </div>
     </article>
     {% endfor %}

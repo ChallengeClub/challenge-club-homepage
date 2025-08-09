@@ -295,6 +295,11 @@ code {
   gap: 0.4em;
 }
 
+.news-excerpt {
+  display: block;  
+  margin-top: 0.2em; 
+}
+
 /*──────────────────────────────────────────────────────────────*/
 /* 8. Buttons */
 /*──────────────────────────────────────────────────────────────*/
@@ -595,12 +600,17 @@ footer a {
     font-size: 1rem;
   }
 
-  /* 追加：画像領域を小さくする */
+  /* 画像領域を小さくする */
   .hero-header {
     height: 20vh;
     min-height: 150px;
   }
 
+  /* スマホではニュース概要を非表示*/
+  .news-excerpt {
+    display: none; 
+  }
+  
   .card-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
