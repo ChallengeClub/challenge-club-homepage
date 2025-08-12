@@ -44,9 +44,6 @@ $ cd challenge-club-homepage
 ```bash
 # 開発用（/posts/ などのリンクが / から始まる場合はこちら）
 $ npx @11ty/eleventy --serve
-
-# 本番と同じパス（GitHub Pages の /challenge-club-homepage/ を再現）
-$ npx @11ty/eleventy --pathprefix=challenge-club-homepage
 ```
 
 ## 編集・投稿方法（コントリビューション）
