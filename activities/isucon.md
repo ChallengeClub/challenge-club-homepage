@@ -3,6 +3,7 @@ layout: base.njk
 title: ISUCON参加
 image: "/images/isucon.png"
 tags: [ISUCON, コンテスト]
+description: "Webサービスの性能改善を競うISUCONオンラインコンテスト。チームでサーバチューニングを行い、パフォーマンス向上を目指します。"
 ---
 
 ## 🚀 ISUCONとは

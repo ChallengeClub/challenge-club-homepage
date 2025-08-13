@@ -3,6 +3,7 @@ title: 挑戦！プログラミングコンテスト
 layout: base.njk
 image: "/images/programming.png"
 tags: [プログラミングコンテスト, コンテスト]
+description: "プログラミングコンテストに挑戦し、アルゴリズムと実装力を磨く活動。初心者から上級者まで楽しく切磋琢磨しています。"
 ---
 
 
