@@ -31,6 +31,8 @@ description: "VRやメタバースの体験と開発を行う活動。定例会�
 - VR空間からWeb会議やリアル会場への参加・配信
 - MakerFaireや写真展へのVR写真出品
 
+![VR活動の様子]({{ '/images/activities/vr/vr-01.png ' | url }})
+
 ### 過去のイベント
 
 - 2025年6月: VRC改変さぎょうもくもく会
