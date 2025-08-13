@@ -3,6 +3,7 @@ layout: base.njk
 title: VR活動
 image: "/images/vr.png"
 tags: [VR]
+description: "VRやメタバースの体験と開発を行う活動。定例会やオンライン勉強会を通じて最新技術の共有と開発を推進しています。"
 ---
 
 ## VR活動とは？
