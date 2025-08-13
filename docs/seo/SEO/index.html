@@ -1,0 +1,91 @@
+<h1>SEO設定ガイド</h1>
+<p>このフォルダ（<code>seo/</code>）には、サイト全体の検索エンジン最適化（SEO）に関わるファイルをまとめています。<br>
+Eleventyのテンプレートとして管理し、ビルド後はサイトルート（<code>/</code>）に配置されるように設定されています。</p>
+<hr>
+<h2>管理しているファイル</h2>
+<h3>1. robots.txt.njk</h3>
+<ul>
+<li><strong>目的</strong>：検索エンジンのクローラーに、クロール可能なページやサイトマップの場所を知らせる。</li>
+<li><strong>出力先</strong>：<code>/robots.txt</code></li>
+<li><strong>内容例</strong>：<pre><code class="language-txt">User-agent: *
+Allow: /
+
+Sitemap: https://challenge-club.org/sitemap.xml
+</code></pre>
+</li>
+<li><strong>注意点</strong>：
+<ul>
+<li>必ずサイトルートに配置される必要があります（検索エンジンは <code>https://example.com/robots.txt</code> のみ参照）。</li>
+<li>特定ページをクロールさせたくない場合は、<code>Disallow</code> を追加します。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>2. sitemap.xml.njk</h3>
+<ul>
+<li><strong>目的</strong>：サイト内の全ページURLと更新日時を一覧化し、検索エンジンにインデックスを促す。</li>
+<li><strong>出力先</strong>：<code>/sitemap.xml</code></li>
+<li><strong>生成内容</strong>：
+<ul>
+<li>各ページのURL</li>
+<li>最終更新日（<code>updated</code> または <code>dateModified</code>、なければ <code>date</code>）</li>
+<li>更新頻度（トップページは <code>weekly</code>、その他は <code>monthly</code>）</li>
+<li>優先度（トップページは <code>1.0</code>、その他は <code>0.5</code>）</li>
+</ul>
+</li>
+<li><strong>自動除外</strong>：
+<ul>
+<li>front matter に <code>robots: &quot;noindex&quot;</code> が設定されたページは除外されます。</li>
+</ul>
+</li>
+<li><strong>利点</strong>：
+<ul>
+<li>新規ページや更新を検索エンジンが素早く検知</li>
+<li>インデックス漏れ防止</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>運用ルール</h2>
+<ol>
+<li>
+<p><strong>SEO関連ファイルは <code>seo/</code> フォルダで一元管理</strong></p>
+<ul>
+<li>テンプレートはここに置き、<code>permalink</code> で出力先をルートに設定する。</li>
+</ul>
+</li>
+<li>
+<p><strong>ページのSEOメタ情報は front matter で管理</strong></p>
+<ul>
+<li>各記事や活動ページに以下を追加するのが推奨です：<pre><code class="language-yaml">description: &quot;検索結果やSNSで表示される説明文（120〜160文字）&quot;
+image: &quot;/images/posts/example-hero.png&quot;
+ogImage: &quot;/images/posts/example-og.png&quot;
+ogAlt: &quot;OGP画像の説明文&quot;
+</code></pre>
+</li>
+<li><code>description</code> は特に重要。未設定だとデフォルト値が使われます。</li>
+</ul>
+</li>
+<li>
+<p><strong>noindex の指定</strong></p>
+<ul>
+<li>インデックスさせたくないページは front matter に次を追加：<pre><code class="language-yaml">robots: &quot;noindex, nofollow&quot;
+</code></pre>
+</li>
+<li>sitemap.xml にも含まれなくなります。</li>
+</ul>
+</li>
+<li>
+<p><strong>更新日管理</strong></p>
+<ul>
+<li>記事更新時は <code>updated</code> または <code>dateModified</code> を追加すると sitemap.xml の <code>lastmod</code> に反映されます。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>関連ファイル</h2>
+<ul>
+<li><code>_includes/base.njk</code>：SEOメタタグ、OGP/Twitterカード、構造化データを出力</li>
+<li><code>_data/site.json</code>：サイト名・URL・デフォルトdescription・OGP画像などの一元管理</li>
+</ul>
+<hr>

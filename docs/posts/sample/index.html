@@ -2,24 +2,105 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="技術チャレンジ部は、成長の場の相互提供をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
-  <meta name="keywords" content="技術チャレンジ部, 技術コミュニティ, エンジニア, ハッカソン, CTF, ISUCON, VR, 自動運転, connpass">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="技術チャレンジ部 | 成長と挑戦のコミュニティ">
-  <meta property="og:description" content="社内外300名以上が参加する、成長と挑戦の技術コミュニティ">
-  <meta property="og:image" content="/images/common/ogp.png">
-  <meta property="og:url" content="https://challenge-club.org">
-  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+  
+
+  <title>サンプルニュース | 技術チャレンジ部</title>
+  <link rel="canonical" href="https://challenge-club.org/posts/sample/">
+
+  
+  
+
+  <meta name="description" content="このページはニュース記事の書き方サンプルです。新しいお知らせや活動報告を投稿する際の参考にしてください。">
+
+  
+  
+    
+  
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="技術チャレンジ部">
+  <meta property="og:title" content="サンプルニュース">
+  <meta property="og:description" content="このページはニュース記事の書き方サンプルです。新しいお知らせや活動報告を投稿する際の参考にしてください。">
+  <meta property="og:url" content="https://challenge-club.org/posts/sample/">
+  <meta property="og:image" content="https://challenge-club.org/images/posts/2025-06-26-sample.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="サンプルニュース">
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="技術チャレンジ部">
-  <meta name="twitter:description" content="エンジニアによる本気の遊び場、技術チャレンジ部の公式サイト">
-  <meta name="twitter:image" content="/images/common/ogp.png">
-  <title>サンプルニュース</title>
-  <link rel="stylesheet" href="/styles/style.css">
-  <!-- ファビコン設定 -->
+  <meta name="twitter:title" content="サンプルニュース">
+  <meta name="twitter:description" content="このページはニュース記事の書き方サンプルです。新しいお知らせや活動報告を投稿する際の参考にしてください。">
+  <meta name="twitter:image" content="https://challenge-club.org/images/posts/2025-06-26-sample.png">
+
   <link rel="icon" type="image/png" href="/images/common/favicon.png">
+  <link rel="stylesheet" href="/styles/style.css">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"技術チャレンジ部",
+    "url":"https://challenge-club.org",
+    "logo":"/images/common/logo.png",
+    "sameAs":["https://challenge-club.connpass.com/","https://github.com/ChallengeClub/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://challenge-club.org",
+    "name":"技術チャレンジ部",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://challenge-club.org/search?q={query}",
+      "query-input":"required name=query"
+    }
+  }
+  </script>
+
+  
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"サンプルニュース",
+    "description":"このページはニュース記事の書き方サンプルです。新しいお知らせや活動報告を投稿する際の参考にしてください。",
+    "image":"https://challenge-club.org/images/posts/2025-06-26-sample.png",
+    "datePublished":"2025-06-26",
+    "dateModified":"2025-06-26",
+    "author":{"@type":"Organization","name":"技術チャレンジ部"},
+    "publisher":{
+      "@type":"Organization",
+      "name":"技術チャレンジ部",
+      "logo":{"@type":"ImageObject","url":"https://challenge-club.org/images/common/logo.png"}
+    },
+    "mainEntityOfPage":"https://challenge-club.org/posts/sample/"
+  }
+  </script>
+  
 </head>
 <body>
 
@@ -61,7 +142,13 @@
     });
   });
 </script>
+
   
+  <section class="activity-header" style="background: url('/images/posts/2025-06-26-sample.png') center/cover no-repeat;">
+    <h1>サンプルニュース</h1>
+  </section>
+  
+
   <main>
     <section>
       <h1>サンプルページ</h1>
@@ -71,17 +158,26 @@
 <h2>ニュースページの書き方（テンプレート）</h2>
 <p>ニュース記事を書く際は、ファイルを <code>posts/</code> フォルダに <code>.md</code> 形式で追加し、以下のような <strong>YAMLフロントマター</strong> をページ冒頭に記述してください：</p>
 <pre><code class="language-js">title: ニュースタイトル（例：「○○イベントに参加しました」）
-layout: base.njk
+description: &quot;記事の要約文。検索結果やSNSで表示されます。120〜160文字程度が目安。&quot;
 date: 2025-06-26
 permalink: &quot;/posts/news2025-06-26/&quot;
+thumbnail: /images/posts/2025-06-26-sample.png
 tags: [ニュース, 活動報告]
+image: &quot;/images/posts/news2025-06-26/hero.png&quot;
+ogImage: &quot;/images/posts/news2025-06-26/og.png&quot;
+ogAlt: &quot;SNSなどで表示されるOGP画像の代替テキスト&quot;
 </code></pre>
 <ul>
 <li><code>title</code>: ページタイトル（一覧にも表示されます）</li>
+<li><code>description</code>: 検索結果やSNSカードに表示される説明文。120〜160文字を目安に要点をまとめる</li>
 <li><code>layout</code>: 基本的に <code>base.njk</code> で統一</li>
 <li><code>date</code>: 投稿日。ニュース一覧はこの順で並びます</li>
 <li><code>permalink</code>: 公開されるURL（<code>/posts/○○/</code>形式）</li>
+<li><code>thumbnail</code>: 記事一覧やカード表示など、一覧ページで表示するための小サイズ画像。指定がない場合は <code>image</code> または本文中の最初の画像が使われます</li>
 <li><code>tags</code>: タグ</li>
+<li><code>image</code>: 記事冒頭のヒーロー画像として使用され、OGP画像にも適用</li>
+<li><code>ogImage</code>: OGP用に <code>image</code> と別の画像を使いたい場合に指定。なければ <code>image</code> が使用されます</li>
+<li><code>ogAlt</code>: OGP画像の代替テキスト（アクセシビリティとSEO補助）</li>
 </ul>
 <h3>タグ付けルール</h3>
 <ul>
@@ -99,12 +195,15 @@ tags: [ニュース, 活動報告]
 <p>Markdown形式で自由に記述可能です：</p>
 <pre><code class="language-markdown">---
 title: 〇〇イベントに参加しました
+description: &quot;〇〇イベントに参加したレポート記事です。&quot;
 layout: base.njk
 date: 2025-06-20
 permalink: &quot;/posts/event2025-06-20/&quot;
 thumbnail: /images/posts/2025-06-26-sample.png
+image: &quot;/images/posts/event2025-06-20/hero.png&quot;
+ogImage: &quot;/images/posts/event2025-06-20/og.png&quot;
+ogAlt: &quot;〇〇イベント会場の様子&quot;
 ---
-
 
 技術チャレンジ部は、2025年6月に開催された「〇〇イベント」に出展しました。  
 多数の来場者と交流し、メンバーの作品も高く評価されました。
@@ -139,7 +238,7 @@ thumbnail: /images/posts/2025-06-26-sample.png
 </ul>
 <p>ご不明点があれば、他の運用者と共有するか、リポジトリのREADMEやWikiに追記してください。</p>
 
-      
+
       
       <p class="tags">
         タグ:
@@ -155,6 +254,5 @@ thumbnail: /images/posts/2025-06-26-sample.png
   <p style="margin: 0; font-size: 1.5rem; line-height: 2;">気軽なチャレンジが、<br>世界を豊かにする。</p>
   <p style="font-size: 0.75rem; margin-top: 2rem; font-weight: normal;">Copyright © 2025 技術チャレンジ部. All Rights Reserved.</p>
 </footer>
-
 </body>
 </html>

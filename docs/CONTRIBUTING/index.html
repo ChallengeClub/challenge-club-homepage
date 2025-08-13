@@ -123,11 +123,25 @@ git merge main
 <h3>Frontmatter 記述例</h3>
 <pre><code class="language-markdown">---
 title: &quot;記事タイトル&quot;
+description: &quot;記事の要約文。検索結果やSNSで表示されます。120〜160文字程度が目安。&quot;
 date: 2025-07-05
 tags: [ニュース, CTF]
+image: &quot;/images/posts/sample/hero.png&quot;    # 記事のヒーロー画像＆OGP画像
+ogImage: &quot;/images/posts/sample/og.png&quot;    # OGP用に別画像を使う場合のみ
+ogAlt: &quot;SNSなどで表示されるOGP画像の代替テキスト&quot;
 layout: base.njk
 ---
 </code></pre>
+<h3>Frontmatter 項目の説明</h3>
+<ul>
+<li><strong>title</strong>：記事タイトル。短く明確に。</li>
+<li><strong>description</strong>：検索結果やSNSカードに表示される説明文。120〜160文字を目安に要点をまとめる。</li>
+<li><strong>date</strong>：記事公開日。<code>YYYY-MM-DD</code> 形式。</li>
+<li><strong>tags</strong>：記事の分類用タグ。配列形式で記述。</li>
+<li><strong>image</strong>：記事冒頭のヒーロー画像として使用され、同時にOGP画像にも適用されます。</li>
+<li><strong>ogImage</strong>：OGP用に <code>image</code> と別の画像を使いたい場合に指定。なければ <code>image</code> が使用されます。</li>
+<li><strong>ogAlt</strong>：OGP画像の代替テキスト（アクセシビリティとSEO補助）。</li>
+</ul>
 <h3>タグ付けルール</h3>
 <ul>
 <li><code>tags: [タグ1, タグ2, ...]</code> の形式で1〜3個のタグをつけてください。タグの上限はありません。</li>
