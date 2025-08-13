@@ -5,6 +5,10 @@ date: 2025-06-26
 tags: [ニュース]
 permalink: "/posts/sample/"
 thumbnail: /images/posts/2025-06-26-sample.png
+description: "このページはニュース記事の書き方サンプルです。新しいお知らせや活動報告を投稿する際の参考にしてください。"
+image: "/images/posts/2025-06-26-sample.png"
+ogImage: "/images/posts/2025-06-26-sample.png"
+ogAlt: "ニュース記事サンプルのOGP画像"
 ---
 
 # サンプルページ
@@ -20,17 +24,26 @@ thumbnail: /images/posts/2025-06-26-sample.png
 
 ```js
 title: ニュースタイトル（例：「○○イベントに参加しました」）
-layout: base.njk
+description: "記事の要約文。検索結果やSNSで表示されます。120〜160文字程度が目安。"
 date: 2025-06-26
 permalink: "/posts/news2025-06-26/"
+thumbnail: /images/posts/2025-06-26-sample.png
 tags: [ニュース, 活動報告]
+image: "/images/posts/news2025-06-26/hero.png"
+ogImage: "/images/posts/news2025-06-26/og.png"
+ogAlt: "SNSなどで表示されるOGP画像の代替テキスト"
 ```
 
 - `title`: ページタイトル（一覧にも表示されます）
+- `description`: 検索結果やSNSカードに表示される説明文。120〜160文字を目安に要点をまとめる
 - `layout`: 基本的に `base.njk` で統一
 - `date`: 投稿日。ニュース一覧はこの順で並びます
 - `permalink`: 公開されるURL（`/posts/○○/`形式）
+- `thumbnail`: 記事一覧やカード表示など、一覧ページで表示するための小サイズ画像。指定がない場合は `image` または本文中の最初の画像が使われます
 - `tags`: タグ
+- `image`: 記事冒頭のヒーロー画像として使用され、OGP画像にも適用
+- `ogImage`: OGP用に `image` と別の画像を使いたい場合に指定。なければ `image` が使用されます
+- `ogAlt`: OGP画像の代替テキスト（アクセシビリティとSEO補助）
 
 ### タグ付けルール
 
@@ -52,12 +65,15 @@ Markdown形式で自由に記述可能です：
 ```markdown
 ---
 title: 〇〇イベントに参加しました
+description: "〇〇イベントに参加したレポート記事です。"
 layout: base.njk
 date: 2025-06-20
 permalink: "/posts/event2025-06-20/"
 thumbnail: /images/posts/2025-06-26-sample.png
+image: "/images/posts/event2025-06-20/hero.png"
+ogImage: "/images/posts/event2025-06-20/og.png"
+ogAlt: "〇〇イベント会場の様子"
 ---
-
 
 技術チャレンジ部は、2025年6月に開催された「〇〇イベント」に出展しました。  
 多数の来場者と交流し、メンバーの作品も高く評価されました。

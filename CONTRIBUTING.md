@@ -130,11 +130,25 @@ git push origin --delete feature/add-activity-ctf
 ```markdown
 ---
 title: "記事タイトル"
+description: "記事の要約文。検索結果やSNSで表示されます。120〜160文字程度が目安。"
 date: 2025-07-05
 tags: [ニュース, CTF]
+image: "/images/posts/sample/hero.png"    # 記事のヒーロー画像＆OGP画像
+ogImage: "/images/posts/sample/og.png"    # OGP用に別画像を使う場合のみ
+ogAlt: "SNSなどで表示されるOGP画像の代替テキスト"
 layout: base.njk
 ---
 ```
+
+### Frontmatter 項目の説明
+
+- **title**：記事タイトル。短く明確に。
+- **description**：検索結果やSNSカードに表示される説明文。120〜160文字を目安に要点をまとめる。
+- **date**：記事公開日。`YYYY-MM-DD` 形式。
+- **tags**：記事の分類用タグ。配列形式で記述。
+- **image**：記事冒頭のヒーロー画像として使用され、同時にOGP画像にも適用されます。
+- **ogImage**：OGP用に `image` と別の画像を使いたい場合に指定。なければ `image` が使用されます。
+- **ogAlt**：OGP画像の代替テキスト（アクセシビリティとSEO補助）。
 
 ### タグ付けルール
 
