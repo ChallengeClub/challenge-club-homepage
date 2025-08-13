@@ -39,10 +39,6 @@ npm install
 ```bash
 npx @11ty/eleventy --serve
 ```
-### GitHub Pages 相当のビルド確認
-```bash
-npx @11ty/eleventy --pathprefix=challenge-club-homepage
-```
 
 ---
 
