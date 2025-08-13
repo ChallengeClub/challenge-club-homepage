@@ -2,37 +2,132 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="技術チャレンジ部は、成長の場の相互提供をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
-  <meta name="keywords" content="技術チャレンジ部, 技術コミュニティ, エンジニア, ハッカソン, CTF, ISUCON, VR, 自動運転, connpass">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="技術チャレンジ部 | 成長と挑戦のコミュニティ">
-  <meta property="og:description" content="社内外300名以上が参加する、成長と挑戦の技術コミュニティ">
-  <meta property="og:image" content="{{ '/images/common/ogp.png' | url }}">
-  <meta property="og:url" content="https://challenge-club.org">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="技術チャレンジ部">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {# --- タイトルの決定（三項演算子を使わない） --- #}
+  {% if title and (title | length) > 0 %}
+    {% set pageTitle = title ~ ' | ' ~ site.name %}
+  {% else %}
+    {% set pageTitle = site.defaultTitle %}
+  {% endif %}
+
+  {# --- ディスクリプション（front matter優先） --- #}
+  {% if description and (description | length) > 0 %}
+    {% set desc = description %}
+  {% else %}
+    {% set desc = site.defaultDescription %}
+  {% endif %}
+
+  {# --- OGP画像（image → ogImage → デフォルトの優先順） --- #}
+  {% if image %}
+    {% set ogImagePath = image %}
+  {% elseif ogImage %}
+    {% set ogImagePath = ogImage %}
+  {% else %}
+    {% set ogImagePath = site.defaultOg %}
+  {% endif %}
+
+  {# --- 絶対URLの作成（カスタムフィルタ無しで確実に） --- #}
+  {% set pageUrl = site.url ~ (page.url | url) %}
+  {% set ogImage = site.url ~ (ogImagePath | url) %}
+
+  <title>{{ pageTitle }}</title>
+  <link rel="canonical" href="{{ pageUrl }}">
+
+  {# robots は必要な時だけ front matter で渡す #}
+  {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+
+  <meta name="description" content="{{ desc | replace('\n',' ') }}">
+
+  {# --- OGP/Twitter --- #}
+  {% if page.date and title %}
+    {% set ogType = 'article' %}
+  {% else %}
+    {% set ogType = 'website' %}
+  {% endif %}
+
+  <meta property="og:type" content="{{ ogType }}">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ pageUrl }}">
+  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ title or site.name }}">
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="技術チャレンジ部">
-  <meta name="twitter:description" content="エンジニアによる本気の遊び場、技術チャレンジ部の公式サイト">
-  <meta name="twitter:image" content="{{ '/images/common/ogp.png' | url }}">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="{{ '/styles/style.css' | url }}">
-  <!-- ファビコン設定 -->
+  <meta name="twitter:title" content="{{ title or site.name }}">
+  <meta name="twitter:description" content="{{ desc }}">
+  <meta name="twitter:image" content="{{ ogImage }}">
+
   <link rel="icon" type="image/png" href="{{ '/images/common/favicon.png' | url }}">
+  <link rel="stylesheet" href="{{ '/styles/style.css' | url }}">
+
+  {# --- 構造化データ（Organization / Website）--- #}
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"{{ site.name }}",
+    "url":"{{ site.url }}",
+    "logo":"{{ (site.logo | url) | replace('^//','/') | trim }}",
+    "sameAs":[{% for s in site.sameAs %}"{{ s }}"{% if not loop.last %},{% endif %}{% endfor %}]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"{{ site.url }}",
+    "name":"{{ site.name }}",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"{{ site.url }}/search?q={query}",
+      "query-input":"required name=query"
+    }
+  }
+  </script>
+
+  {% if page.date and title %}
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"{{ title }}",
+    "description":"{{ desc | replace('\n',' ') }}",
+    "image":"{{ ogImage }}",
+    "datePublished":"{{ page.date | date('yyyy-MM-dd') }}",
+    "dateModified":"{{ page.date | date('yyyy-MM-dd') }}",
+    "author":{"@type":"Organization","name":"{{ site.name }}"},
+    "publisher":{
+      "@type":"Organization",
+      "name":"{{ site.name }}",
+      "logo":{"@type":"ImageObject","url":"{{ site.url ~ (site.logo | url) }}"}
+    },
+    "mainEntityOfPage":"{{ pageUrl }}"
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
 
   {% include "header.njk" %}
+
   {% if image %}
   <section class="activity-header" style="background: url('{{ image | url }}') center/cover no-repeat;">
     <h1>{{ title }}</h1>
   </section>
+  {% elseif title %}
+  <h1 class="visually-hidden">{{ title }}</h1>
   {% endif %}
+
   <main>
     <section>
       {{ content | safe }}
-      {# タグ表示（タグがあるページのみ） #}
+
       {% if tags and tags.length %}
       <p class="tags">
         タグ:
@@ -45,6 +140,5 @@
   </main>
 
   {% include "footer.njk" %}
-
 </body>
 </html>

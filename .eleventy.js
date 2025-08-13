@@ -75,6 +75,11 @@ module.exports = function(eleventyConfig) {
     }) || "no-tag";
   });
   
+  eleventyConfig.addFilter("absoluteUrl", (path, base) => {
+    try { return new URL(path, base).toString(); }
+    catch { return path; }
+  });
+
   return {
     pathPrefix: "",
     dir: {
