@@ -1,0 +1,205 @@
+---
+title: 記事作成（エディタ）
+layout: base.njk
+permalink: /admin/
+eleventyExcludeFromCollections: true
+robots: noindex
+---
+
+{% raw %}
+<style>
+  /* レイアウト幅・見た目 */
+  #cc-editor{max-width:1200px;margin:0 auto;}
+  @media(min-width:1440px){#cc-editor{max-width:1280px;}}
+  #cc-editor .toolbar{
+    display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;
+    border:1px solid #d1d5db;background:#111318;border-radius:.75rem;margin:0 0 1rem 0;
+  }
+  #cc-editor .toolbar h2{font-size:14px;margin:0;color:#e5e7eb;font-weight:600;}
+  #cc-editor .spacer{flex:1;}
+  #cc-editor button,#cc-editor select{
+    background:#1a1d24;color:#fff;border:1px solid #374151;border-radius:.5rem;padding:.4rem .6rem;
+  }
+  #cc-editor button:hover{filter:brightness(1.1);cursor:pointer}
+
+  /* タブUI（GitHub風） */
+  #cc-editor .card{border:1px solid #e5e7eb;border-radius:.75rem;overflow:hidden;}
+  #cc-editor .tabs{display:flex;gap:.25rem;padding:.25rem;background:#0c0e13;border-bottom:1px solid #e5e7eb;}
+  #cc-editor .tab-btn{border:1px solid transparent;background:transparent;color:#a3a3a3;
+    padding:.45rem .75rem;border-radius:.5rem;font-weight:600;font-size:.9rem;}
+  #cc-editor .tab-btn[aria-selected="true"]{color:#fff;background:#1a1d24;border-color:#20242f;}
+  #cc-editor .panels{background:#0c0f15;}
+  #cc-editor .panel{display:none}
+  #cc-editor .panel[aria-hidden="false"]{display:block}
+  #cc-editor .pane-header{font-size:12px;padding:.4rem .7rem;color:#9ca3af;border-bottom:1px solid #e5e7eb;background:#0c0e13;}
+  #cc-editor .editor,#cc-editor .preview{height:75vh;overflow:auto}
+  /* ご要望: プレビュー背景は白 */
+  #cc-editor .preview{padding:1rem 1.25rem;background:#fff;color:#111;}
+  /* サイトのmarkdown-bodyを再利用しつつ少し読みやすく */
+  #cc-editor .markdown-body code{background:#f6f8fa;padding:.15rem .35rem;border:1px solid #e5e7eb;border-radius:.35rem;}
+</style>
+
+<section id="cc-editor">
+  <div class="toolbar">
+    <h2>Article Editor (MVP)</h2>
+    <span class="status" id="status">loaded</span>
+    <div class="spacer"></div>
+    <select id="templateSelect" title="テンプレート">
+      <option value="">テンプレートを選択…</option>
+      <option value="post">ブログ投稿（posts）</option>
+      <option value="activity">活動レポ（activities）</option>
+      <option value="news">お知らせ（news）</option>
+    </select>
+    <button id="applyTemplate">挿入</button>
+    <button id="downloadMd">.md保存</button>
+    <button id="clearLocal">ローカル削除</button>
+  </div>
+
+  <div class="card" role="region" aria-label="Editor">
+    <div class="tabs" role="tablist" aria-label="Write/Preview">
+      <button class="tab-btn" role="tab" id="tab-write" aria-controls="panel-write" aria-selected="true">Write</button>
+      <button class="tab-btn" role="tab" id="tab-preview" aria-controls="panel-preview" aria-selected="false">Preview</button>
+    </div>
+    <div class="panels">
+      <section class="panel" id="panel-write" role="tabpanel" aria-labelledby="tab-write" aria-hidden="false">
+        <div class="pane-header">Markdown / Front Matter</div>
+        <div id="editor" class="editor"></div>
+      </section>
+      <section class="panel" id="panel-preview" role="tabpanel" aria-labelledby="tab-preview" aria-hidden="true">
+        <div class="pane-header">Preview</div>
+        <div id="preview" class="preview">
+          <!-- YAMLで指定されたヘッダー画像（image / hero_image）をここへ -->
+          <div id="headerPreview"></div>
+          <div class="markdown-body" id="md"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+<!-- YAMLを堅牢にパース -->
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+<script type="module">
+  import {EditorState} from "https://esm.sh/@codemirror/state@6";
+  import {EditorView, keymap, lineNumbers, highlightActiveLine} from "https://esm.sh/@codemirror/view@6";
+  import {defaultKeymap, history, historyKeymap} from "https://esm.sh/@codemirror/commands@6";
+  import {markdown} from "https://esm.sh/@codemirror/lang-markdown@6";
+  import {oneDark} from "https://esm.sh/@codemirror/theme-one-dark@6";
+
+  const KEY = "cc_editor_content_v1";
+
+  // Markdown-it（YAMLは自前で除去 → js-yamlで解析）
+  const md = window.markdownit({
+    html:true, linkify:true, typographer:true,
+    highlight:(str)=>{ try { return window.hljs.highlightAuto(str).value; } catch { return ""; } }
+  });
+
+  // テンプレ
+  const today = new Date().toISOString().slice(0,10);
+  const templates = {
+    post: `---\ntitle: "タイトル"\ndate: "${today}"\nslug: "my-article"\ntags: ["ニュース"]\nsummary: "リード文（120字目安）"\ndraft: true\nauthor: "kiws"\nimage: "/images/common/ogp_default.jpg"\n---\n\n# タイトル\n\nここに本文を書きます。\n\n## セクション\n- 箇条書き\n- 箇条書き\n`,
+    activity: `---\ntitle: "イベント名"\ndate: "${today}"\nslug: "event-yyyymmdd"\ntags: ["活動報告"]\nsummary: "イベントの概要を短く"\ndraft: true\nhero_image: "/images/common/ogp_default.jpg"\n---\n\n# 活動レポ\n\n- 日時:\n- 場所:\n- 参加者:\n\n## ハイライト\n1. \n2. \n`,
+    news: `---\ntitle: "お知らせタイトル"\ndate: "${today}"\nslug: "notice-yyyymmdd"\ntags: ["お知らせ"]\nsummary: "お知らせの要点"\ndraft: true\nimage: "/images/common/ogp_default.jpg"\n---\n\n# お知らせ\n\n本文。\n`
+  };
+
+  // YAML除去＋パース → 本文レンダリング（YAMLは表示しない）
+  function renderWithHeader(doc){
+    const headerEl = document.getElementById("headerPreview");
+    const mdEl = document.getElementById("md");
+
+    let body = doc;
+    let fm = {};
+    const m = doc.match(/^---\n([\s\S]*?)\n---\n?/); // 先頭のfront matterだけ対象
+    if(m){
+      try { fm = jsyaml.load(m[1]) || {}; } catch(_) { fm = {}; }
+      body = doc.slice(m[0].length);
+    }
+
+    headerEl.innerHTML = "";
+    const hero = fm.image || fm.hero_image;
+    const title = fm.title || "";
+    if(hero){
+      headerEl.innerHTML =
+        `<figure style="margin:0 0 1rem 0">
+           <img src="${hero}" alt="${String(title).replaceAll('"','&quot;')}"
+                style="width:100%;height:auto;border-radius:.5rem;"/>
+         </figure>`;
+    }
+    mdEl.innerHTML = md.render(body);
+  }
+
+  // 初期化
+  const startDoc = localStorage.getItem(KEY) || templates.post;
+  const state = EditorState.create({
+    doc: startDoc,
+    extensions: [
+      lineNumbers(), highlightActiveLine(), history(),
+      keymap.of([...defaultKeymap, ...historyKeymap]),
+      markdown(), oneDark,
+      EditorView.updateListener.of(v=>{
+        const text = v.state.doc.toString();
+        localStorage.setItem(KEY, text);
+        // プレビューは常に最新へ（Writeタブ時も更新してOK）
+        renderWithHeader(text);
+        document.getElementById("status").textContent = "saved (local)";
+      })
+    ]
+  });
+  const view = new EditorView({ state, parent: document.getElementById("editor") });
+  renderWithHeader(startDoc);
+
+  // ボタン（クリックで確実に反応するように素のonclickを使用）
+  document.getElementById("applyTemplate").onclick = ()=>{
+    const sel = document.getElementById("templateSelect").value;
+    if(!sel || !templates[sel]) return;
+    const content = templates[sel];
+    view.dispatch({ changes:{ from:0, to:view.state.doc.length, insert:content }});
+    renderWithHeader(content);
+    document.getElementById("status").textContent = "template inserted";
+  };
+
+  document.getElementById("downloadMd").onclick = ()=>{
+    const blob = new Blob([view.state.doc.toString()], {type:"text/markdown;charset=utf-8"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "article.md";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  document.getElementById("clearLocal").onclick = ()=>{
+    localStorage.removeItem(KEY);
+    document.getElementById("status").textContent = "local cleared";
+  };
+
+  // タブ切り替え
+  const tabWrite = document.getElementById("tab-write");
+  const tabPreview = document.getElementById("tab-preview");
+  const panelWrite = document.getElementById("panel-write");
+  const panelPreview = document.getElementById("panel-preview");
+
+  function activate(which){
+    const isWrite = which === "write";
+    tabWrite.setAttribute("aria-selected", String(isWrite));
+    tabPreview.setAttribute("aria-selected", String(!isWrite));
+    panelWrite.setAttribute("aria-hidden", String(!isWrite));
+    panelPreview.setAttribute("aria-hidden", String(isWrite));
+    if(!isWrite){ renderWithHeader(view.state.doc.toString()); }
+  }
+
+  tabWrite.onclick = ()=>activate("write");
+  tabPreview.onclick = ()=>activate("preview");
+
+  // ショートカット: Ctrl/Cmd+\ で切替（ここが構文エラーだと全JSが止まるので厳密に）
+  window.addEventListener("keydown", (e)=>{
+    if ((e.ctrlKey || e.metaKey) && (e.key === "\\" || e.code === "Backslash")) {
+      e.preventDefault();
+      activate(tabWrite.getAttribute("aria-selected") === "true" ? "preview" : "write");
+    }
+  });
+</script>
+{% endraw %}
