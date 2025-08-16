@@ -86,7 +86,7 @@ permalink: /
         </h3>
         <div class="news-meta">
           <time datetime="{{ ev.started_at }}">
-            {{ ev.started_at | date('yyyy/MM/dd HH:mm', 'Asia/Tokyo') }}
+            {{ ev.started_at | fmtJST('yyyy/MM/dd HH:mm') }}
           </time>
           {% if ev.place %}<span class="sep">｜</span><span>{{ ev.place }}</span>{% endif %}
           {% if ev.accepted %}<span class="sep">｜</span><span>参加 {{ ev.accepted }}{% if ev.limit %}/{{ ev.limit }}{% endif %}</span>{% endif %}

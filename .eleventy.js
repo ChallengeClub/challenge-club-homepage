@@ -1,5 +1,6 @@
-const isProduction = process.env.ELEVENTY_ENV === "production";
+const slugify = require("slugify");
 const { JSDOM } = require("jsdom");
+const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
@@ -20,9 +21,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("activities", function(collection) {
     return collection.getFilteredByGlob("./activities/*.md");
   });
-  
-  // 日付フォーマット用フィルターをNunjucksに追加
-  eleventyConfig.addFilter("date", (dateObj, formatStr) => {
+
+  // 日付フォーマット用フィルター
+  function formatDate(dateObj, formatStr) {
     const dt = new Date(dateObj);
     const map = {
       yyyy: dt.getFullYear(),
@@ -36,20 +37,26 @@ module.exports = function(eleventyConfig) {
       result = result.replace(token, map[token]);
     }
     return result;
-  });
+  }
 
-  // フィルター追加
-  eleventyConfig.addFilter("getFirstImageSrc", (content) => {
+  // ISO文字列(+09:00付き)をJSTで整形するフィルター
+  function formatJST(iso, fmt = "yyyy/MM/dd HH:mm") {
+    if (!iso) return "";
+    return DateTime.fromISO(iso, { setZone: true })
+      .setZone("Asia/Tokyo")
+      .toFormat(fmt);
+  }
+
+  // HTMLコンテンツから最初の画像srcを取得するフィルター
+  function getFirstImageSrc(content) {
     if (!content) return null;
     const dom = new JSDOM(content);
     const img = dom.window.document.querySelector("img");
     return img ? img.getAttribute("src") : null;
-  });
+  }
 
-  const slugify = require("slugify");
-
-  // タグ別ページ生成のためのコレクション
-  eleventyConfig.addCollection("tagList", function(collection) {
+  // タグリストコレクション
+  function getTagList(collection) {
     const tagsSet = new Set();
     collection.getAll().forEach((item) => {
       const tags = item.data.tags;
@@ -62,10 +69,10 @@ module.exports = function(eleventyConfig) {
       }
     });
     return [...tagsSet];
-  });
+  }
 
-  // タグ名でフィルターするカスタムフィルター
-  eleventyConfig.addFilter("safeSlug", function(input) {
+  // タグ名を安全なスラッグに変換するフィルター
+  function safeSlug(input) {
     if (!input) return "no-tag";
     return slugify(input, {
       replacement: "-",     // スペースなどを - に変換
@@ -73,12 +80,21 @@ module.exports = function(eleventyConfig) {
       strict: true,         // 記号除去
       locale: "ja"          // 日本語対応（ただし基本はローマ字化されない）
     }) || "no-tag";
-  });
-  
-  eleventyConfig.addFilter("absoluteUrl", (path, base) => {
+  }
+
+  // 絶対URLを生成するフィルター
+  function absoluteUrl(path, base) {
     try { return new URL(path, base).toString(); }
     catch { return path; }
-  });
+  }
+
+  // フィルターとコレクションの登録
+  eleventyConfig.addFilter("date", formatDate);
+  eleventyConfig.addNunjucksFilter("fmtJST", formatJST);
+  eleventyConfig.addFilter("getFirstImageSrc", getFirstImageSrc);
+  eleventyConfig.addCollection("tagList", getTagList);
+  eleventyConfig.addFilter("safeSlug", safeSlug);
+  eleventyConfig.addFilter("absoluteUrl", absoluteUrl);
 
   return {
     pathPrefix: "",
