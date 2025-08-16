@@ -1,0 +1,147 @@
+/* admin/styles/editor.css */
+/* ===== 基本レイアウト（他ページと同じ中央寄せ・適度な最大幅） ===== */
+#cc-editor {
+  --page-max: 1120px;
+  --border: #d1d5db;
+  --panel-bg: #111318;
+  --muted: #9ca3af;
+  --btn-border: #374151;
+  --btn-bg: #1a1d24;
+  --tab-active: #1a1d24;
+}
+#cc-editor .toolbar,
+#cc-editor .editor-shell {
+  width: min(100%, var(--page-max));
+  margin: 0 auto 1rem;
+}
+
+/* ===== ツールバー ===== */
+#cc-editor .toolbar {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  border-radius: .75rem;
+}
+#cc-editor .toolbar h2 {
+  font-size: 14px;
+  margin: 0;
+  color: #e5e7eb;
+  font-weight: 600;
+}
+#cc-editor .spacer { flex: 1; }
+#cc-editor button,
+#cc-editor select {
+  background: var(--btn-bg);
+  color: #fff;
+  border: 1px solid var(--btn-border);
+  border-radius: .5rem;
+  padding: .4rem .6rem;
+}
+#cc-editor button:hover { filter: brightness(1.08); border-color: #555; }
+
+/* ===== タブ（GitHub風） ===== */
+#cc-editor .editor-shell {
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  overflow: hidden;
+  width: 100%;
+}
+#cc-editor .tabs {
+  display: flex;
+  gap: .25rem;
+  padding: .25rem;
+  background: #0c0e13;
+  border-bottom: 1px solid var(--border);
+}
+#cc-editor .tab-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #a3a3a3;
+  padding: .45rem .75rem;
+  border-radius: .5rem;
+  font-weight: 600;
+  font-size: .9rem;
+}
+#cc-editor .tab-btn[aria-selected="true"] {
+  color: #fff;
+  background: var(--tab-active);
+  border-color: #20242f;
+}
+#cc-editor .tab-btn:hover { background: #1f2937; color: #fff; }
+
+/* タブのパネル切り替え */
+#cc-editor .panel { display: none; }
+#cc-editor .panel[aria-hidden="false"] { display: block; }
+
+/* ===== エディタ／プレビュー領域 ===== */
+#cc-editor .pane-header {
+  font-size: 12px;
+  padding: .4rem .7rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: #0c0e13;
+}
+#cc-editor .editor,
+#cc-editor .preview {
+  min-height: 75vh;
+  overflow: auto;
+  width: 100%;
+}
+
+/* プレビューは白背景（サイト本文に近い見た目） */
+#cc-editor .preview {
+  padding: 2rem;
+  background: #fff;
+  color: #111;
+}
+#cc-editor .markdown-body { color: inherit; }
+#cc-editor .markdown-body code {
+  background: #f6f8fa;
+  padding: .15rem .35rem;
+  border: 1px solid #e5e7eb;
+  border-radius: .35rem;
+}
+
+/* ===== ホバー無効化（エディタ領域だけ） ===== */
+#cc-editor .editor,
+#cc-editor .preview,
+#cc-editor .pane-header,
+#cc-editor .editor-shell {
+  transition: none;
+}
+#cc-editor .editor:hover,
+#cc-editor .preview:hover,
+#cc-editor .pane-header:hover,
+#cc-editor .editor-shell:hover {
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+  background-color: inherit !important;
+  border-color: inherit !important;
+}
+
+/* ===== ちょいレスポンシブ ===== */
+@media (min-width: 1280px) {
+  #cc-editor { --page-max: 1200px; }
+}
+
+/* Editorパネルと中身をシェル幅いっぱいに */
+#cc-editor .editor-shell > .panels,
+#cc-editor .editor-shell > .panels > .panel {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* CodeMirrorも100%幅に */
+#cc-editor #editor,
+#cc-editor #editor .cm-editor,
+#cc-editor #editor .cm-scroller {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}
