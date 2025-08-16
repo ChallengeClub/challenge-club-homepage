@@ -145,3 +145,39 @@
   max-width: none !important;
   box-sizing: border-box;
 }
+
+/* ===== Toolbar の操作感を強化（hover/focus/active） ===== */
+#cc-editor .toolbar button,
+#cc-editor .toolbar select {
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease,
+              box-shadow .15s ease, transform .03s ease;
+}
+
+/* ホバー時：少し明るく＋境界を強調 */
+#cc-editor .toolbar button:hover,
+#cc-editor .toolbar select:hover {
+  background: #242a36;           /* 既存 #1a1d24 より少し明るく */
+  border-color: #4b5563;         /* 枠もわずかに強調 */
+}
+
+/* クリック中の押し込み感 */
+#cc-editor .toolbar button:active {
+  transform: translateY(1px);
+}
+
+/* キーボード操作時のフォーカス可視化（アクセシビリティ） */
+#cc-editor .toolbar button:focus-visible,
+#cc-editor .toolbar select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.35); /* ブルーのフォーカスリング */
+  border-color: #3b82f6;
+}
+
+/* 無効状態の見た目 */
+#cc-editor .toolbar button:disabled,
+#cc-editor .toolbar select:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  filter: none;
+}
