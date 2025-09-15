@@ -23,11 +23,11 @@
   
   
 
-  <title>タグページ | 技術チャレンジ部</title>
-  <link rel="canonical" href="https://challenge-club.org/tags/vr/">
+  <title>記事作成（エディタ） | 技術チャレンジ部</title>
+  <link rel="canonical" href="https://challenge-club.org/admin/">
 
   
-  
+  <meta name="robots" content="noindex">
 
   <meta name="description" content="技術チャレンジ部は、「成長の場の相互提供」をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
 
@@ -39,16 +39,16 @@
   <meta property="og:type" content="article">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="技術チャレンジ部">
-  <meta property="og:title" content="タグページ">
+  <meta property="og:title" content="記事作成（エディタ）">
   <meta property="og:description" content="技術チャレンジ部は、「成長の場の相互提供」をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
-  <meta property="og:url" content="https://challenge-club.org/tags/vr/">
+  <meta property="og:url" content="https://challenge-club.org/admin/">
   <meta property="og:image" content="https://challenge-club.org/images/common/ogp.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="タグページ">
+  <meta property="og:image:alt" content="記事作成（エディタ）">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="タグページ">
+  <meta name="twitter:title" content="記事作成（エディタ）">
   <meta name="twitter:description" content="技術チャレンジ部は、「成長の場の相互提供」をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。">
   <meta name="twitter:image" content="https://challenge-club.org/images/common/ogp.png">
 
@@ -86,7 +86,7 @@
   {
     "@context":"https://schema.org",
     "@type":"BlogPosting",
-    "headline":"タグページ",
+    "headline":"記事作成（エディタ）",
     "description":"技術チャレンジ部は、「成長の場の相互提供」をコンセプトにした有志の技術コミュニティです。社内外のエンジニアが集い、共に学び、挑戦し続ける本気の遊び場を提供しています。",
     "image":"https://challenge-club.org/images/common/ogp.png",
     "datePublished":"2025-09-15",
@@ -97,7 +97,7 @@
       "name":"技術チャレンジ部",
       "logo":{"@type":"ImageObject","url":"https://challenge-club.org/images/common/logo.png"}
     },
-    "mainEntityOfPage":"https://challenge-club.org/tags/vr/"
+    "mainEntityOfPage":"https://challenge-club.org/admin/"
   }
   </script>
   
@@ -144,110 +144,66 @@
 </script>
 
   
-  <h1 class="visually-hidden">タグページ</h1>
+  <h1 class="visually-hidden">記事作成（エディタ）</h1>
   
 
   <section>
     
 
-<h1>タグ: VR</h1>
+<link rel="stylesheet" href="/admin/styles/editor.css">
 
-<div class="news-list">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-    <article class="news-item">
-      <div class="news-thumbnail">
-        <a href="/activities/vr/">
-          
-          
-          
-          
-            
-          
-          <img src="/images/activities/vr/vr-01.png" alt="VR活動">
-        </a>
-      </div>
-      <div class="news-content">
-        <h3 class="news-title">
-          <a href="/activities/vr/">VR活動</a>
-        </h3>
-        <div class="news-meta">
-          <time datetime="2025-09-15">
-            2025/09/15
-          </time>
-        </div>
-        
-        <div class="news-tags">
-          
-            <a href="/tags/vr/" class="tag-pill">VR</a>
-          
-        </div>
-        
-      </div>
-    </article>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</div>
 
-<p style="margin-top: 1em; text-align: center;">
-  <a href="/tags/">← タグ一覧に戻る</a>
-</p>
+<section id="cc-editor">
+  <div class="toolbar">
+    <h2>Article Editor (MVP)</h2>
+    <span class="status" id="status">saved (local)</span>
+    <div class="spacer"></div>
+    <select id="templateSelect" title="テンプレート">
+      <option value="">テンプレートを選択…</option>
+      <option value="post">ブログ投稿（posts）</option>
+      <option value="activity">活動レポ（activities）</option>
+      <option value="news">お知らせ（news）</option>
+    </select>
+    <button id="applyTemplate">挿入</button>
+    <button id="downloadMd">.md保存</button>
+    <button id="clearLocal">ローカル削除</button>
+  </div>
+
+  <!-- 幅の衝突を避けるため、共通の .card は使わず editor-shell に変更 -->
+  <div class="editor-shell" role="region" aria-label="Editor">
+    <div class="tabs" role="tablist" aria-label="Write/Preview">
+      <button class="tab-btn" role="tab" id="tab-write" aria-controls="panel-write" aria-selected="true">Write</button>
+      <button class="tab-btn" role="tab" id="tab-preview" aria-controls="panel-preview" aria-selected="false">Preview</button>
+    </div>
+
+    <div class="panels">
+      <div class="panel" id="panel-write" role="tabpanel" aria-labelledby="tab-write" aria-hidden="false">
+        <div class="pane-header">Markdown / Front Matter</div>
+        <div id="editor" class="editor"></div>
+      </div>
+
+      <div class="panel" id="panel-preview" role="tabpanel" aria-labelledby="tab-preview" aria-hidden="true">
+        <div class="pane-header">Preview</div>
+        <div id="preview" class="preview">
+          <!-- YAML（image/hero_image）で指定された画像をここへ表示 -->
+          <div id="headerPreview"></div>
+          <div class="markdown-body" id="md"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 依存ライブラリ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+<!-- エディタ本体（CodeMirror 初期化・タブ切替など） -->
+<script src="/admin/scripts/editor.js" type="module"></script>
+
+
 
     
   </section>
