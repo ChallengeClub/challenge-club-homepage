@@ -52,6 +52,13 @@
   
     
   <url>
+    <loc>https://challenge-club.org/posts/news2025-09-15/</loc><lastmod>2025-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+    
+  <url>
     <loc>https://challenge-club.org/CONTRIBUTING/</loc><lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -192,14 +199,14 @@
   
     
   <url>
-    <loc>https://challenge-club.org/tags/programming/</loc><lastmod>2025-09-15</lastmod>
+    <loc>https://challenge-club.org/tags/vr/</loc><lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
     
   <url>
-    <loc>https://challenge-club.org/tags/vr/</loc><lastmod>2025-09-15</lastmod>
+    <loc>https://challenge-club.org/tags/programming/</loc><lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
