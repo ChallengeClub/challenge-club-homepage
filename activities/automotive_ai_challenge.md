@@ -17,16 +17,16 @@ tags: [自動運転, コンテスト]
 - 2024年大会の参加状況  
   - 予選エントリー：145チーム / 397名  
   - 予選タイム計測：56チーム / 216名  
-  - 決勝進出：16チーム / 93名 *1  
+  - 決勝進出：16チーム / 93名
 
-![自動運転AIチャレンジとは]({{ 'images/activities/.automotive_ai_challenge/about_aichallenge.png ' | url }})
+![自動運転AIチャレンジとは]({{ '/images/activities/automotive_ai_challenge/about_aichallenge.png ' | url }})
 
 大会運営からは自動運転可能な **シミュレーション環境** が提供され、これをベースに開発を進めます。  
 → 初心者でもチャレンジ可能！デジタルツイン開発の実体験ができます。  
 
 開発の中心となるのは、LinuxとROSをベースとした自動運転用OSS **Autoware** です。
 
-![Autowareとは]({{ 'images/activities/.automotive_ai_challenge/about_autoware.png ' | url }})
+![Autowareとは]({{ '/images/activities/automotive_ai_challenge/about_autoware.png ' | url }})
 
 ## 参加メンバー
 
@@ -35,7 +35,7 @@ tags: [自動運転, コンテスト]
 - 2022大会：3位入賞  
 - 以降も **ユニークアプローチ賞** や **コミュニティ貢献賞** も受賞  
 
-社内SNSやDiscordを通じて参加者を広く募り、2024年は **「TPAC」チーム15名** が参加しました。 
+社内SNSやDiscordを通じて参加者を広く募り、2024年は「TPAC」チーム15名が参加しました。 
 
 - 国内外の複数拠点から集まり、普段の活動はオンライン中心  
 - この活動で初めて顔を合わせるメンバーも多い  
@@ -43,7 +43,7 @@ tags: [自動運転, コンテスト]
 
 **大会での実績あり、楽しく活動するのがモットーです！**
 
-![活動の様子]({{ 'images/activities/.automotive_ai_challenge/active_photos.png ' | url }})
+![活動の様子]({{ '/images/activities/automotive_ai_challenge/active_photos.png ' | url }})
 
 ## 過去の実績
 
