@@ -129,12 +129,79 @@
       {{ content | safe }}
 
       {% if tags and tags.length %}
+
+      <section id="related-posts">
+        <h2>関連ニュース＆トピックス</h2>
+        <div class="news-list">
+          {% set related = [] %}
+
+          {# posts コレクションからタグ一致する記事を収集 #}
+          {% for post in collections.posts %}
+            {% if post.data.tags %}
+              {% for t in tags %}
+                {% if t in post.data.tags %}
+                  {% set related = related + [post] %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {# URLで重複除去 → 新しい順に3件だけ #}
+          {% set seen = [] %}
+          {% set relatedUnique = [] %}
+          {% for r in related | reverse %}
+            {% if r.url not in seen %}
+              {% set relatedUnique = relatedUnique + [r] %}
+              {% set seen = seen + [r.url] %}
+            {% endif %}
+          {% endfor %}
+          {% set related = relatedUnique | slice(0,3) %}
+
+          {% if related.length > 0 %}
+            {% for post in related %}
+            <article class="news-item">
+              <div class="news-thumbnail">
+                <a href="{{ post.url | url }}">
+                  {% set thumb = post.data.thumbnail %}
+                  {% set autoThumb = post.templateContent | getFirstImageSrc %}
+                  {% set imgSrc = thumb or autoThumb or '/images/common/default-thumbnail.png' %}
+                  <img src="{{ imgSrc }}" alt="{{ post.data.title }}">
+                </a>
+              </div>
+              <div class="news-content">
+                <h3 class="news-title">
+                  <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+                </h3>
+                <div class="news-meta">
+                  {% if post.date %}
+                  <time datetime="{{ post.date | date('yyyy-MM-dd') }}">
+                    {{ post.date | date('yyyy/MM/dd') }}
+                  </time>
+                  {% endif %}
+                </div>
+                {% if post.data.tags %}
+                <div class="news-tags">
+                  {% for t in post.data.tags %}
+                    <a href="{{ ('/tags/' ~ (tagNames[t] or (t | safeSlug)) ~ '/') | url }}" class="tag-pill">{{ t }}</a>
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            </article>
+            {% endfor %}
+          {% else %}
+            <p>関連ニュースはまだありません。</p>
+          {% endif %}
+        </div>
+      </section>
+
       <p class="tags">
         タグ:
         {% for tag in tags %}
           <a href="{{ ('/tags/' ~ (tagNames[tag] or (tag | safeSlug)) ~ '/') | url }}" class="tag-pill">{{ tag }}</a>
         {% endfor %}
       </p>
+
       {% endif %}
     </section>
   </main>
