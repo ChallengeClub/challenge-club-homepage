@@ -1,0 +1,62 @@
+---
+title: 記事作成（エディタ）
+layout: base.njk
+permalink: /admin/
+eleventyExcludeFromCollections: true
+robots: noindex
+---
+
+{# エディタ専用スタイル #}
+<link rel="stylesheet" href="{{ '/admin/styles/editor.css' | url }}">
+
+{% raw %}
+<section id="cc-editor">
+  <div class="toolbar">
+    <h2>Article Editor (MVP)</h2>
+    <span class="status" id="status">saved (local)</span>
+    <div class="spacer"></div>
+    <select id="templateSelect" title="テンプレート">
+      <option value="">テンプレートを選択…</option>
+      <option value="post">ブログ投稿（posts）</option>
+      <option value="activity">活動レポ（activities）</option>
+      <option value="news">お知らせ（news）</option>
+    </select>
+    <button id="applyTemplate">挿入</button>
+    <button id="downloadMd">.md保存</button>
+    <button id="clearLocal">ローカル削除</button>
+  </div>
+
+  <!-- 幅の衝突を避けるため、共通の .card は使わず editor-shell に変更 -->
+  <div class="editor-shell" role="region" aria-label="Editor">
+    <div class="tabs" role="tablist" aria-label="Write/Preview">
+      <button class="tab-btn" role="tab" id="tab-write" aria-controls="panel-write" aria-selected="true">Write</button>
+      <button class="tab-btn" role="tab" id="tab-preview" aria-controls="panel-preview" aria-selected="false">Preview</button>
+    </div>
+
+    <div class="panels">
+      <div class="panel" id="panel-write" role="tabpanel" aria-labelledby="tab-write" aria-hidden="false">
+        <div class="pane-header">Markdown / Front Matter</div>
+        <div id="editor" class="editor"></div>
+      </div>
+
+      <div class="panel" id="panel-preview" role="tabpanel" aria-labelledby="tab-preview" aria-hidden="true">
+        <div class="pane-header">Preview</div>
+        <div id="preview" class="preview">
+          <!-- YAML（image/hero_image）で指定された画像をここへ表示 -->
+          <div id="headerPreview"></div>
+          <div class="markdown-body" id="md"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 依存ライブラリ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+<script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+<!-- エディタ本体（CodeMirror 初期化・タブ切替など） -->
+<script src="/admin/scripts/editor.js" type="module"></script>
+{% endraw %}

@@ -96,6 +96,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("safeSlug", safeSlug);
   eleventyConfig.addFilter("absoluteUrl", absoluteUrl);
 
+
+  // Editor機能
+  eleventyConfig.addPassthroughCopy({ "admin/styles": "admin/styles" });
+  eleventyConfig.addPassthroughCopy({ "admin/scripts": "admin/scripts" });
+  eleventyConfig.addWatchTarget("admin/styles/");
+  eleventyConfig.addWatchTarget("admin/scripts/");
+
   return {
     pathPrefix: "",
     dir: {

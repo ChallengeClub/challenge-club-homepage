@@ -2,7 +2,7 @@
 layout: base.njk
 title: MakerFaireTokyo2024出展
 image: "/images/mft2024.png"
-tags: [活動報告, メイカー]
+tags: [メイカー]
 description: "Maker Faireへの出展報告。手作りロボットやセンサー作品の展示、モノづくり体験イベントを通じてメイカー文化を共有しています。"
 ---
 
