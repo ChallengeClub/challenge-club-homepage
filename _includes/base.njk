@@ -132,10 +132,10 @@
     <section id="related-posts">
       <h2>関連ニュース＆トピックス</h2>
       <div class="news-list">
-        {% set hasRelated = false %}
+        {% set shown = 0 %}
 
         {% for post in collections.posts %}
-          {% if post.data.tags %}
+          {% if shown < 6 and post.url != page.url and post.data.tags %}
             {% set hasCommon = false %}
             {% for t in tags %}
               {% if t in post.data.tags %}
@@ -143,8 +143,8 @@
               {% endif %}
             {% endfor %}
 
-            {% if hasCommon and post.url != page.url %}
-              {% set hasRelated = true %}
+            {% if hasCommon %}
+              {% set shown = shown + 1 %}
               <article class="news-item">
                 <div class="news-thumbnail">
                   <a href="{{ post.url | url }}">
@@ -178,11 +178,14 @@
           {% endif %}
         {% endfor %}
 
-        {% if not hasRelated %}
+        {% if shown == 0 %}
           <p>関連ニュースはまだありません。</p>
         {% endif %}
       </div>
     </section>
+
+    
+
 
     <p class="tags">
       タグ:
