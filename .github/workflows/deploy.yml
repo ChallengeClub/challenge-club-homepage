@@ -13,6 +13,7 @@ on:
       - 'Readme.md'
   schedule:
     - cron: '0 15 * * 0' # 毎週日曜 24:00 JST（= 15:00 UTC）
+  workflow_dispatch:
 
 jobs:
   build:
