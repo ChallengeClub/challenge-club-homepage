@@ -22,12 +22,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("activities", function(collection) {
     return collection.getFilteredByGlob("./activities/*.md").reverse();
   });
-  // posts + activities をまとめたコレクション
+  // posts + activities をまとめて日付でソートしたコレクション
   eleventyConfig.addCollection("allArticles", function (collection) {
-    return [
+    const all = [
       ...collection.getFilteredByGlob("./posts/*.md"),
       ...collection.getFilteredByGlob("./activities/*.md"),
-    ].reverse(); // 新しいものを先頭にしたい場合
+    ];
+    // date フロントマターを基準に新しい順へ
+    return all.sort((a, b) => b.date - a.date);
   });
 
   // 日付フォーマット用フィルター
