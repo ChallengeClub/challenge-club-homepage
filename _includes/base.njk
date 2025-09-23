@@ -133,12 +133,12 @@
       <h2>関連ニュース＆トピックス</h2>
       <div class="news-list">
         {% set shown = 0 %}
-
-        {% for post in collections.posts %}
+        {% for post in collections.allArticles %}
           {% if shown < 6 and post.url != page.url and post.data.tags %}
             {% set hasCommon = false %}
             {% for t in tags %}
-              {% if t in post.data.tags %}
+              {# 自分の記事の "ニュース" タグは無視する #}
+              {% if t != 'ニュース' and t in post.data.tags %}
                 {% set hasCommon = true %}
               {% endif %}
             {% endfor %}
@@ -183,9 +183,6 @@
         {% endif %}
       </div>
     </section>
-
-    
-
 
     <p class="tags">
       タグ:

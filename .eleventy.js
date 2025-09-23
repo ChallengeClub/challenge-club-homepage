@@ -11,15 +11,23 @@ module.exports = function(eleventyConfig) {
 
   // グローバルデータを追加
   eleventyConfig.addGlobalData("currentYear", new Date().getFullYear());
-  eleventyConfig.addCollection("posts", function(collection) {
-    return collection.getFilteredByGlob("./posts/*.md").reverse();
-  });
   // pathPrefixをテンプレートから使えるようにする
   eleventyConfig.addGlobalData("pathPrefix", "/challenge-club-homepage");
 
-  // 活動ページ用コレクションを追加
+  // posts コレクション
+  eleventyConfig.addCollection("posts", function(collection) {
+    return collection.getFilteredByGlob("./posts/*.md").reverse();
+  });
+  // activities コレクション
   eleventyConfig.addCollection("activities", function(collection) {
-    return collection.getFilteredByGlob("./activities/*.md");
+    return collection.getFilteredByGlob("./activities/*.md").reverse();
+  });
+  // posts + activities をまとめたコレクション
+  eleventyConfig.addCollection("allArticles", function (collection) {
+    return [
+      ...collection.getFilteredByGlob("./posts/*.md"),
+      ...collection.getFilteredByGlob("./activities/*.md"),
+    ]; // 新しいものを先頭にしたい場合
   });
 
   // 日付フォーマット用フィルター
