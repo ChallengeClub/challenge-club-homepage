@@ -27,7 +27,7 @@ module.exports = function(eleventyConfig) {
     return [
       ...collection.getFilteredByGlob("./posts/*.md"),
       ...collection.getFilteredByGlob("./activities/*.md"),
-    ]; // 新しいものを先頭にしたい場合
+    ].reverse(); // 新しいものを先頭にしたい場合
   });
 
   // 日付フォーマット用フィルター
