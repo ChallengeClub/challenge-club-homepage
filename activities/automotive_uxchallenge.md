@@ -1,9 +1,10 @@
 ---
 title: 自動運転UX創造チャレンジ
 layout: base.njk
-image: "/images/ux.png"
+image: "/images/activities/automotive_ux_challenge/ux.png"
 tags: [自動運転, コンテスト]
-description: "経済産業省主催の自動運転UX創造チャレンジ。多様な参加者が未来のユーザー体験を創造するアイデアソン形式の大会です。"
+description: "経済産業省主催の自動運転UX創造チャレンジ。多様な参加者が未来のユーザー体験を創造するアイデアソン形式の大会に参加しました。"
+date: 2025-02-15
 ---
 
 # 自動運転UX創造チャレンジ 参加レポート
@@ -11,7 +12,7 @@ description: "経済産業省主催の自動運転UX創造チャレンジ。多�
 自動運転UX創造チャレンジに、技術チャレンジ部から**TPACチーム**が参加し、決勝大会に進出しました。
 
 <figure>
-  <img src="{{ '/images/activities/automotive_uxchallenge.png' | url }}"
+  <img src="{{ '/images/activities/automotive_ux_challenge/automotive_uxchallenge.png' | url }}"
        alt="決勝大会の様子"
        title="2025/2/15(土)に開催された決勝大会でのプレゼンの様子"
        width="600">

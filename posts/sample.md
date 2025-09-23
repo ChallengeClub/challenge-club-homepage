@@ -1,7 +1,7 @@
 ---
 title: サンプルニュース
 layout: base.njk
-date: 2025-06-26
+date: 2000-01-01
 tags: [ニュース]
 permalink: "/posts/sample/"
 thumbnail: /images/posts/2025-06-26-sample.png

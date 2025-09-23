@@ -1,7 +1,8 @@
 ---
 layout: base.njk
 title: CTF活動
-image: "/images/ctf.png"
+image: "/images/activities/cft/ctf.png"
+date: 2025-07-11
 tags: [CTF, コンテスト]
 description: "セキュリティ技術を競うCTFイベント。脆弱性解析や暗号解読などの課題を解き、秘密の文字列を見つけ出す競技に挑戦しています。"
 ---

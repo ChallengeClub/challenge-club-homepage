@@ -13,7 +13,7 @@ title: タグページ
 <h1>タグ: {{ tag }}</h1>
 
 <div class="news-list">
-  {% for post in collections.all %}
+  {% for post in collections.allArticles %}
     {% if post.data.tags and post.data.tags.includes(tag) %}
     <article class="news-item">
       <div class="news-thumbnail">
