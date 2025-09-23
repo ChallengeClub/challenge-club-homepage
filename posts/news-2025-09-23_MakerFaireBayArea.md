@@ -17,8 +17,7 @@ ogImage: "/images/posts/2025-09-23_MakerFaireBayArea.png"
 - 日時：2025年9月28日（日） 朝7:00–8:00（日本時間）  
 - 場所：Zoom（申込者にリンクを共有）  
 
-> イベント詳細・申込は connpass をご確認ください：  
-> https://challenge-club.connpass.com/event/370295/
+> イベント詳細・申込は [connpass](https://challenge-club.connpass.com/event/370295/) をご確認ください。
 
 Maker Faire のエネルギッシュな空気を、みんなでバーチャル遠足のように楽しみましょう！
 
