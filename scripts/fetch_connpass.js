@@ -17,7 +17,7 @@ const COUNT = Number(process.env.CONNPASS_COUNT || 50);
 // 取得ウィンドウ（デフォルト: 今〜+30日）
 // 運用や検証で必要に応じて可変化
 const DAYS_BACK  = Number(process.env.CONNPASS_RANGE_DAYS_BACK  || 0);
-const DAYS_AHEAD = Number(process.env.CONNPASS_RANGE_DAYS_AHEAD || 30);
+const DAYS_AHEAD = Number(process.env.CONNPASS_RANGE_DAYS_AHEAD || 60);
 
 // === 事前チェック ===
 if (!API_KEY) {
