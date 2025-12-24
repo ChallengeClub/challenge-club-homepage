@@ -2,7 +2,7 @@
 layout: base.njk
 title: VR活動
 image: "/images/activities/vr/vr-header.png"
-date: 2025-08-15
+date: 2025-12-24
 tags: [VR]
 description: "VRやメタバースの体験と開発を行う活動。定例会やオンライン勉強会を通じて最新技術の共有と開発を推進しています。"
 ---
@@ -36,6 +36,7 @@ description: "VRやメタバースの体験と開発を行う活動。定例会�
 
 ### 過去のイベント
 
+- 2025年12月: 改変アバタークリスマス撮影会
 - 2025年11月: [アトリエリアリテx技術チャレンジ部 はじめてのLT会＠VRChat](/posts/news2025-11-07/)
 - 2025年6月: VRC改変さぎょうもくもく会
 - 2025年6月: Quest Linkトラブルシューティング会
