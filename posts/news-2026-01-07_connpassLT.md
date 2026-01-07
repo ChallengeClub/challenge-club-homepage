@@ -141,10 +141,12 @@ PoCを「作って終わり」にせず、運用や文化のレイヤーまで�
       margin: 0px;
       padding: 0px;
       border-radius: 6px;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%;
-      height: auto;
-      aspect-ratio: 560 / 315;"
-    data-ratio="1.7777777777777777">
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px;
+      width: 100%;
+      max-width: 860px;
+      display: inline-block;
+      aspect-ratio: 560 / 315;
+    ">
   </iframe>
 </div>
 
