@@ -128,6 +128,28 @@ PoCを「作って終わり」にせず、運用や文化のレイヤーまで�
 
 「とりあえず買ってみる」「作ってみて詰まる」というリアルな話が、会場の笑いと共感を誘っていました。
 
+<div style="margin: 2rem 0; text-align: center;">
+  <iframe
+    class="speakerdeck-iframe"
+    frameborder="0"
+    src="https://speakerdeck.com/player/8982d109518f46a0a139451155de0038"
+    title="2026_01_07_３DプリントはじめましたLT.pdf"
+    allowfullscreen="true"
+    style="
+      border: 0px;
+      background: padding-box padding-box rgba(0, 0, 0, 0.1);
+      margin: 0px;
+      padding: 0px;
+      border-radius: 6px;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px;
+      width: 100%;
+      max-width: 860px;
+      display: inline-block;
+      aspect-ratio: 560 / 315;
+    ">
+  </iframe>
+</div>
+
 ## VR空間でLT会を開催してみた！（とも）
 
 最後の登壇は とも さん。  
