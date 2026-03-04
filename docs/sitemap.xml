@@ -192,7 +192,7 @@
   
     
   <url>
-    <loc>https://challenge-club.org/tags/maker/</loc><lastmod>2026-03-04</lastmod>
+    <loc>https://challenge-club.org/tags/ctf/</loc><lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -213,13 +213,6 @@
   
     
   <url>
-    <loc>https://challenge-club.org/tags/ctf/</loc><lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-    
-  <url>
     <loc>https://challenge-club.org/tags/vr/</loc><lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -227,7 +220,21 @@
   
     
   <url>
+    <loc>https://challenge-club.org/tags/maker/</loc><lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+    
+  <url>
     <loc>https://challenge-club.org/tags/news/</loc><lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+    
+  <url>
+    <loc>https://challenge-club.org/tags/reading/</loc><lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -242,13 +249,6 @@
     
   <url>
     <loc>https://challenge-club.org/tags/lt/</loc><lastmod>2026-03-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-    
-  <url>
-    <loc>https://challenge-club.org/tags/reading/</loc><lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
