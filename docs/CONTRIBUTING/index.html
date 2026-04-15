@@ -173,6 +173,92 @@ layout: base.njk
 </code></pre>
 <p>サンプル記事は <a href="posts/sample.md"><code>posts/sample.md</code></a> を参考にしてください。</p>
 <hr>
+<h2>4.1 LT記事の作り方メモ</h2>
+<p>connpass の LT 会レポート記事を作成するときは、まず以下の情報をそろえるとスムーズです。</p>
+<ul>
+<li>connpass のイベント URL</li>
+<li>発表者名と発表タイトル</li>
+<li>Zoom や会議メモなどの要約</li>
+<li>前回イベント記事の Markdown</li>
+<li>発表資料のリンクや埋め込み URL</li>
+</ul>
+<h3>作成の流れ</h3>
+<ol>
+<li>前回の LT 記事を参考に、<code>posts/news-YYYY-MM-DD_connpassLT.md</code> を作成します。</li>
+<li>connpass の URL、発表者名とタイトル、会議要約、前回記事、資料リンクを入力として、Codex などの生成AIにたたき台を作成してもらうと効率的です。</li>
+<li><code>title</code>、<code>description</code>、<code>date</code>、<code>permalink</code>、<code>tags</code> などの Frontmatter を整えます。</li>
+<li>発表ごとの紹介文を書きます。議事録をそのまま並べるのではなく、初見の人にも雰囲気が伝わり、次回参加や登壇に興味を持てる記事を意識します。</li>
+<li>発表資料のリンクや、必要に応じて Speaker Deck などの埋め込みを追加します。</li>
+<li>記事全体を自分で読み直し、発表者・参加者へのリスペクトが伝わる表現になっているか確認します。</li>
+<li><code>npx @11ty/eleventy --serve</code> でローカル表示を確認し、レイアウト崩れや埋め込みミスがないかチェックします。</li>
+<li>問題なければコミット、push、Pull Request を作成します。</li>
+</ol>
+<h3>注意点</h3>
+<ul>
+<li>議事録の要約になりすぎないようにし、発表の魅力や印象に残った点が伝わる文章にしてください。</li>
+<li>発表者名、イベント名、イベント URL、開催日を必ず確認してください。</li>
+<li>資料リンクや iframe 埋め込みは、URL ミスや表示崩れがないか確認してください。</li>
+<li>見出しレベルや表記ゆれをそろえ、記事全体の読みやすさを整えてください。</li>
+<li><code>docs/</code> は直接編集せず、Eleventy で生成された内容を反映してください。</li>
+</ul>
+<h3>生成AIに渡す入力例</h3>
+<p>生成AI にたたき台を作ってもらうときは、以下のような情報をまとめて渡すとスムーズです。</p>
+<pre><code class="language-text">参考記事:
+posts/news-2026-03-04_connpassLT.md
+
+作成したい記事の日付:
+2026-04-15
+
+connpass URL:
+https://challenge-club.connpass.com/event/388228/
+
+発表者とタイトル:
+- Lambigさん: テックリードとしてのプロダクト開発
+- hidetakeさん: 量子計算をパズルとして解く
+- 鬼Backs高田さん: つくろがやへの出展チャレンジ
+- ばやしぃすさん: 3Dプリンターの限界を知るための心得
+
+資料リンク:
+- hidetakeさん: https://speakerdeck.com/hideakitakechi/2026-04-15-liang-zi-ji-suan-wopazurutositejie-ku
+- hidetakeさん可視化ツール: https://quantumvisualizer.pages.dev/
+- QCoder: https://www.qcoder.jp/ja
+- つくろがや: https://tsukurogaya.nagoya/
+- 3Dプリント一体造形の基本 Print-in-Place: https://booth.pm/ja/items/8173591
+
+会議要約:
+（Zoom AI要約や議事メモをここに貼る）
+</code></pre>
+<h3>プロンプトのテンプレ（例）</h3>
+<p>以下のようなプロンプトをベースにすると、LT記事のたたき台を作りやすくなります。</p>
+<pre><code class="language-text">posts/news-YYYY-MM-DD_connpassLT.md を作成してください。
+
+参考記事:
+[前回LT記事のパス]
+
+イベント情報:
+- 日付: [開催日]
+- connpass URL: [イベントURL]
+
+発表者とタイトル:
+- [発表者名]: [発表タイトル]
+- [発表者名]: [発表タイトル]
+
+資料リンク:
+- [発表者名]: [資料URL]
+
+会議要約:
+[要約本文]
+
+要件:
+- 参考記事のトーンと構成を踏襲する
+- front matter も含めて作成する
+- タイトル、description、permalink、tags を入れる
+- 議事録の要約ではなく、発表者・参加者をリスペクトした記事にする
+- 初見の人でも、次回参加や登壇に興味を持てる温度感にする
+- 必要なら資料リンクや埋め込みも入れる
+- 最後に次回参加を自然に促すまとめを入れる
+</code></pre>
+<hr>
 <h2>5. 活動紹介ページの編集（<code>activities/</code> ディレクトリ）</h2>
 <ul>
 <li>Markdown ファイルを編集し、上記と同様に <code>title</code>, <code>date</code>, <code>tags</code>, <code>layout</code> を含めてください。</li>
