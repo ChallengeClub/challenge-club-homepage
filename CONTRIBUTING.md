@@ -185,6 +185,102 @@ layout: base.njk
 
 ---
 
+## 4.1 LT記事の作り方メモ
+
+connpass の LT 会レポート記事を作成するときは、まず以下の情報をそろえるとスムーズです。
+
+- connpass のイベント URL
+- 発表者名と発表タイトル
+- Zoom や会議メモなどの要約
+- 前回イベント記事の Markdown
+- 発表資料のリンクや埋め込み URL
+
+### 作成の流れ
+
+1. 前回の LT 記事を参考に、`posts/news-YYYY-MM-DD_connpassLT.md` を作成します。
+2. connpass の URL、発表者名とタイトル、会議要約、前回記事、資料リンクを入力として、Codex などの生成AIにたたき台を作成してもらうと効率的です。
+3. `title`、`description`、`date`、`permalink`、`tags` などの Frontmatter を整えます。
+4. 発表ごとの紹介文を書きます。議事録をそのまま並べるのではなく、初見の人にも雰囲気が伝わり、次回参加や登壇に興味を持てる記事を意識します。
+5. 発表資料のリンクや、必要に応じて Speaker Deck などの埋め込みを追加します。
+6. 記事全体を自分で読み直し、発表者・参加者へのリスペクトが伝わる表現になっているか確認します。
+7. `npx @11ty/eleventy --serve` でローカル表示を確認し、レイアウト崩れや埋め込みミスがないかチェックします。
+8. 問題なければコミット、push、Pull Request を作成します。
+
+### 注意点
+
+- 議事録の要約になりすぎないようにし、発表の魅力や印象に残った点が伝わる文章にしてください。
+- 発表者名、イベント名、イベント URL、開催日を必ず確認してください。
+- 資料リンクや iframe 埋め込みは、URL ミスや表示崩れがないか確認してください。
+- 見出しレベルや表記ゆれをそろえ、記事全体の読みやすさを整えてください。
+- `docs/` は直接編集せず、Eleventy で生成された内容を反映してください。
+
+### 生成AIに渡す入力例
+
+生成AI にたたき台を作ってもらうときは、以下のような情報をまとめて渡すとスムーズです。
+
+```text
+参考記事:
+posts/news-2026-03-04_connpassLT.md
+
+作成したい記事の日付:
+2026-04-15
+
+connpass URL:
+https://challenge-club.connpass.com/event/388228/
+
+発表者とタイトル:
+- Lambigさん: テックリードとしてのプロダクト開発
+- hidetakeさん: 量子計算をパズルとして解く
+- 鬼Backs高田さん: つくろがやへの出展チャレンジ
+- ばやしぃすさん: 3Dプリンターの限界を知るための心得
+
+資料リンク:
+- hidetakeさん: https://speakerdeck.com/hideakitakechi/2026-04-15-liang-zi-ji-suan-wopazurutositejie-ku
+- hidetakeさん可視化ツール: https://quantumvisualizer.pages.dev/
+- QCoder: https://www.qcoder.jp/ja
+- つくろがや: https://tsukurogaya.nagoya/
+- 3Dプリント一体造形の基本 Print-in-Place: https://booth.pm/ja/items/8173591
+
+会議要約:
+（Zoom AI要約や議事メモをここに貼る）
+```
+
+### プロンプトのテンプレ（例）
+
+以下のようなプロンプトをベースにすると、LT記事のたたき台を作りやすくなります。
+
+```text
+posts/news-YYYY-MM-DD_connpassLT.md を作成してください。
+
+参考記事:
+[前回LT記事のパス]
+
+イベント情報:
+- 日付: [開催日]
+- connpass URL: [イベントURL]
+
+発表者とタイトル:
+- [発表者名]: [発表タイトル]
+- [発表者名]: [発表タイトル]
+
+資料リンク:
+- [発表者名]: [資料URL]
+
+会議要約:
+[要約本文]
+
+要件:
+- 参考記事のトーンと構成を踏襲する
+- front matter も含めて作成する
+- タイトル、description、permalink、tags を入れる
+- 議事録の要約ではなく、発表者・参加者をリスペクトした記事にする
+- 初見の人でも、次回参加や登壇に興味を持てる温度感にする
+- 必要なら資料リンクや埋め込みも入れる
+- 最後に次回参加を自然に促すまとめを入れる
+```
+
+---
+
 ## 5. 活動紹介ページの編集（`activities/` ディレクトリ）
 
 - Markdown ファイルを編集し、上記と同様に `title`, `date`, `tags`, `layout` を含めてください。
