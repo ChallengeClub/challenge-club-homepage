@@ -164,6 +164,13 @@
   
     
   <url>
+    <loc>https://challenge-club.org/posts/lt-2026-10/</loc><lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+    
+  <url>
     <loc>https://challenge-club.org/.github/SECURITY-MAINTENANCE/</loc><lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -227,14 +234,14 @@
   
     
   <url>
-    <loc>https://challenge-club.org/tags/isucon/</loc><lastmod>2026-10-25</lastmod>
+    <loc>https://challenge-club.org/tags/ctf/</loc><lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
     
   <url>
-    <loc>https://challenge-club.org/tags/ctf/</loc><lastmod>2026-10-25</lastmod>
+    <loc>https://challenge-club.org/tags/isucon/</loc><lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -269,6 +276,13 @@
   
     
   <url>
+    <loc>https://challenge-club.org/tags/reading/</loc><lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+    
+  <url>
     <loc>https://challenge-club.org/tags/report/</loc><lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -277,13 +291,6 @@
     
   <url>
     <loc>https://challenge-club.org/tags/lt/</loc><lastmod>2026-10-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-    
-  <url>
-    <loc>https://challenge-club.org/tags/reading/</loc><lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
