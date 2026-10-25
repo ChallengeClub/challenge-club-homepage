@@ -1,0 +1,34 @@
+<h1>Node.js / npm のセキュリティ更新</h1>
+<h2>実行環境</h2>
+<ul>
+<li><code>.nvmrc</code> の Node.js 24.22.1 を開発と CI の共通基準にする。</li>
+<li>開発端末では <code>nvm install</code>、<code>nvm use</code>、<code>npm ci</code> の順で実行する。</li>
+<li>Node.js の修正版が公開されたら <code>.nvmrc</code> と <code>package.json</code> の engines 下限を更新する。</li>
+<li>CI は <code>npm ci</code> の lockfile を使用し、ビルド時に依存を追加インストールしない。</li>
+</ul>
+<h2>Markdown 処理の override</h2>
+<p>Eleventy 2.0.1 は markdown-it 13 系に依存し、既知の脆弱性が残るため、
+<code>overrides</code> で Eleventy の markdown-it を修正版の 14.3.3 以降に差し替えている。
+Eleventy のメジャー更新は行っていない。将来 Eleventy を更新するときは、
+この override が必要か見直し、生成 HTML の互換性を再確認する。</p>
+<h2>2026-10-25 の検証</h2>
+<ul>
+<li>Node.js 24.22.1（公式配布アーカイブの SHA-256 を確認）を使用。</li>
+<li>一時コピーで <code>npm ci</code> と <code>TZ=Asia/Tokyo ELEVENTY_ENV=production npm run build</code> が成功。</li>
+<li><code>npm audit</code> は既知の脆弱性 0 件。これは全ての安全性を保証するものではない。</li>
+<li>更新前と更新後の一時コピーの <code>docs/</code> を比較し、全件一致を確認。
+既存のタグ一覧の順序には同じ依存構成での再ビルドでも揺れがあるため、
+初回の差分（タグ一覧と sitemap のタグ URL の順序）を再ビルドで確認した。</li>
+<li>connpass 取得処理は模擬応答で、期間の絞り込み・要約・URL の生成を確認。
+実 API、実 API キーは使用していない。</li>
+<li>リポジトリの <code>docs/</code>、記事、画像、テンプレートは変更していない。</li>
+<li>push、GitHub Actions の手動実行、公開環境へのデプロイは行っていない。</li>
+</ul>
+<h2>次回以降の検証</h2>
+<p>リポジトリ直下でビルドすると <code>docs/</code> が更新される。
+公開内容を保護する検証では、ソースを一時ディレクトリにコピーし、そこで
+<code>npm ci</code> とビルドを実行する。connpass データも固定した同一の入力で比較する。
+日時・入力ファイルの更新日時に由来する差分は、依存更新の差分と分けて確認する。
+実 API を使った取得確認と GitHub Actions 上の確認は、公開更新の有無を確認して行う。</p>
+<p>既存のビルド・コミット・Pages 公開の構成とトリガーは維持している。
+main へのマージ後は従来どおり自動ビルド・公開が動くため、マージは公開可能な時点で行う。</p>
