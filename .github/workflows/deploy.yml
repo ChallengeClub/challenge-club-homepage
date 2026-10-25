@@ -42,7 +42,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '18'
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
@@ -58,11 +58,8 @@ jobs:
 
       - name: Build with Eleventy
         env:
-          CONNPASS_API_KEY: ${{ secrets.CONNPASS_API_KEY }}
-          CONNPASS_SUBDOMAIN: ${{ secrets.CONNPASS_SUBDOMAIN }}
-        run: |
-          npm install -D cross-env
-          npx cross-env ELEVENTY_ENV=production npm run build
+          ELEVENTY_ENV: production
+        run: npm run build
 
       - name: Commit and push to docs
         if: github.event_name == 'push' || github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.dry_run)
